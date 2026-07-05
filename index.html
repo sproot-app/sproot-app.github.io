@@ -1,5 +1,6 @@
 <!DOCTYPE html><html lang="ja"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Sproot — 覚えたい言葉を、AIがカードに。生成も学習データも、すべて端末の中で。">
 <link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title>Sproot — AI単語帳</title>
 <script>(function(){var l=null;try{l=localStorage.getItem('sproot-lang')}catch(e){}
@@ -10,7 +11,7 @@ document.documentElement.dataset.lang=l;document.documentElement.lang=l})()</scr
 <style>
 :root{--bg:#F6F5EF;--surf:#FFFFFF;--surf2:#ECEFE3;--ink:#20291F;--ink2:#5A6A5B;--ink3:#96A394;
 --grn:#3E7C4F;--grn-tint:#E4F0E1;--grn-soft:#C9E2C6;--grn-deep:#2A5638;--line:#E2E5D6;
---sh:0 2px 14px rgba(32,41,31,.07)}
+--sh:0 2px 14px rgba(32,41,31,.07);--ease:cubic-bezier(.2,.8,.25,1)}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);line-height:1.9;font-size:16px;
 font-family:Outfit,-apple-system,BlinkMacSystemFont,sans-serif}
@@ -21,7 +22,7 @@ font-family:Outfit,-apple-system,BlinkMacSystemFont,sans-serif}
 [data-lang=en] :is(.l-ja,.l-ko){display:none!important}
 a{color:var(--grn)}
 header{position:sticky;top:0;background:rgba(246,245,239,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);z-index:10}
-.hwrap{max-width:880px;margin:0 auto;padding:13px 20px;display:flex;align-items:center;gap:16px}
+.hwrap{max-width:920px;margin:0 auto;padding:13px 20px;display:flex;align-items:center;gap:16px}
 .brand{display:flex;align-items:center;gap:8px;font-family:Outfit,sans-serif;font-weight:700;font-size:1.12rem;color:var(--grn);text-decoration:none;letter-spacing:.01em}
 nav{display:flex;gap:16px;font-size:.88rem;margin-left:auto}
 nav a{color:var(--ink2);text-decoration:none}
@@ -30,41 +31,101 @@ nav a.here{color:var(--grn);font-weight:700}
 .lang{display:flex;background:var(--surf2);border:1px solid var(--line);border-radius:999px;padding:3px;flex:none}
 .lang button{border:0;background:transparent;padding:4px 11px;border-radius:999px;font:inherit;font-size:.78rem;color:var(--ink2);cursor:pointer;transition:.15s}
 .lang button.on{background:var(--surf);color:var(--grn);font-weight:700;box-shadow:0 1px 4px rgba(32,41,31,.14)}
-main{max-width:880px;margin:0 auto;padding:24px 20px 72px}
-.hero{text-align:center;padding:56px 0 8px}
-.tile{width:96px;height:96px;border-radius:24px;background:var(--surf);border:1px solid var(--line);box-shadow:var(--sh);display:inline-flex;align-items:center;justify-content:center;margin-bottom:26px}
-h1{font-size:clamp(1.65rem,4.6vw,2.35rem);line-height:1.42;margin:.15em 0;letter-spacing:.01em}
+main{max-width:920px;margin:0 auto;padding:24px 20px 72px}
+/* ---- hero + logo animation ---- */
+.hero{text-align:center;padding:64px 0 8px}
+.sproutbox{width:112px;height:112px;border-radius:28px;background:var(--surf);border:1px solid var(--line);box-shadow:var(--sh);display:inline-flex;align-items:center;justify-content:center;margin-bottom:26px;cursor:pointer}
+#sprout{width:64px;height:64px;overflow:visible}
+#sprout path{fill:none;stroke:var(--grn);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#sprout .stem{stroke-dasharray:8.2;stroke-dashoffset:8.2}
+#sprout .leaf{opacity:0;transform-box:fill-box}
+#sprout .leafL{transform-origin:100% 100%;transform:rotate(38deg) scale(.15)}
+#sprout .leafR{transform-origin:0% 100%;transform:rotate(-38deg) scale(.15)}
+.play #sprout .stem{animation:stem .65s .15s var(--ease) forwards}
+.play #sprout .leafL{animation:leafL .55s .62s var(--ease) forwards}
+.play #sprout .leafR{animation:leafR .55s .82s var(--ease) forwards}
+.play #sprout{animation:wiggle .7s 1.45s ease-in-out}
+@keyframes stem{to{stroke-dashoffset:0}}
+@keyframes leafL{0%{opacity:0;transform:rotate(38deg) scale(.15)}60%{opacity:1;transform:rotate(-6deg) scale(1.1)}100%{opacity:1;transform:rotate(0) scale(1)}}
+@keyframes leafR{0%{opacity:0;transform:rotate(-38deg) scale(.15)}60%{opacity:1;transform:rotate(6deg) scale(1.1)}100%{opacity:1;transform:rotate(0) scale(1)}}
+@keyframes wiggle{0%{transform:rotate(0)}30%{transform:rotate(-4deg)}60%{transform:rotate(3deg)}100%{transform:rotate(0)}}
+h1{font-size:clamp(1.7rem,4.8vw,2.5rem);line-height:1.42;margin:.15em 0;letter-spacing:.01em}
 .sub{color:var(--ink2);max-width:600px;margin:14px auto 30px}
-.cta{display:inline-flex;gap:9px;align-items:center;background:var(--grn);color:#fff;padding:13px 28px;border-radius:999px;text-decoration:none;font-weight:600;box-shadow:var(--sh);transition:.18s}
+.cta{display:inline-flex;gap:9px;align-items:center;background:var(--grn);color:#fff;padding:13px 28px;border-radius:999px;text-decoration:none;font-weight:600;box-shadow:var(--sh);transition:.18s;border:0;font-size:1rem;cursor:pointer;font-family:inherit}
 .cta:hover{background:var(--grn-deep);transform:translateY(-1px)}
 .note{color:var(--ink3);font-size:.82rem;margin-top:14px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin:64px 0 0}
-.card{background:var(--surf);border:1px solid var(--line);border-radius:20px;padding:26px 24px;box-shadow:var(--sh);transition:.18s}
+/* ---- scroll reveal ---- */
+.rise{opacity:0;transform:translateY(16px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.rise.in{opacity:1;transform:none}
+/* ---- demo ---- */
+.demo{margin-top:88px;text-align:center}
+.demo h2,.sec h2{font-size:1.45rem;margin:0 0 6px}
+.secsub{color:var(--ink2);font-size:.94rem;margin:0 0 26px}
+.stagestrip{display:flex;justify-content:center;gap:18px;margin:0 0 22px}
+.stagestrip svg{width:40px;height:40px;overflow:visible}
+.stagestrip svg path{fill:none;stroke:var(--ink3);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;transition:stroke .4s}
+.stagestrip .done path{stroke:var(--grn)}
+.stagestrip .done.tree .crown{fill:var(--grn-soft);transition:fill .5s}
+.cardwrap{perspective:1100px;max-width:400px;margin:0 auto}
+.fcard{position:relative;width:100%;height:240px;transform-style:preserve-3d;transition:transform .5s var(--ease);cursor:pointer}
+.fcard.flipped{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--surf);border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:26px;gap:8px}
+.face.back{transform:rotateY(180deg);background:var(--grn-tint)}
+.term{font-size:1.5rem;font-weight:700}
+.hint{color:var(--ink3);font-size:.8rem;position:absolute;bottom:16px}
+.meaning{font-size:.98rem;color:var(--ink);line-height:1.8}
+.example{font-size:.85rem;color:var(--ink2);border-top:1px solid var(--grn-soft);padding-top:10px;margin-top:4px;line-height:1.75}
+.grades{display:flex;justify-content:center;gap:12px;margin-top:22px}
+.grades button{border:1px solid var(--line);background:var(--surf);border-radius:16px;padding:12px 0;width:112px;font:inherit;font-size:.95rem;font-weight:700;color:var(--ink);cursor:pointer;box-shadow:var(--sh);transition:.18s;opacity:.45}
+.grades.ready button{opacity:1}
+.grades.ready button:hover{transform:translateY(-2px);border-color:var(--grn-soft)}
+.grades button:active{transform:scale(.96)}
+.grades .g2{color:var(--grn-deep);background:var(--grn-tint);border-color:var(--grn-soft)}
+.gsub{display:block;font-size:.68rem;font-weight:500;color:var(--ink3);margin-top:2px}
+.demo .result{display:none;max-width:400px;margin:0 auto;background:var(--surf);border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh);padding:34px 26px}
+.demo.finished .cardwrap,.demo.finished .grades{display:none}
+.demo.finished .result{display:block;animation:pop .5s var(--ease)}
+@keyframes pop{0%{opacity:0;transform:scale(.92)}100%{opacity:1;transform:none}}
+.result svg{width:64px;height:64px;margin-bottom:8px}
+.result svg path{fill:none;stroke:var(--grn);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.result svg .crown{fill:var(--grn-soft)}
+.result p{color:var(--ink2);font-size:.93rem;margin:6px 0 18px}
+/* ---- features ---- */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin:88px 0 0}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:20px;padding:26px 24px;box-shadow:var(--sh);transition:transform .18s}
 .card:hover{transform:translateY(-2px)}
 .ic{width:44px;height:44px;border-radius:13px;background:var(--grn-tint);color:var(--grn);display:flex;align-items:center;justify-content:center;margin-bottom:15px}
 .card h3{margin:0 0 7px;font-size:1.02rem}
 .card p{margin:0;color:var(--ink2);font-size:.92rem;line-height:1.8}
-.sec{margin:72px 0 0}
-.sec h2{font-size:1.28rem;margin:0 0 18px}
+/* ---- screenshots ---- */
+.shots{margin-top:88px;text-align:center}
+.shotrow{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+.shot{width:min(240px,72vw)}
+.shot img{width:100%;border-radius:26px;box-shadow:0 8px 30px rgba(32,41,31,.14);border:1px solid var(--line)}
+.shot figcaption{font-size:.85rem;color:var(--ink2);margin-top:10px}
+.shot{margin:0}
+/* ---- docs & contact ---- */
+.sec{margin:88px 0 0}
 .docs{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
-.doc{display:flex;align-items:center;gap:13px;background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:19px 21px;text-decoration:none;color:var(--ink);font-weight:600;font-size:.95rem;box-shadow:var(--sh);transition:.18s}
+.doc{display:flex;align-items:center;gap:13px;background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:19px 21px;text-decoration:none;color:var(--ink);font-weight:600;font-size:.95rem;box-shadow:var(--sh);transition:transform .18s}
 .doc:hover{transform:translateY(-2px)}
 .doc .ic{width:38px;height:38px;border-radius:11px;margin:0;flex:none}
 .doc .arw{margin-left:auto;color:var(--ink3)}
-.contact{margin-top:72px;background:var(--surf);border:1px solid var(--line);border-radius:24px;padding:40px 32px;text-align:center;box-shadow:var(--sh)}
+.contact{margin-top:88px;background:var(--surf);border:1px solid var(--line);border-radius:24px;padding:40px 32px;text-align:center;box-shadow:var(--sh)}
 .contact h2{margin:0 0 8px;font-size:1.28rem}
 .contact p{margin:0 auto 22px;color:var(--ink2);max-width:480px;font-size:.94rem}
 footer{border-top:1px solid var(--line);margin-top:24px}
-.fwrap{max-width:880px;margin:0 auto;padding:26px 20px;display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;color:var(--ink3);font-size:.84rem}
+.fwrap{max-width:920px;margin:0 auto;padding:26px 20px;display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;color:var(--ink3);font-size:.84rem}
 .fwrap a{color:var(--ink2);text-decoration:none}
 .fwrap a:hover{color:var(--grn)}
 .fwrap .cp{margin-left:auto}
-@media(max-width:560px){nav{display:none}}
+@media(max-width:560px){nav{display:none}.grades button{width:31%}}
+@media(prefers-reduced-motion:reduce){.rise{transition:none;opacity:1;transform:none}.play #sprout .stem{animation-duration:.01s}.play #sprout .leafL,.play #sprout .leafR{animation-duration:.01s}.fcard{transition:none}}
 </style></head><body>
 <header><div class="hwrap">
 <a class="brand" href="./"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21v-8"/><path d="M12 13c0-3.5-2.8-6-6.5-6C5.5 10.5 8.3 13 12 13z"/><path d="M12 11c0-3 2.4-5.2 5.7-5.2 0 3.3-2.4 5.4-5.7 5.4z"/></svg>Sproot</a>
 <nav>
-<a class="here" href="./"><span class="l-ja">サポート</span><span class="l-ko">지원</span><span class="l-en">Support</span></a>
+<a class="here" href="./"><span class="l-ja">ホーム</span><span class="l-ko">홈</span><span class="l-en">Home</span></a>
 <a href="./privacy.html"><span class="l-ja">プライバシー</span><span class="l-ko">개인정보</span><span class="l-en">Privacy</span></a>
 <a href="./terms.html"><span class="l-ja">利用規約</span><span class="l-ko">이용약관</span><span class="l-en">Terms</span></a>
 </nav>
@@ -76,30 +137,77 @@ footer{border-top:1px solid var(--line);margin-top:24px}
 </div></header>
 <main>
 <section class="hero">
-<div class="tile"><svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#3E7C4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21v-8"/><path d="M12 13c0-3.5-2.8-6-6.5-6C5.5 10.5 8.3 13 12 13z"/><path d="M12 11c0-3 2.4-5.2 5.7-5.2 0 3.3-2.4 5.4-5.7 5.4z"/></svg></div>
+<div class="sproutbox play" id="sproutbox" title="replay">
+<svg id="sprout" viewBox="0 0 24 24" aria-hidden="true">
+<path class="stem" d="M12 21v-8"/>
+<path class="leaf leafL" d="M12 13c0-3.5-2.8-6-6.5-6C5.5 10.5 8.3 13 12 13z"/>
+<path class="leaf leafR" d="M12 11c0-3 2.4-5.2 5.7-5.2 0 3.3-2.4 5.4-5.7 5.4z"/>
+</svg>
+</div>
 <h1><span class="l-ja">覚えたい言葉を、<br>AIがカードに。</span><span class="l-ko">외우고 싶은 단어를,<br>AI가 카드로.</span><span class="l-en">AI turns the words you<br>want to learn into cards.</span></h1>
 <p class="sub"><span class="l-ja">テーマを伝えるだけで、例文つきの単語帳が完成。ノートの撮影からも作れます。生成も学習データも、すべて端末の中で。</span><span class="l-ko">주제를 입력하면 예문이 딸린 단어장이 완성. 노트 촬영으로도 만들 수 있어요. 생성도 학습 데이터도 모두 기기 안에서.</span><span class="l-en">Type a topic and get a word book with example sentences. Snap your notes, too. Everything runs on your device.</span></p>
-<a class="cta" href="mailto:sproot.app@gmail.com"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg><span class="l-ja">お問い合わせ</span><span class="l-ko">문의하기</span><span class="l-en">Contact us</span></a>
+<a class="cta" href="#demo"><span class="l-ja">さわってみる</span><span class="l-ko">체험해 보기</span><span class="l-en">Try the demo</span></a>
 <p class="note"><span class="l-ja">App Store 公開準備中</span><span class="l-ko">App Store 공개 준비 중</span><span class="l-en">Coming soon to the App Store</span></p>
 </section>
+
+<section class="demo rise" id="demo">
+<h2><span class="l-ja">3枚だけ、覚えてみる？</span><span class="l-ko">딱 3장만 외워 볼까요?</span><span class="l-en">Learn 3 cards, right here.</span></h2>
+<p class="secsub"><span class="l-ja">カードをタップしてめくり、3段階で自己採点。これが Sproot の学習です。</span><span class="l-ko">카드를 탭해 뒤집고 3단계로 스스로 채점. 이게 Sproot의 학습이에요.</span><span class="l-en">Tap the card to flip it, then grade yourself. That's how Sproot works.</span></p>
+<div class="stagestrip" id="stages" aria-hidden="true"></div>
+<div class="cardwrap">
+<div class="fcard" id="fcard" role="button" tabindex="0">
+<div class="face front"><div class="term" id="d-term"></div><div class="hint"><span class="l-ja">タップでめくる</span><span class="l-ko">탭해서 뒤집기</span><span class="l-en">Tap to flip</span></div></div>
+<div class="face back"><div class="meaning" id="d-meaning"></div><div class="example" id="d-example"></div></div>
+</div>
+</div>
+<div class="grades" id="grades">
+<button data-g="0"><span class="l-ja">まだ</span><span class="l-ko">아직</span><span class="l-en">Not yet</span><span class="gsub"><span class="l-ja">明日また</span><span class="l-ko">내일 다시</span><span class="l-en">Tomorrow</span></span></button>
+<button data-g="1"><span class="l-ja">あいまい</span><span class="l-ko">애매해요</span><span class="l-en">Fuzzy</span><span class="gsub"><span class="l-ja">近いうちに</span><span class="l-ko">조만간</span><span class="l-en">Again soon</span></span></button>
+<button data-g="2" class="g2"><span class="l-ja">覚えた</span><span class="l-ko">외웠어요</span><span class="l-en">Got it</span><span class="gsub"><span class="l-ja">しばらく先に</span><span class="l-ko">한참 뒤에</span><span class="l-en">Much later</span></span></button>
+</div>
+<div class="result">
+<svg viewBox="0 0 48 48" aria-hidden="true"><path class="crown" d="M24 6.5c9.2 0 15.5 6.3 15.5 14 0 7.3-5.4 12.5-12.6 12.5h-5.8c-7.2 0-12.6-5.2-12.6-12.5 0-7.7 6.3-14 15.5-14z"/><path d="M8 42h32"/><path d="M24 42V33"/></svg>
+<h3><span class="l-ja">1周おわり！</span><span class="l-ko">한 바퀴 끝!</span><span class="l-en">Round complete!</span></h3>
+<p><span class="l-ja">アプリでは、カードが忘れかけた頃にまた会いに来ます。覚えるたびに、単語帳は種から木へ育ちます。</span><span class="l-ko">앱에서는 잊어버릴 때쯤 카드가 다시 찾아와요. 외울수록 단어장은 씨앗에서 나무로 자라요.</span><span class="l-en">In the app, cards come back right before you forget. Every recall grows your word book from seed to tree.</span></p>
+<button class="cta" onclick="resetDemo()"><span class="l-ja">もう一周</span><span class="l-ko">한 바퀴 더</span><span class="l-en">One more round</span></button>
+</div>
+</section>
+
 <section class="grid">
-<div class="card">
+<div class="card rise">
 <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5l1.8 5.2L19 12l-5.2 1.8L12 19l-1.8-5.2L5 12l5.2-1.8z"/></svg></div>
 <h3><span class="l-ja">AIが単語帳を作る</span><span class="l-ko">AI가 단어장을 만들어요</span><span class="l-en">AI builds your word books</span></h3>
 <p><span class="l-ja">テーマの入力やノートの撮影から、用語・意味・例文つきのカードを自動生成。</span><span class="l-ko">주제 입력이나 노트 촬영으로 용어・뜻・예문이 딸린 카드를 자동 생성.</span><span class="l-en">Cards with terms, meanings, and examples — from a topic or a photo of your notes.</span></p>
 </div>
-<div class="card">
+<div class="card rise">
 <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
 <h3><span class="l-ja">忘れかけた頃に、もう一度</span><span class="l-ko">잊어버릴 때쯤, 다시 한번</span><span class="l-en">Right before you forget</span></h3>
 <p><span class="l-ja">記憶科学にもとづく間隔反復で、忘れかけたカードだけを出題します。</span><span class="l-ko">기억 과학에 기반한 간격 반복으로, 잊을 때가 된 카드만 출제해요.</span><span class="l-en">Spaced repetition, backed by memory science, brings back only the cards you're about to forget.</span></p>
 </div>
-<div class="card">
+<div class="card rise">
 <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M10.8 17.5h2.4"/></svg></div>
 <h3><span class="l-ja">プライベート ・ オフラインOK</span><span class="l-ko">프라이빗 ・ 오프라인 OK</span><span class="l-en">Private &amp; works offline</span></h3>
 <p><span class="l-ja">生成も学習データも端末の中だけ。アカウント不要で、基本無料です。</span><span class="l-ko">생성도 학습 데이터도 기기 안에서만. 계정 불필요, 기본 무료예요.</span><span class="l-en">Everything stays on your device. No account needed, free to use.</span></p>
 </div>
 </section>
-<section class="sec">
+
+<section class="shots rise">
+<h2><span class="l-ja">アプリの中を、少しだけ</span><span class="l-ko">앱 속을 살짝</span><span class="l-en">A peek inside</span></h2>
+<p class="secsub"><span class="l-ja">育てる楽しさを、そのまま画面に。</span><span class="l-ko">키우는 즐거움을 화면에 그대로.</span><span class="l-en">The joy of growing, right on screen.</span></p>
+<div class="shotrow">
+<figure class="shot l-ja"><img src="shots/ja-01-home.png" alt="ホーム画面" loading="lazy"><figcaption>単語帳が、種から木へ</figcaption></figure>
+<figure class="shot l-ja"><img src="shots/ja-02-study-flipped.png" alt="学習画面" loading="lazy"><figcaption>めくって、3段階で採点</figcaption></figure>
+<figure class="shot l-ja"><img src="shots/ja-04-generate.png" alt="AI生成画面" loading="lazy"><figcaption>テーマを伝えるだけ</figcaption></figure>
+<figure class="shot l-ko"><img src="shots/ko-01-home.png" alt="홈 화면" loading="lazy"><figcaption>단어장이 씨앗에서 나무로</figcaption></figure>
+<figure class="shot l-ko"><img src="shots/ko-02-study-flipped.png" alt="학습 화면" loading="lazy"><figcaption>뒤집어서 3단계로 채점</figcaption></figure>
+<figure class="shot l-ko"><img src="shots/ko-04-generate.png" alt="AI 생성 화면" loading="lazy"><figcaption>주제를 입력하기만 하면</figcaption></figure>
+<figure class="shot l-en"><img src="shots/en-01-home.png" alt="Home screen" loading="lazy"><figcaption>Word books grow, seed to tree</figcaption></figure>
+<figure class="shot l-en"><img src="shots/en-02-study-flipped.png" alt="Study screen" loading="lazy"><figcaption>Flip and grade yourself</figcaption></figure>
+<figure class="shot l-en"><img src="shots/en-04-generate.png" alt="AI generation screen" loading="lazy"><figcaption>Just type a topic</figcaption></figure>
+</div>
+</section>
+
+<section class="sec rise">
 <h2><span class="l-ja">ドキュメント</span><span class="l-ko">문서</span><span class="l-en">Documents</span></h2>
 <div class="docs">
 <a class="doc" href="./privacy.html">
@@ -112,14 +220,15 @@ footer{border-top:1px solid var(--line);margin-top:24px}
 <span class="arw">→</span></a>
 </div>
 </section>
-<section class="contact">
+
+<section class="contact rise">
 <h2><span class="l-ja">お問い合わせ</span><span class="l-ko">문의</span><span class="l-en">Contact</span></h2>
 <p><span class="l-ja">ご質問・不具合のご報告は、メールでお気軽にお寄せください。</span><span class="l-ko">질문이나 오류 제보는 메일로 편하게 보내 주세요.</span><span class="l-en">Questions or bug reports? Drop us a line anytime.</span></p>
 <a class="cta" href="mailto:sproot.app@gmail.com">sproot.app@gmail.com</a>
 </section>
 </main>
 <footer><div class="fwrap">
-<a href="./"><span class="l-ja">サポート</span><span class="l-ko">지원</span><span class="l-en">Support</span></a>
+<a href="./"><span class="l-ja">ホーム</span><span class="l-ko">홈</span><span class="l-en">Home</span></a>
 <a href="./privacy.html"><span class="l-ja">プライバシーポリシー</span><span class="l-ko">개인정보 처리방침</span><span class="l-en">Privacy Policy</span></a>
 <a href="./terms.html"><span class="l-ja">利用規約</span><span class="l-ko">이용약관</span><span class="l-en">Terms of Service</span></a>
 <span class="cp">© 2026 Sproot</span>
@@ -129,7 +238,51 @@ var TITLES={ja:'Sproot — AI単語帳',ko:'Sproot — AI 단어장',en:'Sproot 
 function setLang(l){document.documentElement.dataset.lang=l;document.documentElement.lang=l;
 try{localStorage.setItem('sproot-lang',l)}catch(e){}
 document.title=TITLES[l];
-document.querySelectorAll('.lang button').forEach(function(b){b.classList.toggle('on',b.dataset.l===l)})}
+document.querySelectorAll('.lang button').forEach(function(b){b.classList.toggle('on',b.dataset.l===l)});
+loadCard()}
+/* ---- hero replay ---- */
+var box=document.getElementById('sproutbox');
+box.addEventListener('click',function(){box.classList.remove('play');void box.offsetWidth;box.classList.add('play')});
+/* ---- flashcard demo ---- */
+var DEMO={
+ja:[{t:'プラシーボ効果',m:'効き目のない薬でも「効く」と信じることで、実際に症状が改善する現象。',e:'新薬の治験では、プラシーボ効果を除くために偽薬のグループを設ける。'},
+{t:'単純接触効果',m:'くり返し触れるだけで、その対象への好感度が高まる現象。',e:'毎朝あいさつを交わすうちに、単純接触効果で親しみがわいた。'},
+{t:'認知的不協和',m:'自分の行動と信念が矛盾したときに感じる不快感。',e:'高い買い物を正当化してしまうのは、認知的不協和を解消するためだ。'}],
+ko:[{t:'플라시보 효과',m:'효과 없는 약도 "듣는다"고 믿으면 실제로 증상이 나아지는 현상.',e:'신약 임상시험에서는 플라시보 효과를 걸러내기 위해 가짜 약 그룹을 둔다.'},
+{t:'단순 노출 효과',m:'반복해서 접하기만 해도 그 대상에 대한 호감이 높아지는 현상.',e:'매일 아침 인사를 나누다 보니 단순 노출 효과로 친근해졌다.'},
+{t:'인지 부조화',m:'자신의 행동과 신념이 어긋날 때 느끼는 불편함.',e:'비싼 쇼핑을 정당화하는 것은 인지 부조화를 해소하기 위해서다.'}],
+en:[{t:'placebo effect',m:'Improvement that happens because you believe a treatment works, even if it has no active ingredient.',e:'Clinical trials include a placebo group to filter out the placebo effect.'},
+{t:'mere-exposure effect',m:'Liking something more simply because you encounter it repeatedly.',e:'Seeing the same logo every day made the brand feel familiar — the mere-exposure effect.'},
+{t:'cognitive dissonance',m:'The discomfort you feel when your actions contradict your beliefs.',e:'Justifying an expensive purchase is one way to resolve cognitive dissonance.'}]};
+var STAGE=[
+['M10 40h28','M24 34c-4.4 0-7.5-3-7.5-7.2 0-4.8 3.4-8.8 7.5-8.8s7.5 4 7.5 8.8c0 4.2-3.1 7.2-7.5 7.2z'],
+['M10 40h28','M24 40V27','M24 29c0-6.5-5-10.5-11.5-10.5C12.5 25 17.5 29 24 29z','M24 25c0-5.5 4.2-9 10-9 0 5.6-4.2 9-10 9z'],
+['M10 42h28','M24 42V16','M24 30c0-5-3.8-8-8.8-8 0 5 3.8 8 8.8 8z','M24 24c0-5 3.8-8 8.8-8 0 5-3.8 8-8.8 8z','M24 16c0-4 3-6.5 7-6.5 0 4-3 6.5-7 6.5z'],
+['M8 42h32','M24 42V33','M24 6.5c9.2 0 15.5 6.3 15.5 14 0 7.3-5.4 12.5-12.6 12.5h-5.8c-7.2 0-12.6-5.2-12.6-12.5 0-7.7 6.3-14 15.5-14z']];
+var idx=0;
+var demoSec=document.getElementById('demo'),fcard=document.getElementById('fcard'),grades=document.getElementById('grades'),stages=document.getElementById('stages');
+function drawStages(){stages.innerHTML=STAGE.map(function(p,i){
+var cls=(i<=idx?'done':'')+(i===3?' tree':'');
+var paths=p.map(function(d,j){var crown=(i===3&&j===2&&idx>=3)?' class="crown"':'';return '<path'+crown+' d="'+d+'"/>'}).join('');
+return '<svg class="'+cls+'" viewBox="0 0 48 48">'+paths+'</svg>'}).join('')}
+function lang(){return document.documentElement.dataset.lang||'ja'}
+function loadCard(){var c=DEMO[lang()][Math.min(idx,2)];
+document.getElementById('d-term').textContent=c.t;
+document.getElementById('d-meaning').textContent=c.m;
+document.getElementById('d-example').textContent=c.e;
+drawStages()}
+function flip(){fcard.classList.toggle('flipped');grades.classList.toggle('ready',fcard.classList.contains('flipped'))}
+fcard.addEventListener('click',flip);
+fcard.addEventListener('keydown',function(e){if(e.key===' '||e.key==='Enter'){e.preventDefault();flip()}});
+grades.querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){
+if(!grades.classList.contains('ready'))return;
+idx++;fcard.classList.remove('flipped');grades.classList.remove('ready');
+if(idx>=3){drawStages();demoSec.classList.add('finished')}
+else{setTimeout(loadCard,260)}})});
+function resetDemo(){idx=0;demoSec.classList.remove('finished');fcard.classList.remove('flipped');grades.classList.remove('ready');loadCard()}
+/* ---- scroll reveal ---- */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.rise').forEach(function(el){io.observe(el)});
 setLang(document.documentElement.dataset.lang);
 </script>
 </body></html>
