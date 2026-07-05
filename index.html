@@ -145,14 +145,14 @@ footer{border-top:1px solid var(--line);margin-top:24px}
 </svg>
 </div>
 <h1><span class="l-ja">覚えたい言葉を、<br>AIがカードに。</span><span class="l-ko">외우고 싶은 단어를,<br>AI가 카드로.</span><span class="l-en">AI turns the words you<br>want to learn into cards.</span></h1>
-<p class="sub"><span class="l-ja">テーマを伝えるだけで、例文つきの単語帳が完成。ノートの撮影からも作れます。生成も学習データも、すべて端末の中で。</span><span class="l-ko">주제를 입력하면 예문이 딸린 단어장이 완성. 노트 촬영으로도 만들 수 있어요. 생성도 학습 데이터도 모두 기기 안에서.</span><span class="l-en">Type a topic and get a word book with example sentences. Snap your notes, too. Everything runs on your device.</span></p>
+<p class="sub"><span class="l-ja">テーマを伝えるだけで、例文つきの単語帳が完成。英単語はもちろん、資格の用語や講義の専門用語まで。生成も学習データも、すべて端末の中で。</span><span class="l-ko">주제를 입력하면 예문이 딸린 단어장이 완성. 영단어는 물론 자격증 용어나 강의의 전문 용어까지. 생성도 학습 데이터도 모두 기기 안에서.</span><span class="l-en">Type a topic and get a word book with example sentences. Language vocab, of course — but also exam terms, lecture concepts, and beyond. Everything runs on your device.</span></p>
 <a class="cta" href="#demo"><span class="l-ja">さわってみる</span><span class="l-ko">체험해 보기</span><span class="l-en">Try the demo</span></a>
 <p class="note"><span class="l-ja">App Store 公開準備中</span><span class="l-ko">App Store 공개 준비 중</span><span class="l-en">Coming soon to the App Store</span></p>
 </section>
 
 <section class="demo rise" id="demo">
 <h2><span class="l-ja">3枚だけ、覚えてみる？</span><span class="l-ko">딱 3장만 외워 볼까요?</span><span class="l-en">Learn 3 cards, right here.</span></h2>
-<p class="secsub"><span class="l-ja">カードをタップしてめくり、3段階で自己採点。これが Sproot の学習です。</span><span class="l-ko">카드를 탭해 뒤집고 3단계로 스스로 채점. 이게 Sproot의 학습이에요.</span><span class="l-en">Tap the card to flip it, then grade yourself. That's how Sproot works.</span></p>
+<p class="secsub"><span class="l-ja">まずは英単語を2枚、それから心理学を1枚。タップしてめくり、3段階で自己採点 — 英語も、それ以外のテーマも、覚え方は同じです。</span><span class="l-ko">먼저 영단어 2장, 그다음 심리학 1장. 탭해서 뒤집고 3단계로 채점 — 영어도, 그 외의 주제도 외우는 방법은 같아요.</span><span class="l-en">Two vocabulary words, then one psychology term. Tap to flip, grade yourself — same flow for any topic.</span></p>
 <div class="stagestrip" id="stages" aria-hidden="true"></div>
 <div class="cardwrap">
 <div class="fcard" id="fcard" role="button" tabindex="0">
@@ -177,7 +177,7 @@ footer{border-top:1px solid var(--line);margin-top:24px}
 <div class="card rise">
 <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5l1.8 5.2L19 12l-5.2 1.8L12 19l-1.8-5.2L5 12l5.2-1.8z"/></svg></div>
 <h3><span class="l-ja">AIが単語帳を作る</span><span class="l-ko">AI가 단어장을 만들어요</span><span class="l-en">AI builds your word books</span></h3>
-<p><span class="l-ja">テーマの入力やノートの撮影から、用語・意味・例文つきのカードを自動生成。</span><span class="l-ko">주제 입력이나 노트 촬영으로 용어・뜻・예문이 딸린 카드를 자동 생성.</span><span class="l-en">Cards with terms, meanings, and examples — from a topic or a photo of your notes.</span></p>
+<p><span class="l-ja">英単語から資格・講義の専門用語まで。テーマの入力やノートの撮影から、意味・例文つきのカードを自動生成。</span><span class="l-ko">영단어부터 자격증・강의의 전문 용어까지. 주제 입력이나 노트 촬영으로 뜻・예문이 딸린 카드를 자동 생성.</span><span class="l-en">From language vocab to exam and lecture terms — cards with meanings and examples, from a topic or a photo of your notes.</span></p>
 </div>
 <div class="card rise">
 <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
@@ -245,15 +245,15 @@ var box=document.getElementById('sproutbox');
 box.addEventListener('click',function(){box.classList.remove('play');void box.offsetWidth;box.classList.add('play')});
 /* ---- flashcard demo ---- */
 var DEMO={
-ja:[{t:'プラシーボ効果',m:'効き目のない薬でも「効く」と信じることで、実際に症状が改善する現象。',e:'新薬の治験では、プラシーボ効果を除くために偽薬のグループを設ける。'},
-{t:'単純接触効果',m:'くり返し触れるだけで、その対象への好感度が高まる現象。',e:'毎朝あいさつを交わすうちに、単純接触効果で親しみがわいた。'},
-{t:'認知的不協和',m:'自分の行動と信念が矛盾したときに感じる不快感。',e:'高い買い物を正当化してしまうのは、認知的不協和を解消するためだ。'}],
-ko:[{t:'플라시보 효과',m:'효과 없는 약도 "듣는다"고 믿으면 실제로 증상이 나아지는 현상.',e:'신약 임상시험에서는 플라시보 효과를 걸러내기 위해 가짜 약 그룹을 둔다.'},
-{t:'단순 노출 효과',m:'반복해서 접하기만 해도 그 대상에 대한 호감이 높아지는 현상.',e:'매일 아침 인사를 나누다 보니 단순 노출 효과로 친근해졌다.'},
-{t:'인지 부조화',m:'자신의 행동과 신념이 어긋날 때 느끼는 불편함.',e:'비싼 쇼핑을 정당화하는 것은 인지 부조화를 해소하기 위해서다.'}],
-en:[{t:'placebo effect',m:'Improvement that happens because you believe a treatment works, even if it has no active ingredient.',e:'Clinical trials include a placebo group to filter out the placebo effect.'},
-{t:'mere-exposure effect',m:'Liking something more simply because you encounter it repeatedly.',e:'Seeing the same logo every day made the brand feel familiar — the mere-exposure effect.'},
-{t:'cognitive dissonance',m:'The discomfort you feel when your actions contradict your beliefs.',e:'Justifying an expensive purchase is one way to resolve cognitive dissonance.'}]};
+ja:[{t:'ephemeral',m:'つかの間の、はかない。ごく短い時間しか続かないさま。',e:'The beauty of cherry blossoms is ephemeral. — 桜の美しさは、つかの間のものです。'},
+{t:'meticulous',m:'細部まで注意を払う、きちょうめんな。',e:'She keeps meticulous notes of every lecture. — 彼女はどの講義も、きちょうめんにノートを取る。'},
+{t:'プラシーボ効果',m:'効き目のない薬でも「効く」と信じることで、実際に症状が改善する現象。',e:'新薬の治験では、プラシーボ効果を除くために偽薬のグループを設ける。'}],
+ko:[{t:'ephemeral',m:'덧없는, 아주 짧은 동안의.',e:'The beauty of cherry blossoms is ephemeral. — 벚꽃의 아름다움은 아주 잠깐이다.'},
+{t:'meticulous',m:'꼼꼼한, 세심한.',e:'She keeps meticulous notes of every lecture. — 그녀는 모든 강의를 꼼꼼히 필기한다.'},
+{t:'플라시보 효과',m:'효과 없는 약도 "듣는다"고 믿으면 실제로 증상이 나아지는 현상.',e:'신약 임상시험에서는 플라시보 효과를 걸러내기 위해 가짜 약 그룹을 둔다.'}],
+en:[{t:'ephemeral',m:'Lasting for a very short time.',e:'The beauty of cherry blossoms is ephemeral.'},
+{t:'meticulous',m:'Showing great attention to detail; very careful.',e:'She keeps meticulous notes of every lecture.'},
+{t:'placebo effect',m:'Improvement that happens because you believe a treatment works, even if it has no active ingredient.',e:'Clinical trials include a placebo group to filter out the placebo effect.'}]};
 var STAGE=[
 ['M10 40h28','M24 34c-4.4 0-7.5-3-7.5-7.2 0-4.8 3.4-8.8 7.5-8.8s7.5 4 7.5 8.8c0 4.2-3.1 7.2-7.5 7.2z'],
 ['M10 40h28','M24 40V27','M24 29c0-6.5-5-10.5-11.5-10.5C12.5 25 17.5 29 24 29z','M24 25c0-5.5 4.2-9 10-9 0 5.6-4.2 9-10 9z'],
