@@ -31,7 +31,9 @@ document.documentElement.dataset.lang=l;document.documentElement.lang=l})()</scr
 --grn:#3E7C4F;--grn-tint:#E4F0E1;--grn-soft:#C9E2C6;--grn-deep:#2A5638;--line:#E2E5D6;
 --sh:0 2px 14px rgba(32,41,31,.07);--ease:cubic-bezier(.2,.8,.25,1)}
 *{box-sizing:border-box}
+html{overscroll-behavior-y:none}
 body{margin:0;background:var(--bg);color:var(--ink);line-height:1.9;font-size:16px;
+overscroll-behavior-y:none;
 font-family:Outfit,-apple-system,BlinkMacSystemFont,sans-serif}
 [data-lang=ja] body{font-family:Outfit,'Zen Kaku Gothic New','Hiragino Sans',sans-serif}
 [data-lang=ko] body{font-family:Outfit,'Noto Sans KR','Apple SD Gothic Neo',sans-serif}
@@ -125,7 +127,7 @@ html.switching main,html.switching footer{opacity:0}
 .shot figcaption{font-size:.85rem;color:var(--ink2);margin-top:10px}
 .shot{margin:0}
 @media(max-width:920px){
-.shotrow{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;overflow-y:hidden;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;margin:8px -20px 0;padding:4px calc((100vw - min(250px,68vw))/2) 16px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.shotrow{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;overflow-y:hidden;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;margin:8px -20px 0;padding:4px calc((100vw - min(250px,68vw))/2) 16px;scrollbar-width:none}
 .shotrow::-webkit-scrollbar{display:none}
 .shot{flex:none;width:min(250px,68vw);scroll-snap-align:center}
 }
