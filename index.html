@@ -107,7 +107,7 @@ html.switching main,html.switching footer{opacity:0}
 .shot figcaption{font-size:.85rem;color:var(--ink2);margin-top:10px}
 .shot{margin:0}
 @media(max-width:920px){
-.shotrow{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;margin:8px -20px 0;padding:4px 20px 16px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.shotrow{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;margin:8px -20px 0;padding:4px calc((100vw - min(250px,68vw))/2) 16px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .shotrow::-webkit-scrollbar{display:none}
 .shot{flex:none;width:min(250px,68vw);scroll-snap-align:center}
 }
