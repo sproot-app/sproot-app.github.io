@@ -1,0 +1,135 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="apple-touch-icon.png">
+<title>Sproot — AI単語帳</title>
+<script>(function(){var l=null;try{l=localStorage.getItem('sproot-lang')}catch(e){}
+if(!l){var n=(navigator.language||'en').slice(0,2);l=n==='ja'?'ja':n==='ko'?'ko':'en'}
+document.documentElement.dataset.lang=l;document.documentElement.lang=l})()</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F6F5EF;--surf:#FFFFFF;--surf2:#ECEFE3;--ink:#20291F;--ink2:#5A6A5B;--ink3:#96A394;
+--grn:#3E7C4F;--grn-tint:#E4F0E1;--grn-soft:#C9E2C6;--grn-deep:#2A5638;--line:#E2E5D6;
+--sh:0 2px 14px rgba(32,41,31,.07)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);line-height:1.9;font-size:16px;
+font-family:Outfit,-apple-system,BlinkMacSystemFont,sans-serif}
+[data-lang=ja] body{font-family:Outfit,'Zen Kaku Gothic New','Hiragino Sans',sans-serif}
+[data-lang=ko] body{font-family:Outfit,'Noto Sans KR','Apple SD Gothic Neo',sans-serif}
+[data-lang=ja] :is(.l-ko,.l-en){display:none!important}
+[data-lang=ko] :is(.l-ja,.l-en){display:none!important}
+[data-lang=en] :is(.l-ja,.l-ko){display:none!important}
+a{color:var(--grn)}
+header{position:sticky;top:0;background:rgba(246,245,239,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);z-index:10}
+.hwrap{max-width:880px;margin:0 auto;padding:13px 20px;display:flex;align-items:center;gap:16px}
+.brand{display:flex;align-items:center;gap:8px;font-family:Outfit,sans-serif;font-weight:700;font-size:1.12rem;color:var(--grn);text-decoration:none;letter-spacing:.01em}
+nav{display:flex;gap:16px;font-size:.88rem;margin-left:auto}
+nav a{color:var(--ink2);text-decoration:none}
+nav a:hover{color:var(--grn)}
+nav a.here{color:var(--grn);font-weight:700}
+.lang{display:flex;background:var(--surf2);border:1px solid var(--line);border-radius:999px;padding:3px;flex:none}
+.lang button{border:0;background:transparent;padding:4px 11px;border-radius:999px;font:inherit;font-size:.78rem;color:var(--ink2);cursor:pointer;transition:.15s}
+.lang button.on{background:var(--surf);color:var(--grn);font-weight:700;box-shadow:0 1px 4px rgba(32,41,31,.14)}
+main{max-width:880px;margin:0 auto;padding:24px 20px 72px}
+.hero{text-align:center;padding:56px 0 8px}
+.tile{width:96px;height:96px;border-radius:24px;background:var(--surf);border:1px solid var(--line);box-shadow:var(--sh);display:inline-flex;align-items:center;justify-content:center;margin-bottom:26px}
+h1{font-size:clamp(1.65rem,4.6vw,2.35rem);line-height:1.42;margin:.15em 0;letter-spacing:.01em}
+.sub{color:var(--ink2);max-width:600px;margin:14px auto 30px}
+.cta{display:inline-flex;gap:9px;align-items:center;background:var(--grn);color:#fff;padding:13px 28px;border-radius:999px;text-decoration:none;font-weight:600;box-shadow:var(--sh);transition:.18s}
+.cta:hover{background:var(--grn-deep);transform:translateY(-1px)}
+.note{color:var(--ink3);font-size:.82rem;margin-top:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin:64px 0 0}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:20px;padding:26px 24px;box-shadow:var(--sh);transition:.18s}
+.card:hover{transform:translateY(-2px)}
+.ic{width:44px;height:44px;border-radius:13px;background:var(--grn-tint);color:var(--grn);display:flex;align-items:center;justify-content:center;margin-bottom:15px}
+.card h3{margin:0 0 7px;font-size:1.02rem}
+.card p{margin:0;color:var(--ink2);font-size:.92rem;line-height:1.8}
+.sec{margin:72px 0 0}
+.sec h2{font-size:1.28rem;margin:0 0 18px}
+.docs{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.doc{display:flex;align-items:center;gap:13px;background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:19px 21px;text-decoration:none;color:var(--ink);font-weight:600;font-size:.95rem;box-shadow:var(--sh);transition:.18s}
+.doc:hover{transform:translateY(-2px)}
+.doc .ic{width:38px;height:38px;border-radius:11px;margin:0;flex:none}
+.doc .arw{margin-left:auto;color:var(--ink3)}
+.contact{margin-top:72px;background:var(--surf);border:1px solid var(--line);border-radius:24px;padding:40px 32px;text-align:center;box-shadow:var(--sh)}
+.contact h2{margin:0 0 8px;font-size:1.28rem}
+.contact p{margin:0 auto 22px;color:var(--ink2);max-width:480px;font-size:.94rem}
+footer{border-top:1px solid var(--line);margin-top:24px}
+.fwrap{max-width:880px;margin:0 auto;padding:26px 20px;display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;color:var(--ink3);font-size:.84rem}
+.fwrap a{color:var(--ink2);text-decoration:none}
+.fwrap a:hover{color:var(--grn)}
+.fwrap .cp{margin-left:auto}
+@media(max-width:560px){nav{display:none}}
+</style></head><body>
+<header><div class="hwrap">
+<a class="brand" href="./"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21v-8"/><path d="M12 13c0-3.5-2.8-6-6.5-6C5.5 10.5 8.3 13 12 13z"/><path d="M12 11c0-3 2.4-5.2 5.7-5.2 0 3.3-2.4 5.4-5.7 5.4z"/></svg>Sproot</a>
+<nav>
+<a class="here" href="./"><span class="l-ja">サポート</span><span class="l-ko">지원</span><span class="l-en">Support</span></a>
+<a href="./privacy.html"><span class="l-ja">プライバシー</span><span class="l-ko">개인정보</span><span class="l-en">Privacy</span></a>
+<a href="./terms.html"><span class="l-ja">利用規約</span><span class="l-ko">이용약관</span><span class="l-en">Terms</span></a>
+</nav>
+<div class="lang" role="group" aria-label="Language">
+<button data-l="ja" onclick="setLang('ja')">日本語</button>
+<button data-l="ko" onclick="setLang('ko')">한국어</button>
+<button data-l="en" onclick="setLang('en')">EN</button>
+</div>
+</div></header>
+<main>
+<section class="hero">
+<div class="tile"><svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#3E7C4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21v-8"/><path d="M12 13c0-3.5-2.8-6-6.5-6C5.5 10.5 8.3 13 12 13z"/><path d="M12 11c0-3 2.4-5.2 5.7-5.2 0 3.3-2.4 5.4-5.7 5.4z"/></svg></div>
+<h1><span class="l-ja">覚えたい言葉を、<br>AIがカードに。</span><span class="l-ko">외우고 싶은 단어를,<br>AI가 카드로.</span><span class="l-en">AI turns the words you<br>want to learn into cards.</span></h1>
+<p class="sub"><span class="l-ja">テーマを伝えるだけで、例文つきの単語帳が完成。ノートの撮影からも作れます。生成も学習データも、すべて端末の中で。</span><span class="l-ko">주제를 입력하면 예문이 딸린 단어장이 완성. 노트 촬영으로도 만들 수 있어요. 생성도 학습 데이터도 모두 기기 안에서.</span><span class="l-en">Type a topic and get a word book with example sentences. Snap your notes, too. Everything runs on your device.</span></p>
+<a class="cta" href="mailto:sproot.app@gmail.com"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg><span class="l-ja">お問い合わせ</span><span class="l-ko">문의하기</span><span class="l-en">Contact us</span></a>
+<p class="note"><span class="l-ja">App Store 公開準備中</span><span class="l-ko">App Store 공개 준비 중</span><span class="l-en">Coming soon to the App Store</span></p>
+</section>
+<section class="grid">
+<div class="card">
+<div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5l1.8 5.2L19 12l-5.2 1.8L12 19l-1.8-5.2L5 12l5.2-1.8z"/></svg></div>
+<h3><span class="l-ja">AIが単語帳を作る</span><span class="l-ko">AI가 단어장을 만들어요</span><span class="l-en">AI builds your word books</span></h3>
+<p><span class="l-ja">テーマの入力やノートの撮影から、用語・意味・例文つきのカードを自動生成。</span><span class="l-ko">주제 입력이나 노트 촬영으로 용어・뜻・예문이 딸린 카드를 자동 생성.</span><span class="l-en">Cards with terms, meanings, and examples — from a topic or a photo of your notes.</span></p>
+</div>
+<div class="card">
+<div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+<h3><span class="l-ja">忘れかけた頃に、もう一度</span><span class="l-ko">잊어버릴 때쯤, 다시 한번</span><span class="l-en">Right before you forget</span></h3>
+<p><span class="l-ja">記憶科学にもとづく間隔反復で、忘れかけたカードだけを出題します。</span><span class="l-ko">기억 과학에 기반한 간격 반복으로, 잊을 때가 된 카드만 출제해요.</span><span class="l-en">Spaced repetition, backed by memory science, brings back only the cards you're about to forget.</span></p>
+</div>
+<div class="card">
+<div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M10.8 17.5h2.4"/></svg></div>
+<h3><span class="l-ja">プライベート ・ オフラインOK</span><span class="l-ko">프라이빗 ・ 오프라인 OK</span><span class="l-en">Private &amp; works offline</span></h3>
+<p><span class="l-ja">生成も学習データも端末の中だけ。アカウント不要で、基本無料です。</span><span class="l-ko">생성도 학습 데이터도 기기 안에서만. 계정 불필요, 기본 무료예요.</span><span class="l-en">Everything stays on your device. No account needed, free to use.</span></p>
+</div>
+</section>
+<section class="sec">
+<h2><span class="l-ja">ドキュメント</span><span class="l-ko">문서</span><span class="l-en">Documents</span></h2>
+<div class="docs">
+<a class="doc" href="./privacy.html">
+<span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/></svg></span>
+<span class="l-ja">プライバシーポリシー</span><span class="l-ko">개인정보 처리방침</span><span class="l-en">Privacy Policy</span>
+<span class="arw">→</span></a>
+<a class="doc" href="./terms.html">
+<span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/><path d="M10 13h5M10 17h5"/></svg></span>
+<span class="l-ja">利用規約</span><span class="l-ko">이용약관</span><span class="l-en">Terms of Service</span>
+<span class="arw">→</span></a>
+</div>
+</section>
+<section class="contact">
+<h2><span class="l-ja">お問い合わせ</span><span class="l-ko">문의</span><span class="l-en">Contact</span></h2>
+<p><span class="l-ja">ご質問・不具合のご報告は、メールでお気軽にお寄せください。</span><span class="l-ko">질문이나 오류 제보는 메일로 편하게 보내 주세요.</span><span class="l-en">Questions or bug reports? Drop us a line anytime.</span></p>
+<a class="cta" href="mailto:sproot.app@gmail.com">sproot.app@gmail.com</a>
+</section>
+</main>
+<footer><div class="fwrap">
+<a href="./"><span class="l-ja">サポート</span><span class="l-ko">지원</span><span class="l-en">Support</span></a>
+<a href="./privacy.html"><span class="l-ja">プライバシーポリシー</span><span class="l-ko">개인정보 처리방침</span><span class="l-en">Privacy Policy</span></a>
+<a href="./terms.html"><span class="l-ja">利用規約</span><span class="l-ko">이용약관</span><span class="l-en">Terms of Service</span></a>
+<span class="cp">© 2026 Sproot</span>
+</div></footer>
+<script>
+var TITLES={ja:'Sproot — AI単語帳',ko:'Sproot — AI 단어장',en:'Sproot — AI Flashcards'};
+function setLang(l){document.documentElement.dataset.lang=l;document.documentElement.lang=l;
+try{localStorage.setItem('sproot-lang',l)}catch(e){}
+document.title=TITLES[l];
+document.querySelectorAll('.lang button').forEach(function(b){b.classList.toggle('on',b.dataset.l===l)})}
+setLang(document.documentElement.dataset.lang);
+</script>
+</body></html>
