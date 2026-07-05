@@ -54,6 +54,8 @@ h1{font-size:clamp(1.7rem,4.8vw,2.5rem);line-height:1.42;margin:.15em 0;letter-s
 .cta{display:inline-flex;gap:9px;align-items:center;background:var(--grn);color:#fff;padding:13px 28px;border-radius:999px;text-decoration:none;font-weight:600;box-shadow:var(--sh);transition:.18s;border:0;font-size:1rem;cursor:pointer;font-family:inherit}
 .cta:hover{background:var(--grn-deep);transform:translateY(-1px)}
 .note{color:var(--ink3);font-size:.82rem;margin-top:14px}
+main,footer{transition:opacity .2s ease}
+html.switching main,html.switching footer{opacity:0}
 /* ---- scroll reveal ---- */
 .rise{opacity:0;transform:translateY(16px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
 .rise.in{opacity:1;transform:none}
@@ -100,7 +102,7 @@ h1{font-size:clamp(1.7rem,4.8vw,2.5rem);line-height:1.42;margin:.15em 0;letter-s
 /* ---- screenshots ---- */
 .shots{margin-top:88px;text-align:center}
 .shotrow{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-top:8px}
-.shot{width:min(240px,72vw)}
+.shot{width:min(200px,72vw)}
 .shot img{width:100%;border-radius:26px;box-shadow:0 8px 30px rgba(32,41,31,.14);border:1px solid var(--line)}
 .shot figcaption{font-size:.85rem;color:var(--ink2);margin-top:10px}
 .shot{margin:0}
@@ -119,7 +121,7 @@ footer{border-top:1px solid var(--line);margin-top:24px}
 .fwrap a{color:var(--ink2);text-decoration:none}
 .fwrap a:hover{color:var(--grn)}
 .fwrap .cp{margin-left:auto}
-@media(max-width:560px){nav{display:none}.grades button{width:31%}}
+@media(max-width:560px){nav{display:none}.lang{margin-left:auto}.grades button{width:31%}}
 @media(prefers-reduced-motion:reduce){.rise{transition:none;opacity:1;transform:none}.play #sprout .stem{animation-duration:.01s}.play #sprout .leafL,.play #sprout .leafR{animation-duration:.01s}.fcard{transition:none}}
 </style></head><body>
 <header><div class="hwrap">
@@ -203,12 +205,15 @@ footer{border-top:1px solid var(--line);margin-top:24px}
 <figure class="shot l-ja"><img src="shots/ja-01-home.png" alt="ホーム画面" loading="lazy"><figcaption>単語帳が、種から木へ</figcaption></figure>
 <figure class="shot l-ja"><img src="shots/ja-02-study-flipped.png" alt="学習画面" loading="lazy"><figcaption>めくって、3段階で採点</figcaption></figure>
 <figure class="shot l-ja"><img src="shots/ja-04-generate.png" alt="AI生成画面" loading="lazy"><figcaption>テーマを伝えるだけ</figcaption></figure>
+<figure class="shot l-ja"><img src="shots/ja-06-card.png" alt="カード詳細画面" loading="lazy"><figcaption>例文を足したり、AIに質問したり</figcaption></figure>
 <figure class="shot l-ko"><img src="shots/ko-01-home.png" alt="홈 화면" loading="lazy"><figcaption>단어장이 씨앗에서 나무로</figcaption></figure>
 <figure class="shot l-ko"><img src="shots/ko-02-study-flipped.png" alt="학습 화면" loading="lazy"><figcaption>뒤집어서 3단계로 채점</figcaption></figure>
 <figure class="shot l-ko"><img src="shots/ko-04-generate.png" alt="AI 생성 화면" loading="lazy"><figcaption>주제를 입력하기만 하면</figcaption></figure>
+<figure class="shot l-ko"><img src="shots/ko-06-card.png" alt="카드 상세 화면" loading="lazy"><figcaption>예문을 더하고, AI에게 질문하고</figcaption></figure>
 <figure class="shot l-en"><img src="shots/en-01-home.png" alt="Home screen" loading="lazy"><figcaption>Word books grow, seed to tree</figcaption></figure>
 <figure class="shot l-en"><img src="shots/en-02-study-flipped.png" alt="Study screen" loading="lazy"><figcaption>Flip and grade yourself</figcaption></figure>
 <figure class="shot l-en"><img src="shots/en-04-generate.png" alt="AI generation screen" loading="lazy"><figcaption>Just type a topic</figcaption></figure>
+<figure class="shot l-en"><img src="shots/en-06-card.png" alt="Card detail screen" loading="lazy"><figcaption>Add examples, ask the AI</figcaption></figure>
 </div>
 </section>
 
@@ -240,11 +245,16 @@ footer{border-top:1px solid var(--line);margin-top:24px}
 </div></footer>
 <script>
 var TITLES={ja:'Sproot — AI単語帳',ko:'Sproot — AI 단어장',en:'Sproot — AI Flashcards'};
-function setLang(l){document.documentElement.dataset.lang=l;document.documentElement.lang=l;
+function applyLang(l){document.documentElement.dataset.lang=l;document.documentElement.lang=l;
 try{localStorage.setItem('sproot-lang',l)}catch(e){}
 document.title=TITLES[l];
 document.querySelectorAll('.lang button').forEach(function(b){b.classList.toggle('on',b.dataset.l===l)});
-loadCard()}
+if(typeof loadCard==='function')loadCard()}
+function setLang(l,instant){
+if(instant){applyLang(l);return}
+if(l===document.documentElement.dataset.lang)return;
+var root=document.documentElement;root.classList.add('switching');
+setTimeout(function(){applyLang(l);setTimeout(function(){root.classList.remove('switching')},40)},180)}
 /* ---- hero replay ---- */
 var box=document.getElementById('sproutbox');
 box.addEventListener('click',function(){box.classList.remove('play');void box.offsetWidth;box.classList.add('play')});
@@ -285,9 +295,11 @@ idx++;fcard.classList.remove('flipped');grades.classList.remove('ready');
 if(idx>=3){drawStages();demoSec.classList.add('finished')}
 else{setTimeout(loadCard,260)}})});
 function resetDemo(){idx=0;demoSec.classList.remove('finished');fcard.classList.remove('flipped');grades.classList.remove('ready');loadCard()}
+main,footer{transition:opacity .2s ease}
+html.switching main,html.switching footer{opacity:0}
 /* ---- scroll reveal ---- */
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
 document.querySelectorAll('.rise').forEach(function(el){io.observe(el)});
-setLang(document.documentElement.dataset.lang);
+setLang(document.documentElement.dataset.lang,true);
 </script>
 </body></html>

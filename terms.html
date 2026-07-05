@@ -30,6 +30,8 @@ nav a.here{color:var(--grn);font-weight:700}
 .lang{display:flex;background:var(--surf2);border:1px solid var(--line);border-radius:999px;padding:3px;flex:none}
 .lang button{border:0;background:transparent;padding:4px 11px;border-radius:999px;font:inherit;font-size:.78rem;color:var(--ink2);cursor:pointer;transition:.15s}
 .lang button.on{background:var(--surf);color:var(--grn);font-weight:700;box-shadow:0 1px 4px rgba(32,41,31,.14)}
+main,footer{transition:opacity .2s ease}
+html.switching main,html.switching footer{opacity:0}
 main{max-width:880px;margin:0 auto;padding:48px 20px 72px}
 h1{font-size:clamp(1.45rem,4vw,1.9rem);line-height:1.4;margin:0 0 18px}
 .meta{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 28px}
@@ -46,7 +48,7 @@ footer{border-top:1px solid var(--line);margin-top:24px}
 .fwrap a{color:var(--ink2);text-decoration:none}
 .fwrap a:hover{color:var(--grn)}
 .fwrap .cp{margin-left:auto}
-@media(max-width:560px){nav{display:none}.paper{padding:28px 22px}}
+@media(max-width:560px){nav{display:none}.lang{margin-left:auto}.paper{padding:28px 22px}}
 </style></head><body>
 <header><div class="hwrap">
 <a class="brand" href="./"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21v-8"/><path d="M12 13c0-3.5-2.8-6-6.5-6C5.5 10.5 8.3 13 12 13z"/><path d="M12 11c0-3 2.4-5.2 5.7-5.2 0 3.3-2.4 5.4-5.7 5.4z"/></svg>Sproot</a>
@@ -162,10 +164,15 @@ footer{border-top:1px solid var(--line);margin-top:24px}
 </div></footer>
 <script>
 var TITLES={ja:'利用規約 — Sproot',ko:'이용약관 — Sproot',en:'Terms of Service — Sproot'};
-function setLang(l){document.documentElement.dataset.lang=l;document.documentElement.lang=l;
+function applyLang(l){document.documentElement.dataset.lang=l;document.documentElement.lang=l;
 try{localStorage.setItem('sproot-lang',l)}catch(e){}
 document.title=TITLES[l];
 document.querySelectorAll('.lang button').forEach(function(b){b.classList.toggle('on',b.dataset.l===l)})}
-setLang(document.documentElement.dataset.lang);
+function setLang(l,instant){
+if(instant){applyLang(l);return}
+if(l===document.documentElement.dataset.lang)return;
+var root=document.documentElement;root.classList.add('switching');
+setTimeout(function(){applyLang(l);setTimeout(function(){root.classList.remove('switching')},40)},180)}
+setLang(document.documentElement.dataset.lang,true);
 </script>
 </body></html>
