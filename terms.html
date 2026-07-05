@@ -1,9 +1,20 @@
 <!DOCTYPE html><html lang="ja"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sproot">
+<meta property="og:title" content="利用規約 — Sproot">
+<meta property="og:description" content="Sproot の利用条件について。">
+<meta property="og:url" content="https://sproot-app.github.io/terms.html">
+<meta property="og:image" content="https://sproot-app.github.io/og-image.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sproot-app.github.io/og-image.png">
 <link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title>利用規約 — Sproot</title>
 <script>(function(){var l=null;try{l=localStorage.getItem('sproot-lang')}catch(e){}
-if(!l){var n=(navigator.language||'en').slice(0,2);l=n==='ja'?'ja':n==='ko'?'ko':'en'}
+if(!l){var ls=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||'en'];
+for(var i=0;i<ls.length&&!l;i++){var n=String(ls[i]).slice(0,2).toLowerCase();
+if(n==='ja'||n==='ko')l=n;else if(n==='en')l='en'}
+if(!l)l='en'}
 document.documentElement.dataset.lang=l;document.documentElement.lang=l})()</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
