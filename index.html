@@ -295,8 +295,6 @@ idx++;fcard.classList.remove('flipped');grades.classList.remove('ready');
 if(idx>=3){drawStages();demoSec.classList.add('finished')}
 else{setTimeout(loadCard,260)}})});
 function resetDemo(){idx=0;demoSec.classList.remove('finished');fcard.classList.remove('flipped');grades.classList.remove('ready');loadCard()}
-main,footer{transition:opacity .2s ease}
-html.switching main,html.switching footer{opacity:0}
 /* ---- scroll reveal ---- */
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
 document.querySelectorAll('.rise').forEach(function(el){io.observe(el)});
