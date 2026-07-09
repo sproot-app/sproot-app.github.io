@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sproot-app.github.io/sitemap.xml

@@ -1,0 +1,170 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="theme-color" content="#F6F5EF">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="New features and improvements in Sproot.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sproot">
+<meta property="og:title" content="What's New — Sproot">
+<meta property="og:description" content="New features and improvements in Sproot.">
+<meta property="og:url" content="https://sproot-app.github.io/en/releases.html">
+<meta property="og:image" content="https://sproot-app.github.io/og-image.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sproot-app.github.io/og-image.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="canonical" href="https://sproot-app.github.io/releases.html">
+<link rel="alternate" hreflang="x-default" href="https://sproot-app.github.io/releases.html">
+<link rel="alternate" hreflang="ja" href="https://sproot-app.github.io/ja/releases.html">
+<link rel="alternate" hreflang="ko" href="https://sproot-app.github.io/ko/releases.html">
+<link rel="alternate" hreflang="en" href="https://sproot-app.github.io/en/releases.html">
+<link rel="canonical" href="https://sproot-app.github.io/en/releases.html">
+<link rel="alternate" hreflang="x-default" href="https://sproot-app.github.io/releases.html">
+<link rel="alternate" hreflang="ja" href="https://sproot-app.github.io/ja/releases.html">
+<link rel="alternate" hreflang="ko" href="https://sproot-app.github.io/ko/releases.html">
+<link rel="alternate" hreflang="en" href="https://sproot-app.github.io/en/releases.html">
+<title>What's New — Sproot</title>
+<script>document.documentElement.dataset.lang='en'</script>
+<link rel="preload" href="/fonts/LINESeedJP_OTF_Bd.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+@view-transition{navigation:auto}
+@font-face{font-family:'LINE Seed KR';src:url('/fonts/LINESeedKR-Rg.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'LINE Seed KR';src:url('/fonts/LINESeedKR-Bd.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'LINE Seed JP';src:url('/fonts/LINESeedJP_OTF_Rg.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'LINE Seed JP';src:url('/fonts/LINESeedJP_OTF_Bd.woff2') format('woff2');font-weight:700;font-display:swap}
+:root{--bg:#F6F5EF;--surf:#FFFFFF;--surf2:#ECEFE3;--ink:#20291F;--ink2:#5A6A5B;--ink3:#96A394;
+--grn:#3E7C4F;--grn-tint:#E4F0E1;--grn-soft:#C9E2C6;--grn-deep:#2A5638;--line:#E2E5D6;
+--sh:0 2px 14px rgba(32,41,31,.07)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);line-height:1.9;font-size:16px;
+font-family:Outfit,-apple-system,BlinkMacSystemFont,sans-serif}
+[data-lang=ja] body{font-family:Outfit,'LINE Seed JP','Hiragino Sans',sans-serif}
+[data-lang=ko] body{font-family:Outfit,'LINE Seed KR','Apple SD Gothic Neo',sans-serif}
+[data-lang=ja] :is(.l-ko,.l-en){display:none!important}
+[data-lang=ko] :is(.l-ja,.l-en){display:none!important}
+[data-lang=en] :is(.l-ja,.l-ko){display:none!important}
+a{color:var(--grn)}
+header{position:sticky;top:0;background:rgba(246,245,239,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);z-index:10}
+.hwrap{max-width:880px;margin:0 auto;padding:13px 20px;display:flex;align-items:center;gap:16px}
+.brand{display:flex;align-items:center;gap:8px;font-family:Outfit,sans-serif;font-weight:700;font-size:1.12rem;color:var(--grn);text-decoration:none;letter-spacing:.01em}
+nav{display:flex;gap:16px;font-size:.88rem;margin-left:auto}
+nav a{color:var(--ink2);text-decoration:none}
+nav a:hover{color:var(--grn)}
+nav a.here{color:var(--grn);font-weight:700}
+.lang{display:flex;align-items:center;gap:7px;background:var(--surf2);border:1px solid var(--line);border-radius:999px;padding:6px 13px;flex:none;color:var(--ink2);cursor:pointer;position:relative}
+.lang:hover{color:var(--grn)}
+.lang select{appearance:none;-webkit-appearance:none;border:0;background:transparent;font:inherit;font-size:16px;font-weight:600;color:inherit;cursor:pointer;outline:none;padding:0}
+.lang .chev{flex:none}
+main,footer{transition:opacity .2s ease}
+html.switching main,html.switching footer{opacity:0}
+main{max-width:880px;margin:0 auto;padding:48px 20px 72px}
+h1{font-size:clamp(1.45rem,4vw,1.9rem);line-height:1.4;margin:0 0 18px}
+.lead{color:var(--ink2);margin:0 0 28px;font-size:.95rem}
+.paper{background:var(--surf);border:1px solid var(--line);border-radius:24px;padding:40px 36px;box-shadow:var(--sh);margin-bottom:22px}
+.vhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;margin:0 0 6px}
+.vhead h2{font-family:Outfit,sans-serif;font-size:1.3rem;margin:0;color:var(--grn-deep)}
+.badge{background:var(--grn-tint);border:1px solid var(--grn-soft);color:var(--grn);border-radius:999px;padding:3px 13px;font-size:.78rem;font-weight:700}
+.badge.muted{background:var(--surf2);border-color:var(--line);color:var(--ink3);font-weight:500}
+.vsub{color:var(--ink3);font-size:.86rem;margin:0 0 20px}
+.paper h3{font-size:1rem;color:var(--grn-deep);margin:1.7em 0 .3em}
+.paper h3:first-of-type{margin-top:0}
+.paper p,.paper li{color:var(--ink2);font-size:.95rem}
+.paper strong{color:var(--ink)}
+.paper ul{padding-left:1.3em;margin:.3em 0}
+.paper li{margin:.4em 0}
+footer{border-top:1px solid var(--line);margin-top:24px}
+.fwrap{max-width:880px;margin:0 auto;padding:26px 20px;display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;color:var(--ink3);font-size:.84rem}
+.fwrap a{color:var(--ink2);text-decoration:none}
+.fwrap a:hover{color:var(--grn)}
+.fwrap .cp{margin-left:auto}
+@media(max-width:560px){.hwrap{flex-wrap:wrap;row-gap:2px;padding:10px 16px}nav{order:3;width:100%;margin-left:0;font-size:.84rem;gap:14px;overflow-x:auto;-webkit-overflow-scrolling:touch}.lang{margin-left:auto}.paper{padding:28px 22px}}
+</style></head><body>
+<header><div class="hwrap">
+<a class="brand" href="./"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21v-8"/><path d="M12 13c0-3.5-2.8-6-6.5-6C5.5 10.5 8.3 13 12 13z"/><path d="M12 11c0-3 2.4-5.2 5.7-5.2 0 3.3-2.4 5.4-5.7 5.4z"/></svg>Sproot</a>
+<nav>
+<a href="./"><span class="l-en">Home</span></a>
+<a class="here" href="./releases.html"><span class="l-en">What's New</span></a>
+<a href="./privacy.html"><span class="l-en">Privacy</span></a>
+<a href="./terms.html"><span class="l-en">Terms</span></a>
+</nav>
+<label class="lang" aria-label="Language">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+<select onchange="setLang(this.value)">
+<option value="ja">日本語</option>
+<option value="ko">한국어</option>
+<option value="en">English</option>
+</select>
+<svg class="chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+</label>
+</div></header>
+<main>
+<h1><span class="l-en">What's New</span></h1>
+<p class="lead"><span class="l-en">New features and improvements in Sproot.</span></p>
+
+<article class="paper">
+<div class="vhead">
+<h2>v1.1.0</h2>
+<span class="badge"><span class="l-en">Coming soon</span></span>
+</div>
+<p class="vsub"><span class="l-en">Generation you can count on, waiting you don't have to do, and a whole new feel. Our biggest update yet.</span></p>
+
+
+
+
+
+<div class="l-en">
+<h3>New features</h3>
+<ul>
+<li><strong>Choose the kind of cards to make</strong> — foreign vocabulary or terms &amp; concepts</li>
+<li><strong>Use the app freely while cards generate</strong> — a little capsule in the corner shows progress; close the app or lock your screen and it resumes right where it left off</li>
+<li><strong>AI model downloads continue in the background</strong>, with progress in the Dynamic Island</li>
+<li><strong>Set the app language and the AI's card language independently</strong></li>
+<li><strong>Ask the AI chat by voice</strong> on card details</li>
+<li><strong>Little celebrations</strong> — leaves swirl around your tree when you finish studying, with gentle haptics for the moments that matter</li>
+</ul>
+<h3>Improvements</h3>
+<ul>
+<li>A whole new feel — swipe from the edge to go back, pull sheets down to close, and cards bloom open from their row</li>
+<li>Supports Reduce Motion, with easier-to-tap buttons throughout</li>
+</ul>
+<h3>Bug fixes</h3>
+<ul>
+<li>Fixed generations coming up short or containing duplicate cards — ask for 30, get exactly 30</li>
+<li>Fixed foreign words being unexpectedly translated</li>
+<li>Fixed the AI chat sometimes replying to a greeting with a definition</li>
+<li>Fixed Japanese text appearing in parts of the Korean interface</li>
+</ul>
+<p><strong>Requirements:</strong> starting with this version, Sproot requires iOS 18 or later.</p>
+</div>
+</article>
+
+<article class="paper">
+<div class="vhead">
+<h2>v1.0</h2>
+<span class="badge muted"><span class="l-en">Released July 2026</span></span>
+</div>
+
+
+<div class="l-en">
+<p>The first release. AI turns topics and photos into flashcards with example sentences — entirely on your device. Reviews return right before you forget, and every word book grows from seed to tree. No account, no tracking.</p>
+</div>
+</article>
+</main>
+<footer><div class="fwrap">
+<a href="./"><span class="l-en">Home</span></a>
+<a href="./releases.html"><span class="l-en">What's New</span></a>
+<a href="./privacy.html"><span class="l-en">Privacy Policy</span></a>
+<a href="./terms.html"><span class="l-en">Terms of Service</span></a>
+<span class="cp">© 2026 Sproot</span>
+</div></footer>
+<script>
+var TITLES={ja:'リリースノート — Sproot',ko:'업데이트 소식 — Sproot',en:"What's New — Sproot"};
+function applyLang(l){document.documentElement.dataset.lang=l;document.documentElement.lang=l;
+try{localStorage.setItem('sproot-lang',l)}catch(e){}
+document.title=TITLES[l];
+var _ls=document.querySelector('.lang select');if(_ls)_ls.value=l;}
+function setLang(l,instant){if(instant){applyLang(l);return}
+var seg=location.pathname.split('/');seg[seg.length-2]=l;location.href=seg.join('/')}
+setLang(document.documentElement.dataset.lang,true);
+</script>
+</body></html>

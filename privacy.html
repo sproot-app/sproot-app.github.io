@@ -1,0 +1,195 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8">
+<meta name="theme-color" content="#F6F5EF">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Sproot は個人情報を収集しません。データはすべて端末の中に。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sproot">
+<meta property="og:title" content="プライバシーポリシー — Sproot">
+<meta property="og:description" content="Sproot は個人情報を収集しません。データはすべて端末の中に。">
+<meta property="og:url" content="https://sproot-app.github.io/privacy.html">
+<meta property="og:image" content="https://sproot-app.github.io/og-image.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sproot-app.github.io/og-image.png">
+<link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="canonical" href="https://sproot-app.github.io/privacy.html">
+<link rel="alternate" hreflang="x-default" href="https://sproot-app.github.io/privacy.html">
+<link rel="alternate" hreflang="ja" href="https://sproot-app.github.io/ja/privacy.html">
+<link rel="alternate" hreflang="ko" href="https://sproot-app.github.io/ko/privacy.html">
+<link rel="alternate" hreflang="en" href="https://sproot-app.github.io/en/privacy.html">
+<title>プライバシーポリシー — Sproot</title>
+<script>(function(){var l=null;try{l=localStorage.getItem('sproot-lang')}catch(e){}
+if(!l){var ls=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||'en'];
+for(var i=0;i<ls.length&&!l;i++){var n=String(ls[i]).slice(0,2).toLowerCase();
+if(n==='ja'||n==='ko')l=n;else if(n==='en')l='en'}
+if(!l)l='en'}
+document.documentElement.dataset.lang=l;document.documentElement.lang=l})()</script>
+<link rel="preload" href="/fonts/LINESeedJP_OTF_Bd.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+@view-transition{navigation:auto}
+@font-face{font-family:'LINE Seed KR';src:url('/fonts/LINESeedKR-Rg.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'LINE Seed KR';src:url('/fonts/LINESeedKR-Bd.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'LINE Seed JP';src:url('/fonts/LINESeedJP_OTF_Rg.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'LINE Seed JP';src:url('/fonts/LINESeedJP_OTF_Bd.woff2') format('woff2');font-weight:700;font-display:swap}
+:root{--bg:#F6F5EF;--surf:#FFFFFF;--surf2:#ECEFE3;--ink:#20291F;--ink2:#5A6A5B;--ink3:#96A394;
+--grn:#3E7C4F;--grn-tint:#E4F0E1;--grn-soft:#C9E2C6;--grn-deep:#2A5638;--line:#E2E5D6;
+--sh:0 2px 14px rgba(32,41,31,.07)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);line-height:1.9;font-size:16px;
+font-family:Outfit,-apple-system,BlinkMacSystemFont,sans-serif}
+[data-lang=ja] body{font-family:Outfit,'LINE Seed JP','Hiragino Sans',sans-serif}
+[data-lang=ko] body{font-family:Outfit,'LINE Seed KR','Apple SD Gothic Neo',sans-serif}
+[data-lang=ja] :is(.l-ko,.l-en){display:none!important}
+[data-lang=ko] :is(.l-ja,.l-en){display:none!important}
+[data-lang=en] :is(.l-ja,.l-ko){display:none!important}
+a{color:var(--grn)}
+header{position:sticky;top:0;background:rgba(246,245,239,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);z-index:10}
+.hwrap{max-width:880px;margin:0 auto;padding:13px 20px;display:flex;align-items:center;gap:16px}
+.brand{display:flex;align-items:center;gap:8px;font-family:Outfit,sans-serif;font-weight:700;font-size:1.12rem;color:var(--grn);text-decoration:none;letter-spacing:.01em}
+nav{display:flex;gap:16px;font-size:.88rem;margin-left:auto}
+nav a{color:var(--ink2);text-decoration:none}
+nav a:hover{color:var(--grn)}
+nav a.here{color:var(--grn);font-weight:700}
+.lang{display:flex;align-items:center;gap:7px;background:var(--surf2);border:1px solid var(--line);border-radius:999px;padding:6px 13px;flex:none;color:var(--ink2);cursor:pointer;position:relative}
+.lang:hover{color:var(--grn)}
+.lang select{appearance:none;-webkit-appearance:none;border:0;background:transparent;font:inherit;font-size:16px;font-weight:600;color:inherit;cursor:pointer;outline:none;padding:0}
+.lang .chev{flex:none}
+main,footer{transition:opacity .2s ease}
+html.switching main,html.switching footer{opacity:0}
+main{max-width:880px;margin:0 auto;padding:48px 20px 72px}
+h1{font-size:clamp(1.45rem,4vw,1.9rem);line-height:1.4;margin:0 0 18px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 28px}
+.meta span{background:var(--surf2);border:1px solid var(--line);border-radius:999px;padding:4px 14px;font-size:.8rem;color:var(--ink2)}
+.paper{background:var(--surf);border:1px solid var(--line);border-radius:24px;padding:40px 36px;box-shadow:var(--sh)}
+.paper h2{font-size:1.08rem;color:var(--grn-deep);margin:2.1em 0 .5em;padding-top:1.4em;border-top:1px solid var(--line)}
+.paper h2:first-child{margin-top:0;padding-top:0;border-top:0}
+.paper p,.paper li{color:var(--ink2);font-size:.95rem}
+.paper strong{color:var(--ink)}
+.paper ul{padding-left:1.3em}
+.paper li{margin:.4em 0}
+footer{border-top:1px solid var(--line);margin-top:24px}
+.fwrap{max-width:880px;margin:0 auto;padding:26px 20px;display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;color:var(--ink3);font-size:.84rem}
+.fwrap a{color:var(--ink2);text-decoration:none}
+.fwrap a:hover{color:var(--grn)}
+.fwrap .cp{margin-left:auto}
+@media(max-width:560px){.hwrap{flex-wrap:wrap;row-gap:2px;padding:10px 16px}nav{order:3;width:100%;margin-left:0;font-size:.84rem;gap:14px;overflow-x:auto;-webkit-overflow-scrolling:touch}.lang{margin-left:auto}.paper{padding:28px 22px}}
+</style></head><body>
+<header><div class="hwrap">
+<a class="brand" href="./"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21v-8"/><path d="M12 13c0-3.5-2.8-6-6.5-6C5.5 10.5 8.3 13 12 13z"/><path d="M12 11c0-3 2.4-5.2 5.7-5.2 0 3.3-2.4 5.4-5.7 5.4z"/></svg>Sproot</a>
+<nav>
+<a href="./"><span class="l-ja">ホーム</span><span class="l-ko">홈</span><span class="l-en">Home</span></a>
+<a href="./releases.html"><span class="l-ja">リリースノート</span><span class="l-ko">업데이트</span><span class="l-en">What's New</span></a>
+<a class="here" href="./privacy.html"><span class="l-ja">プライバシー</span><span class="l-ko">개인정보</span><span class="l-en">Privacy</span></a>
+<a href="./terms.html"><span class="l-ja">利用規約</span><span class="l-ko">이용약관</span><span class="l-en">Terms</span></a>
+</nav>
+<label class="lang" aria-label="Language">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+<select onchange="setLang(this.value)">
+<option value="ja">日本語</option>
+<option value="ko">한국어</option>
+<option value="en">English</option>
+</select>
+<svg class="chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+</label>
+</div></header>
+<main>
+<h1><span class="l-ja">プライバシーポリシー</span><span class="l-ko">개인정보 처리방침</span><span class="l-en">Privacy Policy</span></h1>
+<div class="meta">
+<span><span class="l-ja">最終更新日: 2026-07-05</span><span class="l-ko">최종 수정일: 2026-07-05</span><span class="l-en">Last updated: 2026-07-05</span></span>
+<span><span class="l-ja">運営者: Sproot 開発者（個人）</span><span class="l-ko">운영자: Sproot 개발자(개인)</span><span class="l-en">Operator: the Sproot developer (individual)</span></span>
+<span>sproot.app@gmail.com</span>
+</div>
+<article class="paper">
+<div class="l-ja">
+<h2>1. 基本方針</h2>
+<p>Sproot（以下「本アプリ」）は、個人情報を収集しないことを基本方針とします。アカウント登録は不要で、アクセス解析・広告・トラッキングは行いません。</p>
+<h2>2. データの保存場所</h2>
+<p>単語帳・カード・学習履歴・設定は、すべてお使いの端末内にのみ保存されます。運営者のサーバーには送信されません。端末のバックアップ（iCloud等）に含まれるかどうかは、お使いの iOS の設定に従います。</p>
+<h2>3. 外部への通信</h2>
+<p>本アプリが外部と通信するのは、次の場合に限られます。</p>
+<ul>
+<li><strong>AIモデルのダウンロード</strong> — 端末内AI用のモデルファイルを配布サーバーから取得します。このとき個人情報は送信されません。</li>
+<li><strong>「Wikipediaで裏づけ」機能（オプトイン）</strong> — この機能をオンにした場合のみ、カード生成時に入力したテーマの検索語が Wikipedia（Wikimedia Foundation）へ送信されます。学習履歴・単語帳の内容・端末情報は送信されません。設定からいつでもオフにできます。</li>
+<li><strong>クラウドAI機能（提供開始後・有料プラン）</strong> — 利用を選択した場合のみ、生成に必要なテーマや写真から読み取ったテキストが送信されます。初回利用時に改めて同意を確認します。</li>
+</ul>
+<h2>4. カメラ・写真</h2>
+<p>カメラおよび写真は、ノート等を読み取ってカードを作成する目的にのみ使用します。画像の文字認識は端末内で行われ、画像が外部へ送信されることはありません。</p>
+<h2>5. 通知</h2>
+<p>学習リマインダーはローカル通知のみを使用し、外部サーバーを介しません。</p>
+<h2>6. 第三者提供</h2>
+<p>運営者が個人情報を第三者に提供することはありません（そもそも収集しません）。</p>
+<h2>7. 児童のプライバシー</h2>
+<p>本アプリは全年齢を対象とし、児童からも個人情報を収集しません。</p>
+<h2>8. 改定</h2>
+<p>本ポリシーを改定する場合は、本ページで告知します。</p>
+</div>
+<div class="l-ko">
+<h2>1. 기본 방침</h2>
+<p>Sproot(이하 "본 앱")는 개인정보를 수집하지 않는 것을 기본 방침으로 합니다. 계정 등록이 필요 없으며, 분석 도구・광고・트래킹을 사용하지 않습니다.</p>
+<h2>2. 데이터 보관</h2>
+<p>단어장・카드・학습 기록・설정은 모두 사용자의 기기 안에만 저장되며, 운영자의 서버로 전송되지 않습니다. 기기 백업(iCloud 등) 포함 여부는 iOS 설정을 따릅니다.</p>
+<h2>3. 외부 통신</h2>
+<p>본 앱이 외부와 통신하는 경우는 다음으로 한정됩니다.</p>
+<ul>
+<li><strong>AI 모델 다운로드</strong> — 기기 내 AI용 모델 파일을 배포 서버에서 받아옵니다. 이때 개인정보는 전송되지 않습니다.</li>
+<li><strong>"Wikipedia로 뒷받침" 기능(옵트인)</strong> — 이 기능을 켠 경우에만, 카드 생성 시 입력한 주제 검색어가 Wikipedia(Wikimedia Foundation)로 전송됩니다. 학습 기록・단어장 내용・기기 정보는 전송되지 않습니다. 설정에서 언제든지 끌 수 있습니다.</li>
+<li><strong>클라우드 AI 기능(제공 시작 후・유료 플랜)</strong> — 이용을 선택한 경우에만 생성에 필요한 주제나 사진에서 읽어 들인 텍스트가 전송됩니다. 처음 사용할 때 별도의 동의를 받습니다.</li>
+</ul>
+<h2>4. 카메라・사진</h2>
+<p>카메라와 사진은 노트 등을 읽어 카드를 만드는 목적에만 사용합니다. 문자 인식은 기기 안에서 이루어지며 이미지가 외부로 전송되지 않습니다.</p>
+<h2>5. 알림</h2>
+<p>학습 리마인더는 로컬 알림만 사용하며 외부 서버를 거치지 않습니다.</p>
+<h2>6. 제3자 제공</h2>
+<p>운영자는 개인정보를 제3자에게 제공하지 않습니다(애초에 수집하지 않습니다).</p>
+<h2>7. 아동의 개인정보</h2>
+<p>본 앱은 전 연령을 대상으로 하며, 아동으로부터도 개인정보를 수집하지 않습니다.</p>
+<h2>8. 개정</h2>
+<p>본 방침을 개정할 경우 본 페이지에서 알립니다.</p>
+</div>
+<div class="l-en">
+<h2>1. Our principle</h2>
+<p>Sproot ("the App") is designed not to collect personal information. No account is required, and the App contains no analytics, advertising, or tracking.</p>
+<h2>2. Where your data lives</h2>
+<p>Word books, cards, study history, and settings are stored only on your device and are never sent to the operator's servers. Whether they are included in device backups (e.g., iCloud) follows your iOS settings.</p>
+<h2>3. Network access</h2>
+<p>The App communicates externally only in the following cases:</p>
+<ul>
+<li><strong>AI model download</strong> — the on-device AI model file is fetched from a distribution server. No personal information is transmitted.</li>
+<li><strong>"Fact-check with Wikipedia" (opt-in)</strong> — only when you turn this on, the topic search term you enter is sent to Wikipedia (Wikimedia Foundation) during card generation. Your study history, word-book contents, and device information are never sent. You can turn it off anytime in Settings.</li>
+<li><strong>Cloud AI (when offered; paid plan)</strong> — only if you choose to use it, the topic or text read from your photo is sent for generation, with separate consent on first use.</li>
+</ul>
+<h2>4. Camera &amp; photos</h2>
+<p>The camera and photo library are used solely to read notes and create cards. Text recognition happens on-device; images are never uploaded.</p>
+<h2>5. Notifications</h2>
+<p>Study reminders use local notifications only.</p>
+<h2>6. Third parties</h2>
+<p>The operator does not share personal information with third parties (none is collected in the first place).</p>
+<h2>7. Children's privacy</h2>
+<p>The App is suitable for all ages and collects no personal information from children.</p>
+<h2>8. Changes</h2>
+<p>Any changes to this policy will be announced on this page.</p>
+</div>
+</article>
+</main>
+<footer><div class="fwrap">
+<a href="./"><span class="l-ja">ホーム</span><span class="l-ko">홈</span><span class="l-en">Home</span></a>
+<a href="./releases.html"><span class="l-ja">リリースノート</span><span class="l-ko">업데이트</span><span class="l-en">What's New</span></a>
+<a href="./privacy.html"><span class="l-ja">プライバシーポリシー</span><span class="l-ko">개인정보 처리방침</span><span class="l-en">Privacy Policy</span></a>
+<a href="./terms.html"><span class="l-ja">利用規約</span><span class="l-ko">이용약관</span><span class="l-en">Terms of Service</span></a>
+<span class="cp">© 2026 Sproot</span>
+</div></footer>
+<script>
+var TITLES={ja:'プライバシーポリシー — Sproot',ko:'개인정보 처리방침 — Sproot',en:'Privacy Policy — Sproot'};
+function applyLang(l){document.documentElement.dataset.lang=l;document.documentElement.lang=l;
+try{localStorage.setItem('sproot-lang',l)}catch(e){}
+document.title=TITLES[l];
+var _ls=document.querySelector('.lang select');if(_ls)_ls.value=l;}
+function setLang(l,instant){
+if(instant){applyLang(l);return}
+if(l===document.documentElement.dataset.lang)return;
+var root=document.documentElement;root.classList.add('switching');
+setTimeout(function(){applyLang(l);setTimeout(function(){root.classList.remove('switching')},40)},180)}
+setLang(document.documentElement.dataset.lang,true);
+</script>
+</body></html>

@@ -1,0 +1,423 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8">
+<meta name="theme-color" content="#F6F5EF">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="作る手間はAIに。くり返すほど、言葉はあなたに根づく。AI単語帳 Sproot。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sproot">
+<meta property="og:title" content="Sproot — 言葉が根づく、AI単語帳">
+<meta property="og:description" content="作る手間はAIに。くり返すほど、言葉はあなたに根づく。AI単語帳 Sproot。">
+<meta property="og:url" content="https://sproot-app.github.io/ja/">
+<meta property="og:image" content="https://sproot-app.github.io/og-image.png">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="1024">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sproot - AI単語帳">
+<meta name="twitter:description" content="覚えたい言葉を、AIがカードに。すべて端末の中で。">
+<meta name="twitter:image" content="https://sproot-app.github.io/og-image.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="canonical" href="https://sproot-app.github.io/">
+<link rel="alternate" hreflang="x-default" href="https://sproot-app.github.io/">
+<link rel="alternate" hreflang="ja" href="https://sproot-app.github.io/ja/">
+<link rel="alternate" hreflang="ko" href="https://sproot-app.github.io/ko/">
+<link rel="alternate" hreflang="en" href="https://sproot-app.github.io/en/">
+<link rel="canonical" href="https://sproot-app.github.io/ja/">
+<link rel="alternate" hreflang="x-default" href="https://sproot-app.github.io/">
+<link rel="alternate" hreflang="ja" href="https://sproot-app.github.io/ja/">
+<link rel="alternate" hreflang="ko" href="https://sproot-app.github.io/ko/">
+<link rel="alternate" hreflang="en" href="https://sproot-app.github.io/en/">
+<title>Sproot — 言葉が根づく、AI単語帳</title>
+<script>document.documentElement.dataset.lang='ja'</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Zen+Maru+Gothic:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+@view-transition{navigation:auto}
+:root{--bg:#F6F5EF;--surf:#FFFFFF;--surf2:#ECEFE3;--ink:#20291F;--ink2:#5A6A5B;--ink3:#96A394;
+--grn:#3E7C4F;--grn-tint:#E4F0E1;--grn-soft:#C9E2C6;--grn-deep:#2A5638;--line:#E2E5D6;
+--sh:0 2px 14px rgba(32,41,31,.07);--ease:cubic-bezier(.2,.8,.25,1)}
+*{box-sizing:border-box}
+html{overscroll-behavior-y:none;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);line-height:1.9;font-size:16px;
+overscroll-behavior-y:none;
+font-family:Outfit,-apple-system,BlinkMacSystemFont,sans-serif}
+[data-lang=ja] body{font-family:Outfit,'Zen Maru Gothic','Hiragino Sans',sans-serif}
+[data-lang=ko] body{font-family:Outfit,'Noto Sans KR','Apple SD Gothic Neo',sans-serif}
+[data-lang=ja] :is(.l-ko,.l-en){display:none!important}
+[data-lang=ko] :is(.l-ja,.l-en){display:none!important}
+[data-lang=en] :is(.l-ja,.l-ko){display:none!important}
+a{color:var(--grn)}
+header{position:sticky;top:0;background:rgba(246,245,239,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);z-index:10}
+.hwrap{max-width:920px;margin:0 auto;padding:13px 20px;display:flex;align-items:center;gap:16px}
+.brand{display:flex;align-items:center;gap:8px;font-family:Outfit,sans-serif;font-weight:700;font-size:1.12rem;color:var(--grn);text-decoration:none;letter-spacing:.01em}
+nav{display:flex;gap:16px;font-size:.88rem;margin-left:auto}
+nav a{color:var(--ink2);text-decoration:none}
+nav a:hover{color:var(--grn)}
+nav a.here{color:var(--grn);font-weight:700}
+.lang{display:flex;align-items:center;gap:7px;background:var(--surf2);border:1px solid var(--line);border-radius:999px;padding:6px 13px;flex:none;color:var(--ink2);cursor:pointer;position:relative}
+.lang:hover{color:var(--grn)}
+.lang select{appearance:none;-webkit-appearance:none;border:0;background:transparent;font:inherit;font-size:16px;font-weight:600;color:inherit;cursor:pointer;outline:none;padding:0}
+.lang .chev{flex:none}
+main{max-width:920px;margin:0 auto;padding:24px 20px 72px}
+/* ---- hero + logo animation ---- */
+.hero{text-align:center;padding:64px 0 8px}
+.sproutbox{width:112px;height:112px;border-radius:28px;background:var(--surf);border:1px solid var(--line);box-shadow:var(--sh);display:inline-flex;align-items:center;justify-content:center;margin-bottom:26px;cursor:pointer}
+#sprout{width:64px;height:64px;overflow:visible}
+#sprout path{fill:none;stroke:var(--grn);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#sprout .stem{stroke-dasharray:8.2;stroke-dashoffset:8.2}
+#sprout .leaf{opacity:0;transform-box:fill-box}
+#sprout .leafL{transform-origin:100% 100%;transform:rotate(38deg) scale(.15)}
+#sprout .leafR{transform-origin:0% 100%;transform:rotate(-38deg) scale(.15)}
+.play #sprout .stem{animation:stem .65s .15s var(--ease) forwards}
+.play #sprout .leafL{animation:leafL .55s .62s var(--ease) forwards}
+.play #sprout .leafR{animation:leafR .55s .82s var(--ease) forwards}
+.play #sprout{animation:wiggle .7s 1.45s ease-in-out}
+@keyframes stem{to{stroke-dashoffset:0}}
+@keyframes leafL{0%{opacity:0;transform:rotate(38deg) scale(.15)}60%{opacity:1;transform:rotate(-6deg) scale(1.1)}100%{opacity:1;transform:rotate(0) scale(1)}}
+@keyframes leafR{0%{opacity:0;transform:rotate(-38deg) scale(.15)}60%{opacity:1;transform:rotate(6deg) scale(1.1)}100%{opacity:1;transform:rotate(0) scale(1)}}
+@keyframes wiggle{0%{transform:rotate(0)}30%{transform:rotate(-4deg)}60%{transform:rotate(3deg)}100%{transform:rotate(0)}}
+h1{font-size:clamp(1.7rem,4.8vw,2.5rem);line-height:1.42;margin:.15em 0;letter-spacing:.01em}
+.sub{color:var(--ink2);max-width:600px;margin:14px auto 30px}
+.cta{display:inline-flex;gap:9px;align-items:center;background:var(--grn);color:#fff;padding:13px 28px;border-radius:999px;text-decoration:none;font-weight:600;box-shadow:var(--sh);transition:.18s;border:0;font-size:1rem;cursor:pointer;font-family:inherit}
+.cta:hover{background:var(--grn-deep);transform:translateY(-1px)}
+.cta-row{display:flex;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:4px}
+.cta.ghost{background:transparent;color:var(--grn);border:1.5px solid var(--grn-soft);box-shadow:none;font-weight:600}
+.cta.ghost:hover{background:var(--grn-tint);border-color:var(--grn);transform:translateY(-1px)}
+.note{color:var(--ink3);font-size:.82rem;margin-top:14px}
+/* 折返しの粗さを抑える: 見出しは均等割り、本文は末尾整形。ko は語単位、ja は文節単位で改行 */
+h1,h2{text-wrap:balance}
+.sub,.secsub,.shot figcaption,.note{text-wrap:pretty}
+[data-lang=ko] :is(h1,h2,.sub,.secsub,.shot figcaption,.note){word-break:keep-all}
+[data-lang=ja] :is(.sub,.secsub,.shot figcaption){word-break:auto-phrase}
+main,footer{transition:opacity .2s ease}
+html.switching main,html.switching footer{opacity:0}
+/* ---- scroll reveal ---- */
+.rise{opacity:0;transform:translateY(16px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.rise.in{opacity:1;transform:none}
+/* ---- demo ---- */
+.demo{margin-top:88px;text-align:center}
+.demo h2,.sec h2{font-size:1.45rem;margin:0 0 6px}
+.secsub{color:var(--ink2);font-size:.94rem;margin:0 0 26px}
+.stagestrip{display:flex;justify-content:center;gap:18px;margin:0 0 22px}
+.stagestrip svg{width:40px;height:40px;overflow:visible}
+.stagestrip svg path{fill:none;stroke:var(--ink3);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;transition:stroke .4s}
+.stagestrip .done path{stroke:var(--grn)}
+.stagestrip .done.tree .crown{fill:var(--grn-soft);transition:fill .5s}
+.cardwrap{perspective:1100px;max-width:400px;margin:0 auto}
+.fcard{position:relative;width:100%;height:240px;transform-style:preserve-3d;transition:transform .5s var(--ease);cursor:pointer}
+.fcard.flipped{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--surf);border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:26px;gap:8px}
+.face.back{transform:rotateY(180deg);background:var(--grn-tint)}
+.term{font-size:1.5rem;font-weight:700}
+.hint{color:var(--ink3);font-size:.8rem;position:absolute;bottom:16px}
+.meaning{font-size:.98rem;color:var(--ink);line-height:1.8}
+.example{font-size:.85rem;color:var(--ink2);border-top:1px solid var(--grn-soft);padding-top:10px;margin-top:4px;line-height:1.75}
+.grades{display:flex;justify-content:center;gap:12px;margin-top:22px}
+.grades button{border:1px solid var(--line);background:var(--surf);border-radius:16px;padding:12px 0;width:112px;font:inherit;font-size:.95rem;font-weight:700;color:var(--ink);cursor:pointer;box-shadow:var(--sh);transition:.18s;opacity:.45}
+.grades.ready button{opacity:1}
+.grades.ready button:hover{transform:translateY(-2px);border-color:var(--grn-soft)}
+.grades button:active{transform:scale(.96)}
+.grades .g2{color:var(--grn-deep);background:var(--grn-tint);border-color:var(--grn-soft)}
+.gsub{display:block;font-size:.68rem;font-weight:500;color:var(--ink3);margin-top:2px}
+.demo .result{display:none;max-width:400px;margin:0 auto;background:var(--surf);border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh);padding:34px 26px}
+.demo.finished .cardwrap,.demo.finished .grades{display:none}
+.demo.finished .result{display:block;animation:pop .5s var(--ease)}
+@keyframes pop{0%{opacity:0;transform:scale(.92)}100%{opacity:1;transform:none}}
+.result svg{width:64px;height:64px;margin-bottom:8px}
+.result svg path{fill:none;stroke:var(--grn);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.result svg .crown{fill:var(--grn-soft)}
+.result p{color:var(--ink2);font-size:.93rem;margin:6px 0 18px}
+/* ---- features ---- */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:16px;margin:88px 0 0}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:20px;padding:26px 24px;box-shadow:var(--sh);transition:transform .18s}
+.card:hover{transform:translateY(-2px)}
+.ic{width:44px;height:44px;border-radius:13px;background:var(--grn-tint);color:var(--grn);display:flex;align-items:center;justify-content:center;margin-bottom:15px}
+.card h3{margin:0 0 7px;font-size:1.02rem}
+.card p{margin:0;color:var(--ink2);font-size:.92rem;line-height:1.8}
+/* ---- screenshots ---- */
+.shots{margin-top:88px;text-align:center}
+.shotrow{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+.shot{width:min(200px,72vw)}
+.shot img{display:block;width:100%;height:auto;border-radius:26px;box-shadow:0 8px 30px rgba(32,41,31,.14);border:1px solid var(--line)}
+.shot figcaption{font-size:.85rem;color:var(--ink2);margin-top:10px}
+.shot{margin:0}
+@media(max-width:920px){
+.shotrow{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;overflow-y:hidden;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;margin:8px -20px 0;padding:4px calc((100vw - min(250px,68vw))/2) 16px;scrollbar-width:none}
+.shotrow::-webkit-scrollbar{display:none}
+.shot{flex:none;width:min(250px,68vw);scroll-snap-align:center}
+}
+/* ---- docs & contact ---- */
+.sec{margin:88px 0 0}
+.docs{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.doc{display:flex;align-items:center;gap:13px;background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:19px 21px;text-decoration:none;color:var(--ink);font-weight:600;font-size:.95rem;box-shadow:var(--sh);transition:transform .18s}
+.doc:hover{transform:translateY(-2px)}
+.doc .ic{width:38px;height:38px;border-radius:11px;margin:0;flex:none}
+.doc .arw{margin-left:auto;color:var(--ink3)}
+.contact{margin-top:88px;background:var(--surf);border:1px solid var(--line);border-radius:24px;padding:40px 32px;text-align:center;box-shadow:var(--sh)}
+.contact h2{margin:0 0 8px;font-size:1.28rem}
+.contact p{margin:0 auto 22px;color:var(--ink2);max-width:480px;font-size:.94rem}
+footer{border-top:1px solid var(--line);margin-top:24px}
+.fwrap{max-width:920px;margin:0 auto;padding:26px 20px;display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;color:var(--ink3);font-size:.84rem}
+.fwrap a{color:var(--ink2);text-decoration:none}
+.fwrap a:hover{color:var(--grn)}
+.fwrap .cp{margin-left:auto}
+@media(max-width:560px){.hwrap{flex-wrap:wrap;row-gap:2px;padding:10px 16px}nav{order:3;width:100%;margin-left:0;font-size:.84rem;gap:14px;overflow-x:auto;-webkit-overflow-scrolling:touch}.lang{margin-left:auto}.grades button{width:31%}}
+@media(prefers-reduced-motion:reduce){.rise{transition:none;opacity:1;transform:none}.play #sprout .stem{animation-duration:.01s}.play #sprout .leafL,.play #sprout .leafR{animation-duration:.01s}.fcard{transition:none}}
+/* ---- 生成マジックのミニデモ（ヒーロー） ---- */
+.genplay{max-width:520px;margin:38px auto 0}
+.genbar{display:flex;align-items:center;gap:10px;background:var(--surf);border:1px solid var(--line);border-radius:999px;padding:12px 18px;box-shadow:var(--sh);font-size:.92rem;color:var(--ink);min-height:47px;text-align:left}
+.genbar svg{flex:none;color:var(--grn)}
+.gp-caret{flex:none;width:2px;height:1.05em;background:var(--grn);border-radius:2px;animation:gpblink 1.05s steps(1) infinite}
+@keyframes gpblink{50%{opacity:0}}
+.gencards{display:flex;gap:10px;margin-top:12px;align-items:stretch;height:96px}
+.gc{flex:1;min-width:0;background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:12px 13px 11px;box-shadow:var(--sh);text-align:left;opacity:0;transform:translateY(16px) scale(.92);overflow:hidden}
+.gc.in{opacity:1;transform:none;transition:opacity .4s ease,transform .55s cubic-bezier(.2,.8,.3,1.15)}
+.gc b{display:block;font-size:.84rem;color:var(--grn-deep);margin-bottom:3px;font-family:Outfit,inherit;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gc span{display:block;font-size:.72rem;color:var(--ink2);line-height:1.55}
+@media(max-width:560px){.genplay{margin-top:30px}.gencards{height:104px}.gc{padding:10px 10px 9px}.gc b{font-size:.78rem}.gc span{font-size:.66rem}}
+/* ---- ヒーローに漂う葉 ---- */
+.hero{position:relative}
+.drift{position:absolute;inset:0;pointer-events:none}
+.drift svg{position:absolute;color:var(--grn-soft);opacity:.55}
+.drift .d1{left:9%;top:26%;animation:drift1 16s ease-in-out infinite alternate}
+.drift .d2{right:10%;top:18%;animation:drift2 19s ease-in-out infinite alternate}
+.drift .d3{left:16%;bottom:4%;animation:drift1 22s ease-in-out infinite alternate-reverse}
+@keyframes drift1{from{transform:translateY(0) rotate(-8deg)}to{transform:translateY(26px) rotate(14deg)}}
+@keyframes drift2{from{transform:translateY(10px) rotate(10deg)}to{transform:translateY(-22px) rotate(-12deg)}}
+@media(max-width:560px){.drift{display:none}}
+/* ---- デモカードのチルト ---- */
+.cardwrap{transform:perspective(1100px) rotateY(var(--gtx,0deg)) rotateX(var(--gty,0deg));transition:transform .18s ease}
+@media(prefers-reduced-motion:reduce){.drift{display:none}.gp-caret{animation:none}.gc{transition:none}.cardwrap{transform:none}}
+</style></head><body>
+<header><div class="hwrap">
+<a class="brand" href="./"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21v-8"/><path d="M12 13c0-3.5-2.8-6-6.5-6C5.5 10.5 8.3 13 12 13z"/><path d="M12 11c0-3 2.4-5.2 5.7-5.2 0 3.3-2.4 5.4-5.7 5.4z"/></svg>Sproot</a>
+<nav>
+<a class="here" href="./"><span class="l-ja">ホーム</span></a>
+<a href="./releases.html"><span class="l-ja">リリースノート</span></a>
+<a href="./privacy.html"><span class="l-ja">プライバシー</span></a>
+<a href="./terms.html"><span class="l-ja">利用規約</span></a>
+</nav>
+<label class="lang" aria-label="Language">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+<select onchange="setLang(this.value)">
+<option value="ja">日本語</option>
+<option value="ko">한국어</option>
+<option value="en">English</option>
+</select>
+<svg class="chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+</label>
+</div></header>
+<main>
+<section class="hero">
+<div class="drift" aria-hidden="true">
+<svg class="d1" width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M12 13c0-3.5-2.8-6-6.5-6C5.5 10.5 8.3 13 12 13z"/></svg>
+<svg class="d2" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11c0-3 2.4-5.2 5.7-5.2 0 3.3-2.4 5.4-5.7 5.4z"/></svg>
+<svg class="d3" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 13c0-3.5-2.8-6-6.5-6C5.5 10.5 8.3 13 12 13z"/></svg>
+</div>
+<div class="sproutbox play" id="sproutbox" title="replay">
+<svg id="sprout" viewBox="0 0 24 24" aria-hidden="true">
+<path class="stem" d="M12 21v-8"/>
+<path class="leaf leafL" d="M12 13c0-3.5-2.8-6-6.5-6C5.5 10.5 8.3 13 12 13z"/>
+<path class="leaf leafR" d="M12 11c0-3 2.4-5.2 5.7-5.2 0 3.3-2.4 5.4-5.7 5.4z"/>
+</svg>
+</div>
+<h1><span class="l-ja">言葉が、根づく。</span></h1>
+<p class="sub"><span class="l-ja">作る手間はAIに。くり返すほど、言葉はあなたに根づく。<br>英単語も、資格の用語も、講義の専門用語も。<br>生成も学習データも、すべて端末の中で。</span></p>
+<div class="cta-row">
+<a class="cta l-ja" href="https://apps.apple.com/jp/app/id6787603715" target="_blank" rel="noopener"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 12.04c-.03-2.6 2.13-3.85 2.22-3.91-1.21-1.77-3.1-2.01-3.77-2.04-1.6-.16-3.13.94-3.94.94-.81 0-2.07-.92-3.4-.9-1.75.03-3.36 1.02-4.26 2.58-1.82 3.16-.47 7.84 1.3 10.41.87 1.26 1.9 2.67 3.26 2.62 1.31-.05 1.8-.85 3.39-.85 1.58 0 2.02.85 3.4.82 1.4-.02 2.29-1.28 3.15-2.55.99-1.46 1.4-2.87 1.42-2.94-.03-.01-2.72-1.04-2.75-4.13zM14.53 4.4c.72-.87 1.2-2.08 1.07-3.29-1.03.04-2.29.69-3.03 1.56-.66.77-1.24 2-1.09 3.18 1.15.09 2.32-.58 3.05-1.45z"/></svg>App Store でダウンロード</a>
+
+
+<a class="cta ghost" href="#demo"><span class="l-ja">さわってみる</span></a>
+</div>
+<p class="note"><span class="l-ja">iPhone で公開中</span></p>
+<div class="genplay" aria-hidden="true">
+<div class="genbar"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z"/></svg><span id="gp-text"></span><span class="gp-caret" id="gp-caret"></span></div>
+<div class="gencards" id="gp-cards"></div>
+</div>
+</section>
+
+<section class="demo rise" id="demo">
+<h2><span class="l-ja">3枚だけ、覚えてみる？</span></h2>
+<p class="secsub"><span class="l-ja">まずは英単語を2枚、それから心理学を1枚。<br>タップしてめくり、3段階で自己採点 — 英語も、それ以外のテーマも、覚え方は同じです。</span></p>
+<div class="stagestrip" id="stages" aria-hidden="true"></div>
+<div class="cardwrap">
+<div class="fcard" id="fcard" role="button" tabindex="0">
+<div class="face front"><div class="term" id="d-term"></div><div class="hint"><span class="l-ja">タップでめくる</span></div></div>
+<div class="face back"><div class="meaning" id="d-meaning"></div><div class="example" id="d-example"></div></div>
+</div>
+</div>
+<div class="grades" id="grades">
+<button data-g="0"><span class="l-ja">まだ</span><span class="gsub"><span class="l-ja">明日また</span></span></button>
+<button data-g="1"><span class="l-ja">あいまい</span><span class="gsub"><span class="l-ja">近いうちに</span></span></button>
+<button data-g="2" class="g2"><span class="l-ja">覚えた</span><span class="gsub"><span class="l-ja">しばらく先に</span></span></button>
+</div>
+<div class="result">
+<svg viewBox="0 0 48 48" aria-hidden="true"><path class="crown" d="M24 6.5c9.2 0 15.5 6.3 15.5 14 0 7.3-5.4 12.5-12.6 12.5h-5.8c-7.2 0-12.6-5.2-12.6-12.5 0-7.7 6.3-14 15.5-14z"/><path d="M8 42h32"/><path d="M24 42V33"/></svg>
+<h3><span class="l-ja">1周おわり！</span></h3>
+<p><span class="l-ja">アプリでは、カードが忘れかけた頃にまた会いに来ます。覚えるたびに、単語帳は種から木へ育ちます。</span></p>
+<button class="cta" onclick="resetDemo()"><span class="l-ja">もう一周</span></button>
+</div>
+</section>
+
+<section class="grid">
+<div class="card rise">
+<div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5l1.8 5.2L19 12l-5.2 1.8L12 19l-1.8-5.2L5 12l5.2-1.8z"/></svg></div>
+<h3><span class="l-ja">AIが単語帳を作る</span></h3>
+<p><span class="l-ja">英単語といった語学だけでなく、資格・講義の専門用語も。テーマの入力やノートの撮影から、意味・例文つきのカードを自動生成。</span></p>
+</div>
+<div class="card rise">
+<div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+<h3><span class="l-ja">忘れかけた頃に、もう一度</span></h3>
+<p><span class="l-ja">記憶科学にもとづく間隔反復で、忘れかけたカードだけを出題します。</span></p>
+</div>
+<div class="card rise">
+<div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M10.8 17.5h2.4"/></svg></div>
+<h3><span class="l-ja">プライベート ・ オフラインOK</span></h3>
+<p><span class="l-ja">生成も学習データも端末の中だけ。アカウント不要で、基本無料です。</span></p>
+</div>
+<div class="card rise">
+<div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4.5h14A2.5 2.5 0 0 1 21.5 7v7a2.5 2.5 0 0 1-2.5 2.5h-8L7 20v-3.5H5A2.5 2.5 0 0 1 2.5 14V7A2.5 2.5 0 0 1 5 4.5z"/><path d="M12 7.5l.9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9z"/></svg></div>
+<h3><span class="l-ja">作ったあとも、AIといっしょに</span></h3>
+<p><span class="l-ja">カードごとに例文を追加したり、「どういう場面で使う？」と自由に質問したり。わからないを、その場で解消。</span></p>
+</div>
+</section>
+
+<section class="shots rise">
+<h2><span class="l-ja">アプリの中を、少しだけ</span></h2>
+<p class="secsub"><span class="l-ja">育てる楽しさを、そのまま画面に。</span></p>
+<div class="shotrow">
+<figure class="shot l-ja"><img src="/shots/ja-01-home.png" alt="ホーム画面" loading="lazy"><figcaption>単語帳が、種から木へ</figcaption></figure>
+<figure class="shot l-ja"><img src="/shots/ja-02-study-flipped.png" alt="学習画面" loading="lazy"><figcaption>めくって、3段階で採点</figcaption></figure>
+<figure class="shot l-ja"><img src="/shots/ja-04-generate.png" alt="AI生成画面" loading="lazy"><figcaption>テーマを伝えるだけ</figcaption></figure>
+<figure class="shot l-ja"><img src="/shots/ja-06-card.png" alt="カード詳細画面" loading="lazy"><figcaption>例文を足したり、AIに質問したり</figcaption></figure>
+
+
+
+
+
+
+
+
+</div>
+</section>
+
+<section class="sec rise">
+<h2><span class="l-ja">ドキュメント</span></h2>
+<div class="docs">
+<a class="doc" href="./privacy.html">
+<span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/></svg></span>
+<span class="l-ja">プライバシーポリシー</span>
+<span class="arw">→</span></a>
+<a class="doc" href="./terms.html">
+<span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/><path d="M10 13h5M10 17h5"/></svg></span>
+<span class="l-ja">利用規約</span>
+<span class="arw">→</span></a>
+</div>
+</section>
+
+<section class="contact rise">
+<h2><span class="l-ja">お問い合わせ</span></h2>
+<p><span class="l-ja">ご質問・不具合のご報告は、メールでお気軽にお寄せください。</span></p>
+<a class="cta" href="mailto:sproot.app@gmail.com">sproot.app@gmail.com</a>
+</section>
+</main>
+<footer><div class="fwrap">
+<a href="./"><span class="l-ja">ホーム</span></a>
+<a href="./releases.html"><span class="l-ja">リリースノート</span></a>
+<a href="./privacy.html"><span class="l-ja">プライバシーポリシー</span></a>
+<a href="./terms.html"><span class="l-ja">利用規約</span></a>
+<span class="cp">© 2026 Sproot</span>
+</div></footer>
+<script>
+var TITLES={ja:'Sproot — 言葉が根づく、AI単語帳',ko:'Sproot — 말이 뿌리내리는 AI 단어장',en:'Sproot — where words take root'};
+function applyLang(l){document.documentElement.dataset.lang=l;document.documentElement.lang=l;
+try{localStorage.setItem('sproot-lang',l)}catch(e){}
+document.title=TITLES[l];
+var _ls=document.querySelector('.lang select');if(_ls)_ls.value=l;
+if(typeof loadCard==='function')loadCard();if(typeof gpReset==='function')gpReset()}
+function setLang(l,instant){if(instant){applyLang(l);return}
+var seg=location.pathname.split('/');seg[seg.length-2]=l;location.href=seg.join('/')}
+/* ---- hero replay ---- */
+var box=document.getElementById('sproutbox');
+box.addEventListener('click',function(){box.classList.remove('play');void box.offsetWidth;box.classList.add('play')});
+/* ---- flashcard demo ---- */
+var DEMO={
+ja:[{t:'ephemeral',m:'つかの間の、はかない。ごく短い時間しか続かないさま。',e:'The beauty of cherry blossoms is ephemeral. — 桜の美しさは、つかの間のものです。'},
+{t:'meticulous',m:'細部まで注意を払う、きちょうめんな。',e:'She keeps meticulous notes of every lecture. — 彼女はどの講義も、きちょうめんにノートを取る。'},
+{t:'プラシーボ効果',m:'効き目のない薬でも「効く」と信じることで、実際に症状が改善する現象。',e:'新薬の治験では、プラシーボ効果を除くために偽薬のグループを設ける。'}],
+ko:[{t:'ephemeral',m:'덧없는, 아주 짧은 동안의.',e:'The beauty of cherry blossoms is ephemeral. — 벚꽃의 아름다움은 아주 잠깐이다.'},
+{t:'meticulous',m:'꼼꼼한, 세심한.',e:'She keeps meticulous notes of every lecture. — 그녀는 모든 강의를 꼼꼼히 필기한다.'},
+{t:'플라시보 효과',m:'효과 없는 약도 "듣는다"고 믿으면 실제로 증상이 나아지는 현상.',e:'신약 임상시험에서는 플라시보 효과를 걸러내기 위해 가짜 약 그룹을 둔다.'}],
+en:[{t:'ephemeral',m:'Lasting for a very short time.',e:'The beauty of cherry blossoms is ephemeral.'},
+{t:'meticulous',m:'Showing great attention to detail; very careful.',e:'She keeps meticulous notes of every lecture.'},
+{t:'placebo effect',m:'Improvement that happens because you believe a treatment works, even if it has no active ingredient.',e:'Clinical trials include a placebo group to filter out the placebo effect.'}]};
+var STAGE=[
+['M10 40h28','M24 34c-4.4 0-7.5-3-7.5-7.2 0-4.8 3.4-8.8 7.5-8.8s7.5 4 7.5 8.8c0 4.2-3.1 7.2-7.5 7.2z'],
+['M10 40h28','M24 40V27','M24 29c0-6.5-5-10.5-11.5-10.5C12.5 25 17.5 29 24 29z','M24 25c0-5.5 4.2-9 10-9 0 5.6-4.2 9-10 9z'],
+['M10 42h28','M24 42V16','M24 30c0-5-3.8-8-8.8-8 0 5 3.8 8 8.8 8z','M24 24c0-5 3.8-8 8.8-8 0 5-3.8 8-8.8 8z','M24 16c0-4 3-6.5 7-6.5 0 4-3 6.5-7 6.5z'],
+['M8 42h32','M24 42V33','M24 6.5c9.2 0 15.5 6.3 15.5 14 0 7.3-5.4 12.5-12.6 12.5h-5.8c-7.2 0-12.6-5.2-12.6-12.5 0-7.7 6.3-14 15.5-14z']];
+var idx=0;
+var demoSec=document.getElementById('demo'),fcard=document.getElementById('fcard'),grades=document.getElementById('grades'),stages=document.getElementById('stages');
+function drawStages(){stages.innerHTML=STAGE.map(function(p,i){
+var cls=(i<=idx?'done':'')+(i===3?' tree':'');
+var paths=p.map(function(d,j){var crown=(i===3&&j===2&&idx>=3)?' class="crown"':'';return '<path'+crown+' d="'+d+'"/>'}).join('');
+return '<svg class="'+cls+'" viewBox="0 0 48 48">'+paths+'</svg>'}).join('')}
+function lang(){return document.documentElement.dataset.lang||'ja'}
+function loadCard(){var c=DEMO[lang()][Math.min(idx,2)];
+document.getElementById('d-term').textContent=c.t;
+document.getElementById('d-meaning').textContent=c.m;
+document.getElementById('d-example').textContent=c.e;
+drawStages()}
+function flip(){fcard.classList.toggle('flipped');grades.classList.toggle('ready',fcard.classList.contains('flipped'))}
+fcard.addEventListener('click',flip);
+fcard.addEventListener('keydown',function(e){if(e.key===' '||e.key==='Enter'){e.preventDefault();flip()}});
+grades.querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){
+if(!grades.classList.contains('ready'))return;
+idx++;fcard.classList.remove('flipped');grades.classList.remove('ready');
+if(idx>=3){drawStages();demoSec.classList.add('finished')}
+else{setTimeout(loadCard,260)}})});
+function resetDemo(){idx=0;demoSec.classList.remove('finished');fcard.classList.remove('flipped');grades.classList.remove('ready');loadCard()}
+/* ---- 生成マジックのミニデモ ---- */
+var GP={
+ja:[{q:'行動経済学',c:[['サンクコスト','もったいなくて、やめられない心理'],['ナッジ','そっと望ましい行動へ後押しする仕掛け'],['損失回避','得の喜びより、損の痛みが2倍効く']]},
+{q:'TOEFL英単語',c:[['ephemeral','つかの間の、はかない'],['meticulous','細部まできちょうめんな'],['resilient','立ち直りが早い、しなやか']]}],
+ko:[{q:'행동경제학',c:[['매몰 비용','아까워서 멈추지 못하는 심리'],['넛지','바람직한 행동을 살짝 미는 장치'],['손실 회피','이득보다 손실이 두 배 아프다']]},
+{q:'토플 영단어',c:[['ephemeral','덧없는, 아주 짧은'],['meticulous','꼼꼼하고 세심한'],['resilient','회복이 빠른, 유연한']]}],
+en:[{q:'Behavioral economics',c:[['Sunk cost','why quitting feels impossible'],['Nudge','a gentle push toward better choices'],['Loss aversion','losses hurt twice as much']]},
+{q:'Spanish for travel',c:[['gracias','thank you'],['¿dónde está…?','where is…?'],['la cuenta','the check, please']]}]};
+var gpText=document.getElementById('gp-text'),gpCards=document.getElementById('gp-cards'),gpTopicIdx=0,gpTimers=[];
+var gpReduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+function gpAfter(ms,fn){gpTimers.push(setTimeout(fn,ms))}
+function gpClear(){gpTimers.forEach(clearTimeout);gpTimers=[]}
+function gpRender(cards,instant){gpCards.innerHTML=cards.map(function(c){
+return '<div class="gc"><b>'+c[0]+'</b><span>'+c[1]+'</span></div>'}).join('');
+var els=gpCards.querySelectorAll('.gc');
+els.forEach(function(el,i){if(instant){el.classList.add('in')}else{gpAfter(160*i,function(){el.classList.add('in')})}})}
+function gpLoop(){var set=GP[lang()]||GP.en;var d=set[gpTopicIdx%set.length];
+if(document.hidden){gpAfter(1200,gpLoop);return}
+gpText.textContent='';gpCards.innerHTML='';
+var i=0;
+(function type(){if(i<d.q.length){gpText.textContent+=d.q[i++];gpAfter(85,type)}
+else{gpAfter(420,function(){gpRender(d.c,false);gpAfter(3600,function(){
+gpCards.querySelectorAll('.gc').forEach(function(el){el.classList.remove('in')});
+gpTopicIdx++;gpAfter(500,gpLoop)})})}})()}
+function gpReset(){gpClear();gpTopicIdx=0;
+var set=GP[lang()]||GP.en;
+gpText.textContent=set[0].q;gpRender(set[0].c,true);
+if(gpReduce)return;
+gpTopicIdx=1;gpAfter(4200,gpLoop)}
+gpReset();
+/* ---- デモカードのチルト（ポインタ環境のみ） ---- */
+var cwrap=document.querySelector('.cardwrap');
+if(cwrap&&!gpReduce&&window.matchMedia&&matchMedia('(pointer:fine)').matches){
+cwrap.addEventListener('pointermove',function(e){var r=cwrap.getBoundingClientRect();
+var x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+cwrap.style.setProperty('--gtx',(x*6)+'deg');cwrap.style.setProperty('--gty',(-y*6)+'deg')});
+cwrap.addEventListener('pointerleave',function(){cwrap.style.setProperty('--gtx','0deg');cwrap.style.setProperty('--gty','0deg')})}
+/* ---- scroll reveal ---- */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.rise').forEach(function(el){io.observe(el)});
+setLang(document.documentElement.dataset.lang,true);
+</script>
+</body></html>
