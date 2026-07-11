@@ -121,7 +121,11 @@ h1{font-size:clamp(2rem,4.6vw,3.1rem);line-height:1.34;margin:.1em 0;letter-spac
 /* ---- topic marquee ---- */
 .marq{margin:56px calc(50% - 50vw) 0;position:relative}
 .marq p{ text-align:center;color:var(--ink2);font-size:.95rem;font-weight:700;margin:0 20px 18px}
-.mviewport{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.mwrap{position:relative;max-width:1120px;margin:0 auto}
+.mwrap::before,.mwrap::after{content:"";position:absolute;top:0;bottom:0;width:110px;z-index:1;pointer-events:none;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+.mwrap::before{left:0;-webkit-mask-image:linear-gradient(90deg,#000,transparent);mask-image:linear-gradient(90deg,#000,transparent)}
+.mwrap::after{right:0;-webkit-mask-image:linear-gradient(270deg,#000,transparent);mask-image:linear-gradient(270deg,#000,transparent)}
+.mviewport{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 13%,#000 87%,transparent);mask-image:linear-gradient(90deg,transparent,#000 13%,#000 87%,transparent)}
 .mrow{display:flex;gap:10px;width:max-content;padding:4px 0;animation:marq var(--mdur,38s) linear infinite}
 .mrow.rev{animation-direction:reverse;margin-top:10px}
 .mrow span{flex:none;background:var(--surf);border:1px solid var(--line);border-radius:999px;padding:8px 18px;font-size:.87rem;font-weight:600;color:var(--ink2);box-shadow:var(--sh)}
@@ -230,6 +234,7 @@ footer{border-top:1px solid var(--line);margin-top:88px}
 .svis{order:0}
 }
 @media(max-width:560px){
+.mwrap::before,.mwrap::after{width:44px}
 .hwrap{flex-wrap:wrap;row-gap:2px;padding:10px 16px}
 nav{order:3;width:100%;margin-left:0;font-size:.84rem;gap:14px;overflow-x:auto;-webkit-overflow-scrolling:touch}
 .lang{margin-left:auto}
@@ -242,7 +247,7 @@ nav{order:3;width:100%;margin-left:0;font-size:.84rem;gap:14px;overflow-x:auto;-
 .play #sprout .stem,.play #sprout .leafL,.play #sprout .leafR{animation-duration:.01s}
 .fcard{transition:none}.drift{display:none}.gp-caret{animation:none}.gc{transition:none}
 .cardwrap{transform:none}.mrow{animation:none;flex-wrap:wrap;width:auto;justify-content:center}
-.mrow .dup{display:none}.mviewport{-webkit-mask-image:none;mask-image:none}
+.mrow .dup{display:none}.mviewport{-webkit-mask-image:none;mask-image:none}.mwrap::before,.mwrap::after{display:none}
 }
 </style></head><body>
 <header><div class="hwrap">
@@ -305,8 +310,10 @@ nav{order:3;width:100%;margin-left:0;font-size:.84rem;gap:14px;overflow-x:auto;-
 
 <div class="marq" aria-hidden="true">
 <p><span class="l-ja">英単語だけじゃない。覚えたいこと、ぜんぶカードに。</span></p>
-<div class="mviewport"><div class="mrow" style="--mdur:44s"><span class="l-ja">TOEIC 900 英単語</span><span class="l-ja">心理学のキーワード</span><span class="l-ja">ワインの品種</span><span class="l-ja">行動経済学</span><span class="l-ja">韓国語の日常会話</span><span class="l-ja">宇宙・天文の基礎</span><span class="l-ja">世界史の年号</span><span class="l-ja">コーヒーの産地</span><span class="l-ja dup">TOEIC 900 英単語</span><span class="l-ja dup">心理学のキーワード</span><span class="l-ja dup">ワインの品種</span><span class="l-ja dup">行動経済学</span><span class="l-ja dup">韓国語の日常会話</span><span class="l-ja dup">宇宙・天文の基礎</span><span class="l-ja dup">世界史の年号</span><span class="l-ja dup">コーヒーの産地</span></div></div>
-<div class="mviewport"><div class="mrow rev" style="--mdur:56s"><span class="l-ja">民法の判例</span><span class="l-ja">看護師国家試験</span><span class="l-ja">プログラミング用語</span><span class="l-ja">気象のことば</span><span class="l-ja">美術史の様式</span><span class="l-ja">簿記の勘定科目</span><span class="l-ja">カクテルの定番</span><span class="l-ja">解剖学の基礎</span><span class="l-ja dup">民法の判例</span><span class="l-ja dup">看護師国家試験</span><span class="l-ja dup">プログラミング用語</span><span class="l-ja dup">気象のことば</span><span class="l-ja dup">美術史の様式</span><span class="l-ja dup">簿記の勘定科目</span><span class="l-ja dup">カクテルの定番</span><span class="l-ja dup">解剖学の基礎</span></div></div>
+<div class="mwrap">
+<div class="mviewport"><div class="mrow" style="--mdur:84s"><span class="l-ja">TOEIC 900 英単語</span><span class="l-ja">心理学のキーワード</span><span class="l-ja">ワインの品種</span><span class="l-ja">行動経済学</span><span class="l-ja">韓国語の日常会話</span><span class="l-ja">宇宙・天文の基礎</span><span class="l-ja">世界の首都</span><span class="l-ja">コーヒーの産地</span><span class="l-ja dup">TOEIC 900 英単語</span><span class="l-ja dup">心理学のキーワード</span><span class="l-ja dup">ワインの品種</span><span class="l-ja dup">行動経済学</span><span class="l-ja dup">韓国語の日常会話</span><span class="l-ja dup">宇宙・天文の基礎</span><span class="l-ja dup">世界の首都</span><span class="l-ja dup">コーヒーの産地</span><span class="l-ja dup">TOEIC 900 英単語</span><span class="l-ja dup">心理学のキーワード</span><span class="l-ja dup">ワインの品種</span><span class="l-ja dup">行動経済学</span><span class="l-ja dup">韓国語の日常会話</span><span class="l-ja dup">宇宙・天文の基礎</span><span class="l-ja dup">世界の首都</span><span class="l-ja dup">コーヒーの産地</span><span class="l-ja dup">TOEIC 900 英単語</span><span class="l-ja dup">心理学のキーワード</span><span class="l-ja dup">ワインの品種</span><span class="l-ja dup">行動経済学</span><span class="l-ja dup">韓国語の日常会話</span><span class="l-ja dup">宇宙・天文の基礎</span><span class="l-ja dup">世界の首都</span><span class="l-ja dup">コーヒーの産地</span></div></div>
+<div class="mviewport"><div class="mrow rev" style="--mdur:108s"><span class="l-ja">英語の句動詞</span><span class="l-ja">栄養素のはたらき</span><span class="l-ja">プログラミング用語</span><span class="l-ja">気象のことば</span><span class="l-ja">美術史の様式</span><span class="l-ja">マーケティング用語</span><span class="l-ja">カクテルの定番</span><span class="l-ja">解剖学の基礎</span><span class="l-ja dup">英語の句動詞</span><span class="l-ja dup">栄養素のはたらき</span><span class="l-ja dup">プログラミング用語</span><span class="l-ja dup">気象のことば</span><span class="l-ja dup">美術史の様式</span><span class="l-ja dup">マーケティング用語</span><span class="l-ja dup">カクテルの定番</span><span class="l-ja dup">解剖学の基礎</span><span class="l-ja dup">英語の句動詞</span><span class="l-ja dup">栄養素のはたらき</span><span class="l-ja dup">プログラミング用語</span><span class="l-ja dup">気象のことば</span><span class="l-ja dup">美術史の様式</span><span class="l-ja dup">マーケティング用語</span><span class="l-ja dup">カクテルの定番</span><span class="l-ja dup">解剖学の基礎</span><span class="l-ja dup">英語の句動詞</span><span class="l-ja dup">栄養素のはたらき</span><span class="l-ja dup">プログラミング用語</span><span class="l-ja dup">気象のことば</span><span class="l-ja dup">美術史の様式</span><span class="l-ja dup">マーケティング用語</span><span class="l-ja dup">カクテルの定番</span><span class="l-ja dup">解剖学の基礎</span></div></div>
+</div>
 </div>
 
 <section class="steps">
