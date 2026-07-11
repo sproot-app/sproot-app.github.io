@@ -39,7 +39,7 @@
 --sh:0 2px 14px rgba(32,41,31,.07);--ease:cubic-bezier(.2,.8,.25,1)}
 *{box-sizing:border-box}
 html{overscroll-behavior-y:none;scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);line-height:1.9;font-size:16px;overscroll-behavior-y:none;
+body{margin:0;background:var(--bg);color:var(--ink);line-height:1.9;font-size:16px;overscroll-behavior-y:none;overflow-x:clip;
 font-family:Outfit,-apple-system,BlinkMacSystemFont,sans-serif}
 [data-lang=ja] body{font-family:Outfit,'Zen Maru Gothic','Hiragino Sans',sans-serif}
 [data-lang=ko] body{font-family:Outfit,'Noto Sans KR','Apple SD Gothic Neo',sans-serif}
@@ -112,7 +112,7 @@ h1{font-size:clamp(2rem,4.6vw,3.1rem);line-height:1.34;margin:.1em 0;letter-spac
 @keyframes drift1{from{transform:translateY(0) rotate(-8deg)}to{transform:translateY(26px) rotate(14deg)}}
 @keyframes drift2{from{transform:translateY(10px) rotate(10deg)}to{transform:translateY(-22px) rotate(-12deg)}}
 /* ---- topic marquee ---- */
-.marq{margin:56px -20px 0;position:relative}
+.marq{margin:56px calc(50% - 50vw) 0;position:relative}
 .marq p{ text-align:center;color:var(--ink2);font-size:.95rem;font-weight:700;margin:0 20px 18px}
 .mviewport{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .mrow{display:flex;gap:10px;width:max-content;padding:4px 0;animation:marq var(--mdur,38s) linear infinite}
@@ -136,9 +136,10 @@ h1{font-size:clamp(2rem,4.6vw,3.1rem);line-height:1.34;margin:.1em 0;letter-spac
 .genbar{display:flex;align-items:center;gap:10px;background:var(--surf);border:1px solid var(--line);border-radius:999px;padding:12px 18px;box-shadow:var(--sh);font-size:.92rem;color:var(--ink);min-height:47px;text-align:left}
 .genbar svg{flex:none;color:var(--grn)}
 .gp-caret{flex:none;width:2px;height:1.05em;background:var(--grn);border-radius:2px;animation:gpblink 1.05s steps(1) infinite}
+#gp-text:empty::before{content:"\200B"}
 @keyframes gpblink{50%{opacity:0}}
 .gencards{display:flex;gap:10px;margin-top:12px;align-items:stretch;height:104px}
-.gc{flex:1;min-width:0;background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:12px 13px 11px;box-shadow:var(--sh);text-align:left;opacity:0;transform:translateY(16px) scale(.92);overflow:hidden}
+.gc{flex:1;min-width:0;background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:12px 13px 11px;box-shadow:var(--sh);text-align:left;opacity:0;transform:translateY(16px) scale(.92);overflow:hidden;transition:opacity .26s ease,transform .3s ease}
 .gc.in{opacity:1;transform:none;transition:opacity .4s ease,transform .55s cubic-bezier(.2,.8,.3,1.15)}
 .gc b{display:block;font-size:.84rem;color:var(--grn-deep);margin-bottom:3px;font-family:Outfit,inherit;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .gc span{display:block;font-size:.72rem;color:var(--ink2);line-height:1.55}
@@ -233,6 +234,7 @@ nav{order:3;width:100%;margin-left:0;font-size:.84rem;gap:14px;overflow-x:auto;-
 .play #sprout .stem,.play #sprout .leafL,.play #sprout .leafR{animation-duration:.01s}
 .fcard{transition:none}.drift{display:none}.gp-caret{animation:none}.gc{transition:none}
 .cardwrap{transform:none}.mrow{animation:none;flex-wrap:wrap;width:auto;justify-content:center}
+.mrow .dup{display:none}.mviewport{-webkit-mask-image:none;mask-image:none}
 }
 </style></head><body>
 <header><div class="hwrap">
@@ -295,8 +297,8 @@ nav{order:3;width:100%;margin-left:0;font-size:.84rem;gap:14px;overflow-x:auto;-
 
 <div class="marq" aria-hidden="true">
 <p><span class="l-en">Not just vocabulary — anything you want to learn.</span></p>
-<div class="mviewport"><div class="mrow" style="--mdur:44s"><span class="l-en">TOEIC 900 vocabulary</span><span class="l-en">Psychology keywords</span><span class="l-en">Wine varieties</span><span class="l-en">Behavioral economics</span><span class="l-en">Korean phrases</span><span class="l-en">Astronomy basics</span><span class="l-en">World history dates</span><span class="l-en">Coffee origins</span><span class="l-en">TOEIC 900 vocabulary</span><span class="l-en">Psychology keywords</span><span class="l-en">Wine varieties</span><span class="l-en">Behavioral economics</span><span class="l-en">Korean phrases</span><span class="l-en">Astronomy basics</span><span class="l-en">World history dates</span><span class="l-en">Coffee origins</span></div></div>
-<div class="mviewport"><div class="mrow rev" style="--mdur:56s"><span class="l-en">Case law essentials</span><span class="l-en">Nursing exam terms</span><span class="l-en">Programming terms</span><span class="l-en">Weather words</span><span class="l-en">Art history styles</span><span class="l-en">Accounting accounts</span><span class="l-en">Classic cocktails</span><span class="l-en">Anatomy basics</span><span class="l-en">Case law essentials</span><span class="l-en">Nursing exam terms</span><span class="l-en">Programming terms</span><span class="l-en">Weather words</span><span class="l-en">Art history styles</span><span class="l-en">Accounting accounts</span><span class="l-en">Classic cocktails</span><span class="l-en">Anatomy basics</span></div></div>
+<div class="mviewport"><div class="mrow" style="--mdur:44s"><span class="l-en">TOEIC 900 vocabulary</span><span class="l-en">Psychology keywords</span><span class="l-en">Wine varieties</span><span class="l-en">Behavioral economics</span><span class="l-en">Korean phrases</span><span class="l-en">Astronomy basics</span><span class="l-en">World history dates</span><span class="l-en">Coffee origins</span><span class="l-en dup">TOEIC 900 vocabulary</span><span class="l-en dup">Psychology keywords</span><span class="l-en dup">Wine varieties</span><span class="l-en dup">Behavioral economics</span><span class="l-en dup">Korean phrases</span><span class="l-en dup">Astronomy basics</span><span class="l-en dup">World history dates</span><span class="l-en dup">Coffee origins</span></div></div>
+<div class="mviewport"><div class="mrow rev" style="--mdur:56s"><span class="l-en">Case law essentials</span><span class="l-en">Nursing exam terms</span><span class="l-en">Programming terms</span><span class="l-en">Weather words</span><span class="l-en">Art history styles</span><span class="l-en">Accounting accounts</span><span class="l-en">Classic cocktails</span><span class="l-en">Anatomy basics</span><span class="l-en dup">Case law essentials</span><span class="l-en dup">Nursing exam terms</span><span class="l-en dup">Programming terms</span><span class="l-en dup">Weather words</span><span class="l-en dup">Art history styles</span><span class="l-en dup">Accounting accounts</span><span class="l-en dup">Classic cocktails</span><span class="l-en dup">Anatomy basics</span></div></div>
 </div>
 
 <section class="steps">
@@ -489,12 +491,13 @@ var els=gpCards.querySelectorAll('.gc');
 els.forEach(function(el,i){if(instant){el.classList.add('in')}else{gpAfter(160*i,function(){el.classList.add('in')})}})}
 function gpLoop(){var set=GP[lang()]||GP.en;var d=set[gpTopicIdx%set.length];
 if(document.hidden){gpAfter(1200,gpLoop);return}
-gpText.textContent='';gpCards.innerHTML='';
+gpText.textContent='';
 var i=0;
 (function type(){if(i<d.q.length){gpText.textContent+=d.q[i++];gpAfter(85,type)}
-else{gpAfter(420,function(){gpRender(d.c,false);gpAfter(3600,function(){
+else{gpAfter(360,function(){
 gpCards.querySelectorAll('.gc').forEach(function(el){el.classList.remove('in')});
-gpTopicIdx++;gpAfter(500,gpLoop)})})}})()}
+gpAfter(280,function(){gpRender(d.c,false)});
+gpAfter(4400,function(){gpTopicIdx++;gpLoop()})})}})()}
 function gpReset(){gpClear();gpTopicIdx=0;
 var set=GP[lang()]||GP.en;
 gpText.textContent=set[0].q;gpRender(set[0].c,true);
