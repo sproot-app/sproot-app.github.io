@@ -30,9 +30,14 @@
 <link rel="alternate" hreflang="en" href="https://sproot-app.github.io/en/">
 <title>Sproot — where words take root</title>
 <script>document.documentElement.dataset.lang='en'</script>
+<link rel="preload" href="/fonts/LINESeedJP_OTF_Bd.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Zen+Maru+Gothic:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
+@font-face{font-family:'LINE Seed KR';src:url('/fonts/LINESeedKR-Rg.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'LINE Seed KR';src:url('/fonts/LINESeedKR-Bd.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'LINE Seed JP';src:url('/fonts/LINESeedJP_OTF_Rg.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'LINE Seed JP';src:url('/fonts/LINESeedJP_OTF_Bd.woff2') format('woff2');font-weight:700;font-display:swap}
 @view-transition{navigation:auto}
 :root{--bg:#F6F5EF;--surf:#FFFFFF;--surf2:#ECEFE3;--ink:#20291F;--ink2:#5A6A5B;--ink3:#96A394;
 --grn:#3E7C4F;--grn-tint:#E4F0E1;--grn-soft:#C9E2C6;--grn-deep:#2A5638;--line:#E2E5D6;--warm:#C4862E;
@@ -41,8 +46,8 @@
 html{overscroll-behavior-y:none;scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);line-height:1.9;font-size:16px;overscroll-behavior-y:none;overflow-x:clip;
 font-family:Outfit,-apple-system,BlinkMacSystemFont,sans-serif}
-[data-lang=ja] body{font-family:Outfit,'Zen Maru Gothic','Hiragino Sans',sans-serif}
-[data-lang=ko] body{font-family:Outfit,'Noto Sans KR','Apple SD Gothic Neo',sans-serif}
+[data-lang=ja] body{font-family:Outfit,'LINE Seed JP','Hiragino Sans',sans-serif}
+[data-lang=ko] body{font-family:Outfit,'LINE Seed KR','Apple SD Gothic Neo',sans-serif}
 [data-lang=ja] :is(.l-ko,.l-en){display:none!important}
 [data-lang=ko] :is(.l-ja,.l-en){display:none!important}
 [data-lang=en] :is(.l-ja,.l-ko){display:none!important}
@@ -102,8 +107,8 @@ h1{font-size:clamp(2rem,4.6vw,3.1rem);line-height:1.34;margin:.1em 0;letter-spac
 .cta{display:inline-flex;gap:9px;align-items:center;background:var(--grn);color:#fff;padding:13px 28px;border-radius:999px;text-decoration:none;font-weight:600;box-shadow:var(--sh);transition:.18s;border:0;font-size:1rem;cursor:pointer;font-family:inherit}
 .cta:hover{background:var(--grn-deep);transform:translateY(-1px)}
 .cta-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-.cta.ghost{background:transparent;color:var(--grn);border:1.5px solid var(--grn-soft);box-shadow:none}
-.cta.ghost:hover{background:var(--grn-tint);border-color:var(--grn);transform:translateY(-1px)}
+.cta.ghost{background:var(--grn-tint);color:var(--grn-deep);box-shadow:none}
+.cta.ghost:hover{background:var(--grn-soft);transform:translateY(-1px)}
 .note{color:var(--ink3);font-size:.82rem;margin-top:14px}
 .avail{display:flex;align-items:center;gap:7px;color:var(--ink2);font-weight:600;margin-top:16px}
 .avail svg{flex:none;color:var(--grn)}
