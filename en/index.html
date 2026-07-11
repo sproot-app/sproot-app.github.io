@@ -35,12 +35,11 @@
 <style>
 @view-transition{navigation:auto}
 :root{--bg:#F6F5EF;--surf:#FFFFFF;--surf2:#ECEFE3;--ink:#20291F;--ink2:#5A6A5B;--ink3:#96A394;
---grn:#3E7C4F;--grn-tint:#E4F0E1;--grn-soft:#C9E2C6;--grn-deep:#2A5638;--line:#E2E5D6;
+--grn:#3E7C4F;--grn-tint:#E4F0E1;--grn-soft:#C9E2C6;--grn-deep:#2A5638;--line:#E2E5D6;--warm:#C4862E;
 --sh:0 2px 14px rgba(32,41,31,.07);--ease:cubic-bezier(.2,.8,.25,1)}
 *{box-sizing:border-box}
 html{overscroll-behavior-y:none;scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);line-height:1.9;font-size:16px;
-overscroll-behavior-y:none;
+body{margin:0;background:var(--bg);color:var(--ink);line-height:1.9;font-size:16px;overscroll-behavior-y:none;
 font-family:Outfit,-apple-system,BlinkMacSystemFont,sans-serif}
 [data-lang=ja] body{font-family:Outfit,'Zen Maru Gothic','Hiragino Sans',sans-serif}
 [data-lang=ko] body{font-family:Outfit,'Noto Sans KR','Apple SD Gothic Neo',sans-serif}
@@ -48,8 +47,15 @@ font-family:Outfit,-apple-system,BlinkMacSystemFont,sans-serif}
 [data-lang=ko] :is(.l-ja,.l-en){display:none!important}
 [data-lang=en] :is(.l-ja,.l-ko){display:none!important}
 a{color:var(--grn)}
+h1,h2,h3{text-wrap:balance}
+.sub,.secsub,.note,.step p,.card p,.closing p{text-wrap:pretty}
+[data-lang=ko] :is(h1,h2,h3,.sub,.secsub,.note,.step p,.closing p){word-break:keep-all}
+[data-lang=ja] :is(.sub,.secsub,.step p,.closing p){word-break:auto-phrase}
+main,footer{transition:opacity .2s ease}
+html.switching main,html.switching footer{opacity:0}
+/* ---- header ---- */
 header{position:sticky;top:0;background:rgba(246,245,239,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);z-index:10}
-.hwrap{max-width:920px;margin:0 auto;padding:13px 20px;display:flex;align-items:center;gap:16px}
+.hwrap{max-width:1040px;margin:0 auto;padding:13px 20px;display:flex;align-items:center;gap:16px}
 .brand{display:flex;align-items:center;gap:8px;font-family:Outfit,sans-serif;font-weight:700;font-size:1.12rem;color:var(--grn);text-decoration:none;letter-spacing:.01em}
 nav{display:flex;gap:16px;font-size:.88rem;margin-left:auto}
 nav a{color:var(--ink2);text-decoration:none}
@@ -59,11 +65,15 @@ nav a.here{color:var(--grn);font-weight:700}
 .lang:hover{color:var(--grn)}
 .lang select{appearance:none;-webkit-appearance:none;border:0;background:transparent;font:inherit;font-size:16px;font-weight:600;color:inherit;cursor:pointer;outline:none;padding:0}
 .lang .chev{flex:none}
-main{max-width:920px;margin:0 auto;padding:24px 20px 72px}
-/* ---- hero + logo animation ---- */
-.hero{text-align:center;padding:64px 0 8px}
-.sproutbox{width:112px;height:112px;border-radius:28px;background:var(--surf);border:1px solid var(--line);box-shadow:var(--sh);display:inline-flex;align-items:center;justify-content:center;margin-bottom:26px;cursor:pointer}
-#sprout{width:64px;height:64px;overflow:visible}
+main{max-width:1040px;margin:0 auto;padding:0 20px 72px}
+/* ---- scroll reveal ---- */
+.rise{opacity:0;transform:translateY(18px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.rise.in{opacity:1;transform:none}
+/* ---- hero ---- */
+.hero{position:relative;display:grid;grid-template-columns:1.08fr .92fr;gap:44px;align-items:center;padding:72px 0 36px}
+.heroL{position:relative;z-index:1}
+.sproutbox{width:76px;height:76px;border-radius:20px;background:var(--surf);border:1px solid var(--line);box-shadow:var(--sh);display:inline-flex;align-items:center;justify-content:center;margin-bottom:22px;cursor:pointer}
+#sprout{width:44px;height:44px;overflow:visible}
 #sprout path{fill:none;stroke:var(--grn);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 #sprout .stem{stroke-dasharray:8.2;stroke-dashoffset:8.2}
 #sprout .leaf{opacity:0;transform-box:fill-box}
@@ -77,34 +87,89 @@ main{max-width:920px;margin:0 auto;padding:24px 20px 72px}
 @keyframes leafL{0%{opacity:0;transform:rotate(38deg) scale(.15)}60%{opacity:1;transform:rotate(-6deg) scale(1.1)}100%{opacity:1;transform:rotate(0) scale(1)}}
 @keyframes leafR{0%{opacity:0;transform:rotate(-38deg) scale(.15)}60%{opacity:1;transform:rotate(6deg) scale(1.1)}100%{opacity:1;transform:rotate(0) scale(1)}}
 @keyframes wiggle{0%{transform:rotate(0)}30%{transform:rotate(-4deg)}60%{transform:rotate(3deg)}100%{transform:rotate(0)}}
-h1{font-size:clamp(1.7rem,4.8vw,2.5rem);line-height:1.42;margin:.15em 0;letter-spacing:.01em}
-.sub{color:var(--ink2);max-width:600px;margin:14px auto 30px}
+h1{font-size:clamp(2rem,4.6vw,3.1rem);line-height:1.34;margin:.1em 0;letter-spacing:.01em}
+.sub{color:var(--ink2);max-width:520px;margin:16px 0 8px;font-size:1.02rem}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 26px}
+.chips span{background:var(--surf);border:1px solid var(--line);border-radius:999px;padding:5px 13px;font-size:.8rem;font-weight:600;color:var(--ink2)}
 .cta{display:inline-flex;gap:9px;align-items:center;background:var(--grn);color:#fff;padding:13px 28px;border-radius:999px;text-decoration:none;font-weight:600;box-shadow:var(--sh);transition:.18s;border:0;font-size:1rem;cursor:pointer;font-family:inherit}
 .cta:hover{background:var(--grn-deep);transform:translateY(-1px)}
-.cta-row{display:flex;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:4px}
-.cta.ghost{background:transparent;color:var(--grn);border:1.5px solid var(--grn-soft);box-shadow:none;font-weight:600}
+.cta-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.cta.ghost{background:transparent;color:var(--grn);border:1.5px solid var(--grn-soft);box-shadow:none}
 .cta.ghost:hover{background:var(--grn-tint);border-color:var(--grn);transform:translateY(-1px)}
+.cta.inv{background:#fff;color:var(--grn-deep)}
+.cta.inv:hover{background:var(--grn-tint);transform:translateY(-1px)}
 .note{color:var(--ink3);font-size:.82rem;margin-top:14px}
-/* 折返しの粗さを抑える: 見出しは均等割り、本文は末尾整形。ko は語単位、ja は文節単位で改行 */
-h1,h2{text-wrap:balance}
-.sub,.secsub,.shot figcaption,.note{text-wrap:pretty}
-[data-lang=ko] :is(h1,h2,.sub,.secsub,.shot figcaption,.note){word-break:keep-all}
-[data-lang=ja] :is(.sub,.secsub,.shot figcaption){word-break:auto-phrase}
-main,footer{transition:opacity .2s ease}
-html.switching main,html.switching footer{opacity:0}
-/* ---- scroll reveal ---- */
-.rise{opacity:0;transform:translateY(16px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
-.rise.in{opacity:1;transform:none}
-/* ---- demo ---- */
-.demo{margin-top:88px;text-align:center}
-.demo h2,.sec h2{font-size:1.45rem;margin:0 0 6px}
+.heroR{position:relative;display:flex;justify-content:center}
+.heroR::before{content:"";position:absolute;inset:-8% -4%;background:radial-gradient(closest-side,var(--grn-tint),transparent 72%);z-index:0}
+.phone{position:relative;z-index:1;width:min(292px,72vw);border-radius:44px;border:9px solid #1D231C;background:#1D231C;overflow:hidden;box-shadow:0 30px 70px rgba(32,41,31,.22)}
+.phone img{display:block;width:100%;height:auto}
+.heroR .phone{transform:rotate(2.5deg)}
+.drift{position:absolute;inset:0;pointer-events:none}
+.drift svg{position:absolute;color:var(--grn-soft);opacity:.55}
+.drift .d1{left:2%;top:16%;animation:drift1 16s ease-in-out infinite alternate}
+.drift .d2{right:4%;top:6%;animation:drift2 19s ease-in-out infinite alternate}
+.drift .d3{left:40%;bottom:2%;animation:drift1 22s ease-in-out infinite alternate-reverse}
+@keyframes drift1{from{transform:translateY(0) rotate(-8deg)}to{transform:translateY(26px) rotate(14deg)}}
+@keyframes drift2{from{transform:translateY(10px) rotate(10deg)}to{transform:translateY(-22px) rotate(-12deg)}}
+/* ---- topic marquee ---- */
+.marq{margin:56px -20px 0;position:relative}
+.marq p{ text-align:center;color:var(--ink2);font-size:.95rem;font-weight:700;margin:0 20px 18px}
+.mviewport{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.mrow{display:flex;gap:10px;width:max-content;padding:4px 0;animation:marq var(--mdur,38s) linear infinite}
+.mrow.rev{animation-direction:reverse;margin-top:10px}
+.mrow span{flex:none;background:var(--surf);border:1px solid var(--line);border-radius:999px;padding:8px 18px;font-size:.87rem;font-weight:600;color:var(--ink2);box-shadow:var(--sh)}
+.mrow span b{color:var(--grn);font-weight:700}
+@keyframes marq{to{transform:translateX(-50%)}}
+/* ---- steps ---- */
+.steps{margin-top:118px}
+.kicker{text-align:center}
+.kicker .eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.16em;color:var(--grn);margin-bottom:8px}
+.kicker h2{font-size:clamp(1.55rem,3.4vw,2.2rem);margin:0}
+.step{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:76px}
+.step .num{font-family:Outfit,sans-serif;font-weight:700;color:var(--grn);letter-spacing:.14em;font-size:.82rem}
+.step h3{font-size:clamp(1.3rem,2.5vw,1.62rem);margin:8px 0 10px;line-height:1.55}
+.step p{color:var(--ink2);margin:0;font-size:.97rem}
+.step.alt .svis{order:-1}
+.svis{display:flex;justify-content:center}
+/* ---- 打鍵生成デモ（step 01 のビジュアル） ---- */
+.genplay{width:100%;max-width:470px}
+.genbar{display:flex;align-items:center;gap:10px;background:var(--surf);border:1px solid var(--line);border-radius:999px;padding:12px 18px;box-shadow:var(--sh);font-size:.92rem;color:var(--ink);min-height:47px;text-align:left}
+.genbar svg{flex:none;color:var(--grn)}
+.gp-caret{flex:none;width:2px;height:1.05em;background:var(--grn);border-radius:2px;animation:gpblink 1.05s steps(1) infinite}
+@keyframes gpblink{50%{opacity:0}}
+.gencards{display:flex;gap:10px;margin-top:12px;align-items:stretch;height:104px}
+.gc{flex:1;min-width:0;background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:12px 13px 11px;box-shadow:var(--sh);text-align:left;opacity:0;transform:translateY(16px) scale(.92);overflow:hidden}
+.gc.in{opacity:1;transform:none;transition:opacity .4s ease,transform .55s cubic-bezier(.2,.8,.3,1.15)}
+.gc b{display:block;font-size:.84rem;color:var(--grn-deep);margin-bottom:3px;font-family:Outfit,inherit;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gc span{display:block;font-size:.72rem;color:var(--ink2);line-height:1.55}
+/* ---- あゆみ統計（step 03 のビジュアル） ---- */
+.abadge{display:inline-block;font-size:.78rem;font-weight:700;color:var(--grn);background:var(--grn-tint);border:1.5px solid var(--grn-soft);border-radius:999px;padding:3px 12px;margin-bottom:10px}
+.astat{width:100%;max-width:470px;background:#fff;border-radius:24px;box-shadow:0 18px 44px rgba(32,41,31,.10);padding:22px 22px 18px}
+.ahead{display:flex;justify-content:space-between;align-items:baseline;font-weight:700;font-size:.95rem}
+.ahead .aval{font-size:.8rem;font-weight:600;color:var(--ink2)}
+.abars{display:flex;align-items:flex-end;gap:5px;height:112px;margin-top:16px}
+.ab{flex:1;background:var(--grn);border-radius:3.5px;transform-origin:bottom;transform:scaleY(.02);transition:transform .7s var(--ease);cursor:pointer}
+.ab.rest{background:var(--line)}
+.ayumi.in .ab{transform:scaleY(1)}
+.ab:hover{filter:brightness(1.18)}
+.axl{display:flex;justify-content:space-between;font-size:.72rem;color:var(--ink2);margin-top:7px}
+.aboxes{display:flex;gap:9px;margin-top:16px}
+.abox{flex:1;background:var(--surf2);border-radius:14px;padding:12px 6px;text-align:center}
+.abox b{display:block;font-size:1.25rem;letter-spacing:-.02em}
+.abox b i{font-style:normal;font-size:.72rem;font-weight:700}
+.abox span{font-size:.7rem;font-weight:700;color:var(--ink2)}
+.abox.warm b{color:var(--warm)}
+.abox.grn b{color:var(--grn)}
+/* ---- 体験デモ ---- */
+.demo{margin-top:118px;text-align:center}
+.demo h2{font-size:clamp(1.45rem,3vw,1.9rem);margin:0 0 6px}
 .secsub{color:var(--ink2);font-size:.94rem;margin:0 0 26px}
 .stagestrip{display:flex;justify-content:center;gap:18px;margin:0 0 22px}
 .stagestrip svg{width:40px;height:40px;overflow:visible}
 .stagestrip svg path{fill:none;stroke:var(--ink3);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;transition:stroke .4s}
 .stagestrip .done path{stroke:var(--grn)}
 .stagestrip .done.tree .crown{fill:var(--grn-soft);transition:fill .5s}
-.cardwrap{perspective:1100px;max-width:400px;margin:0 auto}
+.cardwrap{perspective:1100px;max-width:400px;margin:0 auto;transform:perspective(1100px) rotateY(var(--gtx,0deg)) rotateX(var(--gty,0deg));transition:transform .18s ease}
 .fcard{position:relative;width:100%;height:240px;transform-style:preserve-3d;transition:transform .5s var(--ease);cursor:pointer}
 .fcard.flipped{transform:rotateY(180deg)}
 .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--surf);border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:26px;gap:8px}
@@ -128,91 +193,47 @@ html.switching main,html.switching footer{opacity:0}
 .result svg path{fill:none;stroke:var(--grn);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
 .result svg .crown{fill:var(--grn-soft)}
 .result p{color:var(--ink2);font-size:.93rem;margin:6px 0 18px}
-/* ---- features ---- */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:16px;margin:88px 0 0}
+/* ---- 機能 ---- */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:16px;margin:118px 0 0}
 .card{background:var(--surf);border:1px solid var(--line);border-radius:20px;padding:26px 24px;box-shadow:var(--sh);transition:transform .18s}
 .card:hover{transform:translateY(-2px)}
 .ic{width:44px;height:44px;border-radius:13px;background:var(--grn-tint);color:var(--grn);display:flex;align-items:center;justify-content:center;margin-bottom:15px}
 .card h3{margin:0 0 7px;font-size:1.02rem}
 .card p{margin:0;color:var(--ink2);font-size:.92rem;line-height:1.8}
-/* ---- screenshots ---- */
-.shots{margin-top:88px;text-align:center}
-.shotrow{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-top:8px}
-.shot{width:min(200px,72vw)}
-.shot img{display:block;width:100%;height:auto;border-radius:26px;box-shadow:0 8px 30px rgba(32,41,31,.14);border:1px solid var(--line)}
-.shot figcaption{font-size:.85rem;color:var(--ink2);margin-top:10px}
-.shot{margin:0}
-@media(max-width:920px){
-.shotrow{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;overflow-y:hidden;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;margin:8px -20px 0;padding:4px calc((100vw - min(250px,68vw))/2) 16px;scrollbar-width:none}
-.shotrow::-webkit-scrollbar{display:none}
-.shot{flex:none;width:min(250px,68vw);scroll-snap-align:center}
-}
-/* ---- docs & contact ---- */
-.sec{margin:88px 0 0}
-.docs{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
-.doc{display:flex;align-items:center;gap:13px;background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:19px 21px;text-decoration:none;color:var(--ink);font-weight:600;font-size:.95rem;box-shadow:var(--sh);transition:transform .18s}
-.doc:hover{transform:translateY(-2px)}
-.doc .ic{width:38px;height:38px;border-radius:11px;margin:0;flex:none}
-.doc .arw{margin-left:auto;color:var(--ink3)}
-.contact{margin-top:88px;background:var(--surf);border:1px solid var(--line);border-radius:24px;padding:40px 32px;text-align:center;box-shadow:var(--sh)}
-.contact h2{margin:0 0 8px;font-size:1.28rem}
-.contact p{margin:0 auto 22px;color:var(--ink2);max-width:480px;font-size:.94rem}
-footer{border-top:1px solid var(--line);margin-top:24px}
-.fwrap{max-width:920px;margin:0 auto;padding:26px 20px;display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;color:var(--ink3);font-size:.84rem}
+/* ---- 締めCTA ---- */
+.closing{margin-top:118px;background:linear-gradient(150deg,#79C07F,var(--grn));border-radius:32px;padding:64px 28px;text-align:center;color:#fff;box-shadow:0 24px 56px rgba(46,94,58,.28)}
+.closing h2{font-size:clamp(1.6rem,3.6vw,2.3rem);margin:0 0 10px;color:#fff}
+.closing p{margin:0 auto 26px;max-width:520px;color:rgba(255,255,255,.88);font-size:.97rem}
+.closing .note{color:rgba(255,255,255,.75)}
+/* ---- footer ---- */
+footer{border-top:1px solid var(--line);margin-top:88px}
+.fwrap{max-width:1040px;margin:0 auto;padding:26px 20px;display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;color:var(--ink3);font-size:.84rem}
 .fwrap a{color:var(--ink2);text-decoration:none}
 .fwrap a:hover{color:var(--grn)}
 .fwrap .cp{margin-left:auto}
-@media(max-width:560px){.hwrap{flex-wrap:wrap;row-gap:2px;padding:10px 16px}nav{order:3;width:100%;margin-left:0;font-size:.84rem;gap:14px;overflow-x:auto;-webkit-overflow-scrolling:touch}.lang{margin-left:auto}.grades button{width:31%}}
-@media(prefers-reduced-motion:reduce){.rise{transition:none;opacity:1;transform:none}.play #sprout .stem{animation-duration:.01s}.play #sprout .leafL,.play #sprout .leafR{animation-duration:.01s}.fcard{transition:none}}
-/* ---- 生成マジックのミニデモ（ヒーロー） ---- */
-.genplay{max-width:520px;margin:38px auto 0}
-.genbar{display:flex;align-items:center;gap:10px;background:var(--surf);border:1px solid var(--line);border-radius:999px;padding:12px 18px;box-shadow:var(--sh);font-size:.92rem;color:var(--ink);min-height:47px;text-align:left}
-.genbar svg{flex:none;color:var(--grn)}
-.gp-caret{flex:none;width:2px;height:1.05em;background:var(--grn);border-radius:2px;animation:gpblink 1.05s steps(1) infinite}
-@keyframes gpblink{50%{opacity:0}}
-.gencards{display:flex;gap:10px;margin-top:12px;align-items:stretch;height:96px}
-.gc{flex:1;min-width:0;background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:12px 13px 11px;box-shadow:var(--sh);text-align:left;opacity:0;transform:translateY(16px) scale(.92);overflow:hidden}
-.gc.in{opacity:1;transform:none;transition:opacity .4s ease,transform .55s cubic-bezier(.2,.8,.3,1.15)}
-.gc b{display:block;font-size:.84rem;color:var(--grn-deep);margin-bottom:3px;font-family:Outfit,inherit;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.gc span{display:block;font-size:.72rem;color:var(--ink2);line-height:1.55}
-@media(max-width:560px){.genplay{margin-top:30px}.gencards{height:104px}.gc{padding:10px 10px 9px}.gc b{font-size:.78rem}.gc span{font-size:.66rem}}
-/* ---- ヒーローに漂う葉 ---- */
-.hero{position:relative}
-.drift{position:absolute;inset:0;pointer-events:none}
-.drift svg{position:absolute;color:var(--grn-soft);opacity:.55}
-.drift .d1{left:9%;top:26%;animation:drift1 16s ease-in-out infinite alternate}
-.drift .d2{right:10%;top:18%;animation:drift2 19s ease-in-out infinite alternate}
-.drift .d3{left:16%;bottom:4%;animation:drift1 22s ease-in-out infinite alternate-reverse}
-@keyframes drift1{from{transform:translateY(0) rotate(-8deg)}to{transform:translateY(26px) rotate(14deg)}}
-@keyframes drift2{from{transform:translateY(10px) rotate(10deg)}to{transform:translateY(-22px) rotate(-12deg)}}
-@media(max-width:560px){.drift{display:none}}
-/* ---- デモカードのチルト ---- */
-.cardwrap{transform:perspective(1100px) rotateY(var(--gtx,0deg)) rotateX(var(--gty,0deg));transition:transform .18s ease}
-@media(prefers-reduced-motion:reduce){.drift{display:none}.gp-caret{animation:none}.gc{transition:none}.cardwrap{transform:none}}
-
-/* ---- あゆみ（v1.1.0 統計）セクション ---- */
-.ayumi{max-width:1020px;margin:72px auto 0;padding:0 24px}
-.awrap{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center}
-.abadge{display:inline-block;font-size:.78rem;font-weight:700;color:var(--grn);background:#E4F0E1;border:1.5px solid #C9E2C6;border-radius:999px;padding:4px 12px;margin-bottom:14px}
-.acopy h2{text-align:left;margin:0 0 12px}
-.acopy .secsub{text-align:left;margin:0}
-.astat{background:#fff;border-radius:24px;box-shadow:0 18px 44px rgba(32,41,31,.10);padding:22px 22px 18px}
-.ahead{display:flex;justify-content:space-between;align-items:baseline;font-weight:700;font-size:.95rem}
-.ahead .aval{font-size:.8rem;font-weight:600;color:var(--ink2)}
-.abars{display:flex;align-items:flex-end;gap:5px;height:118px;margin-top:16px}
-.ab{flex:1;background:var(--grn);border-radius:3.5px;transform-origin:bottom;transform:scaleY(.02);transition:transform .7s cubic-bezier(.2,.8,.25,1);cursor:pointer}
-.ab.rest{background:var(--line)}
-.ayumi.in .ab{transform:scaleY(1)}
-.ab:hover{filter:brightness(1.18)}
-.axl{display:flex;justify-content:space-between;font-size:.72rem;color:var(--ink2);margin-top:7px}
-.aboxes{display:flex;gap:9px;margin-top:16px}
-.abox{flex:1;background:#ECEFE3;border-radius:14px;padding:12px 6px;text-align:center}
-.abox b{display:block;font-size:1.25rem;letter-spacing:-.02em}
-.abox b i{font-style:normal;font-size:.72rem;font-weight:700}
-.abox span{font-size:.7rem;font-weight:700;color:var(--ink2)}
-.abox.warm b{color:#C4862E}
-.abox.grn b{color:var(--grn)}
-@media(max-width:860px){.awrap{grid-template-columns:1fr;gap:26px}.acopy h2,.acopy .secsub{text-align:center}.acopy{text-align:center}}
+/* ---- responsive ---- */
+@media(max-width:880px){
+.hero{grid-template-columns:1fr;gap:36px;padding-top:48px;text-align:center}
+.sub{margin-left:auto;margin-right:auto}
+.chips,.cta-row{justify-content:center}
+.step{grid-template-columns:1fr;gap:26px;margin-top:60px}
+.step.alt .svis{order:0}
+.svis{order:0}
+}
+@media(max-width:560px){
+.hwrap{flex-wrap:wrap;row-gap:2px;padding:10px 16px}
+nav{order:3;width:100%;margin-left:0;font-size:.84rem;gap:14px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.lang{margin-left:auto}
+.grades button{width:31%}
+.gencards{height:112px}.gc{padding:10px 10px 9px}.gc b{font-size:.78rem}.gc span{font-size:.66rem}
+.closing{padding:48px 20px;border-radius:26px}
+}
+@media(prefers-reduced-motion:reduce){
+.rise{transition:none;opacity:1;transform:none}
+.play #sprout .stem,.play #sprout .leafL,.play #sprout .leafR{animation-duration:.01s}
+.fcard{transition:none}.drift{display:none}.gp-caret{animation:none}.gc{transition:none}
+.cardwrap{transform:none}.mrow{animation:none;flex-wrap:wrap;width:auto;justify-content:center}
+}
 </style></head><body>
 <header><div class="hwrap">
 <a class="brand" href="./"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21v-8"/><path d="M12 13c0-3.5-2.8-6-6.5-6C5.5 10.5 8.3 13 12 13z"/><path d="M12 11c0-3 2.4-5.2 5.7-5.2 0 3.3-2.4 5.4-5.7 5.4z"/></svg>Sproot</a>
@@ -233,12 +254,14 @@ footer{border-top:1px solid var(--line);margin-top:24px}
 </label>
 </div></header>
 <main>
+
 <section class="hero">
 <div class="drift" aria-hidden="true">
 <svg class="d1" width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M12 13c0-3.5-2.8-6-6.5-6C5.5 10.5 8.3 13 12 13z"/></svg>
 <svg class="d2" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11c0-3 2.4-5.2 5.7-5.2 0 3.3-2.4 5.4-5.7 5.4z"/></svg>
 <svg class="d3" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 13c0-3.5-2.8-6-6.5-6C5.5 10.5 8.3 13 12 13z"/></svg>
 </div>
+<div class="heroL">
 <div class="sproutbox play" id="sproutbox" title="replay">
 <svg id="sprout" viewBox="0 0 24 24" aria-hidden="true">
 <path class="stem" d="M12 21v-8"/>
@@ -246,18 +269,90 @@ footer{border-top:1px solid var(--line);margin-top:24px}
 <path class="leaf leafR" d="M12 11c0-3 2.4-5.2 5.7-5.2 0 3.3-2.4 5.4-5.7 5.4z"/>
 </svg>
 </div>
-<h1><span class="l-en">Let the words take root.</span></h1>
-<p class="sub"><span class="l-en">Let AI do the making — every review roots the words deeper.<br>Vocabulary, exam terms, lecture concepts, and beyond.<br>Everything runs on your device.</span></p>
+<h1><span class="l-en">Let the words<br>take root.</span></h1>
+<p class="sub"><span class="l-en">Let AI do the making — every review roots the words deeper. Just say what you want to learn, and a word book with examples is ready.</span></p>
+<div class="chips" aria-hidden="true">
+<span><span class="l-en">🔒 100% on-device</span></span>
+<span><span class="l-en">Free</span></span>
+<span><span class="l-en">No account</span></span>
+</div>
 <div class="cta-row">
 
 
-<a class="cta l-en" href="https://apps.apple.com/jp/app/id6787603715" target="_blank" rel="noopener"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 12.04c-.03-2.6 2.13-3.85 2.22-3.91-1.21-1.77-3.1-2.01-3.77-2.04-1.6-.16-3.13.94-3.94.94-.81 0-2.07-.92-3.4-.9-1.75.03-3.36 1.02-4.26 2.58-1.82 3.16-.47 7.84 1.3 10.41.87 1.26 1.9 2.67 3.26 2.62 1.31-.05 1.8-.85 3.39-.85 1.58 0 2.02.85 3.4.82 1.4-.02 2.29-1.28 3.15-2.55.99-1.46 1.4-2.87 1.42-2.94-.03-.01-2.72-1.04-2.75-4.13zM14.53 4.4c.72-.87 1.2-2.08 1.07-3.29-1.03.04-2.29.69-3.03 1.56-.66.77-1.24 2-1.09 3.18 1.15.09 2.32-.58 3.05-1.45z"/></svg>Download on the App Store</a>
+<a class="cta  l-en" href="https://apps.apple.com/jp/app/id6787603715" target="_blank" rel="noopener"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 12.04c-.03-2.6 2.13-3.85 2.22-3.91-1.21-1.77-3.1-2.01-3.77-2.04-1.6-.16-3.13.94-3.94.94-.81 0-2.07-.92-3.4-.9-1.75.03-3.36 1.02-4.26 2.58-1.82 3.16-.47 7.84 1.3 10.41.87 1.26 1.9 2.67 3.26 2.62 1.31-.05 1.8-.85 3.39-.85 1.58 0 2.02.85 3.4.82 1.4-.02 2.29-1.28 3.15-2.55.99-1.46 1.4-2.87 1.42-2.94-.03-.01-2.72-1.04-2.75-4.13zM14.53 4.4c.72-.87 1.2-2.08 1.07-3.29-1.03.04-2.29.69-3.03 1.56-.66.77-1.24 2-1.09 3.18 1.15.09 2.32-.58 3.05-1.45z"/></svg>Download on the App Store</a>
 <a class="cta ghost" href="#demo"><span class="l-en">Try the demo</span></a>
 </div>
 <p class="note"><span class="l-en">Now on the App Store for iPhone</span></p>
+</div>
+<div class="heroR">
+<div class="phone">
+<img class="l-ja" src="/shots/ja-01-home.png" alt="Sproot ホーム画面" width="480" height="1043">
+<img class="l-ko" src="/shots/ko-01-home.png" alt="Sproot 홈 화면" width="480" height="1043">
+<img class="l-en" src="/shots/en-01-home.png" alt="Sproot home screen" width="480" height="1043">
+</div>
+</div>
+</section>
+
+<div class="marq" aria-hidden="true">
+<p><span class="l-en">Not just vocabulary — anything you want to learn.</span></p>
+<div class="mviewport"><div class="mrow" style="--mdur:44s"><span class="l-en">TOEIC 900 vocabulary</span><span class="l-en">Psychology keywords</span><span class="l-en">Wine varieties</span><span class="l-en">Behavioral economics</span><span class="l-en">Korean phrases</span><span class="l-en">Astronomy basics</span><span class="l-en">World history dates</span><span class="l-en">Coffee origins</span><span class="l-en">TOEIC 900 vocabulary</span><span class="l-en">Psychology keywords</span><span class="l-en">Wine varieties</span><span class="l-en">Behavioral economics</span><span class="l-en">Korean phrases</span><span class="l-en">Astronomy basics</span><span class="l-en">World history dates</span><span class="l-en">Coffee origins</span></div></div>
+<div class="mviewport"><div class="mrow rev" style="--mdur:56s"><span class="l-en">Case law essentials</span><span class="l-en">Nursing exam terms</span><span class="l-en">Programming terms</span><span class="l-en">Weather words</span><span class="l-en">Art history styles</span><span class="l-en">Accounting accounts</span><span class="l-en">Classic cocktails</span><span class="l-en">Anatomy basics</span><span class="l-en">Case law essentials</span><span class="l-en">Nursing exam terms</span><span class="l-en">Programming terms</span><span class="l-en">Weather words</span><span class="l-en">Art history styles</span><span class="l-en">Accounting accounts</span><span class="l-en">Classic cocktails</span><span class="l-en">Anatomy basics</span></div></div>
+</div>
+
+<section class="steps">
+<div class="kicker rise">
+<span class="eyebrow"><span class="l-en">HOW IT WORKS</span></span>
+<h2><span class="l-en">Make it. Learn it. Grow it.</span></h2>
+</div>
+
+<div class="step rise">
+<div class="scopy">
+<div class="num"><span class="l-en">STEP 01 — MAKE</span></div>
+<h3><span class="l-en">Type a topic.<br>Or snap your notes.</span></h3>
+<p><span class="l-en">"Common TOEIC words," "psychology basics" — one line and AI builds cards with meanings and examples. Photos of handwritten notes work too.</span></p>
+</div>
+<div class="svis">
 <div class="genplay" aria-hidden="true">
 <div class="genbar"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z"/></svg><span id="gp-text"></span><span class="gp-caret" id="gp-caret"></span></div>
 <div class="gencards" id="gp-cards"></div>
+</div>
+</div>
+</div>
+
+<div class="step alt rise">
+<div class="scopy">
+<div class="num"><span class="l-en">STEP 02 — LEARN</span></div>
+<h3><span class="l-en">Flip the card,<br>grade yourself.</span></h3>
+<p><span class="l-en">Grade with "Not yet / Fuzzy / Got it." Spaced repetition, backed by memory science, brings each card back right before you forget. Pronunciation included.</span></p>
+</div>
+<div class="svis">
+<div class="phone">
+<img class="l-ja" src="/shots/ja-03-study.png" alt="学習画面" loading="lazy" width="480" height="1043">
+<img class="l-ko" src="/shots/ko-03-study.png" alt="학습 화면" loading="lazy" width="480" height="1043">
+<img class="l-en" src="/shots/en-03-study.png" alt="Study screen" loading="lazy" width="480" height="1043">
+</div>
+</div>
+</div>
+
+<div class="step rise ayumi" id="ayumi">
+<div class="scopy">
+<div class="num"><span class="l-en">STEP 03 — GROW</span></div>
+<span class="abadge"><span class="l-en">New in 1.1.0</span></span>
+<h3><span class="l-en">Repetition grows the tree —<br>and shows your progress.</span></h3>
+<p><span class="l-en">As cards take root, your word book grows from seed to tree. Charts and a 7-day review forecast make your streak visible. Try touching the bars.</span></p>
+</div>
+<div class="svis">
+<div class="astat">
+<div class="ahead"><span><span class="l-en">Study volume</span></span><span class="aval" id="aval"></span></div>
+<div class="abars" id="abars"></div>
+<div class="axl"><span id="ax0"></span><span><span class="l-en">today</span></span></div>
+<div class="aboxes">
+<div class="abox grn"><b id="acnt">0</b><span><span class="l-en">Cards</span></span></div>
+<div class="abox"><b><span class="l-en">4<i>h</i> 47<i>m</i></span></b><span><span class="l-en">Study time</span></span></div>
+<div class="abox warm"><b><span id="apct">0</span>%</b><span><span class="l-en">Accuracy</span></span></div>
+</div>
+</div>
+</div>
 </div>
 </section>
 
@@ -286,95 +381,45 @@ footer{border-top:1px solid var(--line);margin-top:24px}
 
 <section class="grid">
 <div class="card rise">
-<div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5l1.8 5.2L19 12l-5.2 1.8L12 19l-1.8-5.2L5 12l5.2-1.8z"/></svg></div>
-<h3><span class="l-en">AI builds your word books</span></h3>
-<p><span class="l-en">Not just language vocab — exam and lecture terms too. Cards with meanings and examples, from a topic or a photo of your notes.</span></p>
+<div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="3"/><path d="M8 7l2-3h4l2 3"/><circle cx="12" cy="13.5" r="4"/></svg></div>
+<h3><span class="l-en">From a photo, too</span></h3>
+<p><span class="l-en">Snap notes, textbooks, or word lists and they become cards — tables, memos, and handwriting included.</span></p>
+</div>
+<div class="card rise">
+<div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4.5h14A2.5 2.5 0 0 1 21.5 7v7a2.5 2.5 0 0 1-2.5 2.5h-8L7 20v-3.5H5A2.5 2.5 0 0 1 2.5 14V7A2.5 2.5 0 0 1 5 4.5z"/><path d="M12 7.5l.9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9z"/></svg></div>
+<h3><span class="l-en">AI stays with you</span></h3>
+<p><span class="l-en">Add examples to any card, or ask "when would I use this?" — by typing or by voice.</span></p>
 </div>
 <div class="card rise">
 <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
 <h3><span class="l-en">Right before you forget</span></h3>
-<p><span class="l-en">Spaced repetition, backed by memory science, brings back only the cards you're about to forget.</span></p>
+<p><span class="l-en">Only the cards you're about to forget come back — with the whole system illustrated in the app.</span></p>
 </div>
 <div class="card rise">
 <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M10.8 17.5h2.4"/></svg></div>
 <h3><span class="l-en">Private &amp; works offline</span></h3>
 <p><span class="l-en">Everything stays on your device. No account needed, free to use.</span></p>
 </div>
-<div class="card rise">
-<div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4.5h14A2.5 2.5 0 0 1 21.5 7v7a2.5 2.5 0 0 1-2.5 2.5h-8L7 20v-3.5H5A2.5 2.5 0 0 1 2.5 14V7A2.5 2.5 0 0 1 5 4.5z"/><path d="M12 7.5l.9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9z"/></svg></div>
-<h3><span class="l-en">AI stays with you</span></h3>
-<p><span class="l-en">Add more examples to any card, or simply ask — "when would I use this?" Get answers on the spot.</span></p>
-</div>
 </section>
 
+<section class="closing rise">
+<h2><span class="l-en">Start growing your words.</span></h2>
+<p><span class="l-en">Three cards today, three hundred next month. Start with a single line.</span></p>
+<div class="cta-row" style="justify-content:center">
 
-<section class="ayumi rise" id="ayumi">
-<div class="awrap">
-<div class="acopy">
-<span class="abadge"><span class="l-en">New in 1.1.0</span></span>
-<h2><span class="l-en">See your progress.</span></h2>
-<p class="secsub"><span class="l-en">Charts for daily cards, study time, and accuracy. A 7-day review forecast, and card growth at a glance. Touch the bars for day-by-day details.</span></p>
+
+<a class="cta inv l-en" href="https://apps.apple.com/jp/app/id6787603715" target="_blank" rel="noopener"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 12.04c-.03-2.6 2.13-3.85 2.22-3.91-1.21-1.77-3.1-2.01-3.77-2.04-1.6-.16-3.13.94-3.94.94-.81 0-2.07-.92-3.4-.9-1.75.03-3.36 1.02-4.26 2.58-1.82 3.16-.47 7.84 1.3 10.41.87 1.26 1.9 2.67 3.26 2.62 1.31-.05 1.8-.85 3.39-.85 1.58 0 2.02.85 3.4.82 1.4-.02 2.29-1.28 3.15-2.55.99-1.46 1.4-2.87 1.42-2.94-.03-.01-2.72-1.04-2.75-4.13zM14.53 4.4c.72-.87 1.2-2.08 1.07-3.29-1.03.04-2.29.69-3.03 1.56-.66.77-1.24 2-1.09 3.18 1.15.09 2.32-.58 3.05-1.45z"/></svg>Download on the App Store</a>
 </div>
-<div class="astat" aria-hidden="true">
-<div class="ahead"><span><span class="l-en">Study volume</span></span><span class="aval" id="aval"></span></div>
-<div class="abars" id="abars"></div>
-<div class="axl"><span id="ax0"></span><span><span class="l-en">today</span></span></div>
-<div class="aboxes">
-<div class="abox grn"><b id="acnt">0</b><span><span class="l-en">Cards</span></span></div>
-<div class="abox"><b><span class="l-en">4<i>h</i> 47<i>m</i></span></b><span><span class="l-en">Study time</span></span></div>
-<div class="abox warm"><b><span id="apct">0</span>%</b><span><span class="l-en">Accuracy</span></span></div>
-</div>
-</div>
-</div>
+<p class="note"><span class="l-en">Free ・ No account ・ iPhone</span></p>
 </section>
 
-<section class="shots rise">
-<h2><span class="l-en">A peek inside</span></h2>
-<p class="secsub"><span class="l-en">The joy of growing, right on screen.</span></p>
-<div class="shotrow">
-
-
-
-
-
-
-
-
-
-
-<figure class="shot l-en"><img src="/shots/en-01-home.png" alt="Home screen" loading="lazy"><figcaption>Word books grow, seed to tree</figcaption></figure>
-<figure class="shot l-en"><img src="/shots/en-02-generate.png" alt="AI generation screen" loading="lazy"><figcaption>Just type a topic</figcaption></figure>
-<figure class="shot l-en"><img src="/shots/en-03-study.png" alt="Study screen" loading="lazy"><figcaption>Flip and grade yourself</figcaption></figure>
-<figure class="shot l-en"><img src="/shots/en-05-ayumi.png" alt="Progress charts screen" loading="lazy"><figcaption>See your progress</figcaption></figure>
-<figure class="shot l-en"><img src="/shots/en-06-card.png" alt="Card detail screen" loading="lazy"><figcaption>Add examples, ask the AI</figcaption></figure>
-</div>
-</section>
-
-<section class="sec rise">
-<h2><span class="l-en">Documents</span></h2>
-<div class="docs">
-<a class="doc" href="./privacy.html">
-<span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/></svg></span>
-<span class="l-en">Privacy Policy</span>
-<span class="arw">→</span></a>
-<a class="doc" href="./terms.html">
-<span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/><path d="M10 13h5M10 17h5"/></svg></span>
-<span class="l-en">Terms of Service</span>
-<span class="arw">→</span></a>
-</div>
-</section>
-
-<section class="contact rise">
-<h2><span class="l-en">Contact</span></h2>
-<p><span class="l-en">Questions or bug reports? Drop us a line anytime.</span></p>
-<a class="cta" href="mailto:sproot.app@gmail.com">sproot.app@gmail.com</a>
-</section>
 </main>
 <footer><div class="fwrap">
 <a href="./"><span class="l-en">Home</span></a>
 <a href="./releases.html"><span class="l-en">What's New</span></a>
 <a href="./privacy.html"><span class="l-en">Privacy Policy</span></a>
 <a href="./terms.html"><span class="l-en">Terms of Service</span></a>
+<a href="mailto:sproot.app@gmail.com"><span class="l-en">Contact</span></a>
 <span class="cp">© 2026 Sproot</span>
 </div></footer>
 <script>
