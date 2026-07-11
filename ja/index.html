@@ -189,6 +189,30 @@ footer{border-top:1px solid var(--line);margin-top:24px}
 /* ---- デモカードのチルト ---- */
 .cardwrap{transform:perspective(1100px) rotateY(var(--gtx,0deg)) rotateX(var(--gty,0deg));transition:transform .18s ease}
 @media(prefers-reduced-motion:reduce){.drift{display:none}.gp-caret{animation:none}.gc{transition:none}.cardwrap{transform:none}}
+
+/* ---- あゆみ（v1.1.0 統計）セクション ---- */
+.ayumi{max-width:1020px;margin:72px auto 0;padding:0 24px}
+.awrap{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center}
+.abadge{display:inline-block;font-size:.78rem;font-weight:700;color:var(--grn);background:#E4F0E1;border:1.5px solid #C9E2C6;border-radius:999px;padding:4px 12px;margin-bottom:14px}
+.acopy h2{text-align:left;margin:0 0 12px}
+.acopy .secsub{text-align:left;margin:0}
+.astat{background:#fff;border-radius:24px;box-shadow:0 18px 44px rgba(32,41,31,.10);padding:22px 22px 18px}
+.ahead{display:flex;justify-content:space-between;align-items:baseline;font-weight:700;font-size:.95rem}
+.ahead .aval{font-size:.8rem;font-weight:600;color:var(--ink2)}
+.abars{display:flex;align-items:flex-end;gap:5px;height:118px;margin-top:16px}
+.ab{flex:1;background:var(--grn);border-radius:3.5px;transform-origin:bottom;transform:scaleY(.02);transition:transform .7s cubic-bezier(.2,.8,.25,1);cursor:pointer}
+.ab.rest{background:var(--line)}
+.ayumi.in .ab{transform:scaleY(1)}
+.ab:hover{filter:brightness(1.18)}
+.axl{display:flex;justify-content:space-between;font-size:.72rem;color:var(--ink2);margin-top:7px}
+.aboxes{display:flex;gap:9px;margin-top:16px}
+.abox{flex:1;background:#ECEFE3;border-radius:14px;padding:12px 6px;text-align:center}
+.abox b{display:block;font-size:1.25rem;letter-spacing:-.02em}
+.abox b i{font-style:normal;font-size:.72rem;font-weight:700}
+.abox span{font-size:.7rem;font-weight:700;color:var(--ink2)}
+.abox.warm b{color:#C4862E}
+.abox.grn b{color:var(--grn)}
+@media(max-width:860px){.awrap{grid-template-columns:1fr;gap:26px}.acopy h2,.acopy .secsub{text-align:center}.acopy{text-align:center}}
 </style></head><body>
 <header><div class="hwrap">
 <a class="brand" href="./"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21v-8"/><path d="M12 13c0-3.5-2.8-6-6.5-6C5.5 10.5 8.3 13 12 13z"/><path d="M12 11c0-3 2.4-5.2 5.7-5.2 0 3.3-2.4 5.4-5.7 5.4z"/></svg>Sproot</a>
@@ -283,14 +307,38 @@ footer{border-top:1px solid var(--line);margin-top:24px}
 </div>
 </section>
 
+
+<section class="ayumi rise" id="ayumi">
+<div class="awrap">
+<div class="acopy">
+<span class="abadge"><span class="l-ja">v1.1.0 の新機能</span></span>
+<h2><span class="l-ja">学びのあゆみが、見える。</span></h2>
+<p class="secsub"><span class="l-ja">学習量・学習時間・正答率をグラフで振り返り。これからの復習は7日間の予報で、カードの育ちはひと目で。バーに触れると、日ごとの記録も見えます。</span></p>
+</div>
+<div class="astat" aria-hidden="true">
+<div class="ahead"><span><span class="l-ja">学習量の推移</span></span><span class="aval" id="aval"></span></div>
+<div class="abars" id="abars"></div>
+<div class="axl"><span id="ax0"></span><span><span class="l-ja">今日</span></span></div>
+<div class="aboxes">
+<div class="abox grn"><b id="acnt">0</b><span><span class="l-ja">カード</span></span></div>
+<div class="abox"><b><span class="l-ja">4<i>時間</i>47<i>分</i></span></b><span><span class="l-ja">学習時間</span></span></div>
+<div class="abox warm"><b><span id="apct">0</span>%</b><span><span class="l-ja">正答率</span></span></div>
+</div>
+</div>
+</div>
+</section>
+
 <section class="shots rise">
 <h2><span class="l-ja">アプリの中を、少しだけ</span></h2>
 <p class="secsub"><span class="l-ja">育てる楽しさを、そのまま画面に。</span></p>
 <div class="shotrow">
 <figure class="shot l-ja"><img src="/shots/ja-01-home.png" alt="ホーム画面" loading="lazy"><figcaption>単語帳が、種から木へ</figcaption></figure>
-<figure class="shot l-ja"><img src="/shots/ja-02-study-flipped.png" alt="学習画面" loading="lazy"><figcaption>めくって、3段階で採点</figcaption></figure>
-<figure class="shot l-ja"><img src="/shots/ja-04-generate.png" alt="AI生成画面" loading="lazy"><figcaption>テーマを伝えるだけ</figcaption></figure>
+<figure class="shot l-ja"><img src="/shots/ja-02-generate.png" alt="AI生成画面" loading="lazy"><figcaption>テーマを伝えるだけ</figcaption></figure>
+<figure class="shot l-ja"><img src="/shots/ja-03-study.png" alt="学習画面" loading="lazy"><figcaption>めくって、3段階で採点</figcaption></figure>
+<figure class="shot l-ja"><img src="/shots/ja-05-ayumi.png" alt="学習グラフ画面" loading="lazy"><figcaption>学びのあゆみが、見える</figcaption></figure>
 <figure class="shot l-ja"><img src="/shots/ja-06-card.png" alt="カード詳細画面" loading="lazy"><figcaption>例文を足したり、AIに質問したり</figcaption></figure>
+
+
 
 
 
@@ -330,7 +378,7 @@ footer{border-top:1px solid var(--line);margin-top:24px}
 <span class="cp">© 2026 Sproot</span>
 </div></footer>
 <script>
-var TITLES={ja:'Sproot — 言葉が根づく、AI単語帳',ko:'Sproot — 말이 뿌리내리는 AI 단어장',en:'Sproot — where words take root'};
+var TITLES={ja:'Sproot — 言葉が根づく、AI単語帳',ko:'Sproot — 단어가 뿌리내리는 AI 단어장',en:'Sproot — where words take root'};
 function applyLang(l){document.documentElement.dataset.lang=l;document.documentElement.lang=l;
 try{localStorage.setItem('sproot-lang',l)}catch(e){}
 document.title=TITLES[l];
@@ -418,6 +466,28 @@ cwrap.addEventListener('pointerleave',function(){cwrap.style.setProperty('--gtx'
 /* ---- scroll reveal ---- */
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
 document.querySelectorAll('.rise').forEach(function(el){io.observe(el)});
+
+/* ---- あゆみ: バー生成・なぞり・カウントアップ ---- */
+(function(){var bars=document.getElementById('abars');if(!bars)return;
+var V=[34,52,18,0,60,44,26,72,38,0,55,80,47,63];var MAX=80;
+var today=new Date();
+function dlabel(off){var d=new Date(today);d.setDate(d.getDate()-off);return (d.getMonth()+1)+'/'+d.getDate()}
+document.getElementById('ax0').textContent=dlabel(V.length-1);
+var aval=document.getElementById('aval');
+var unit={ja:'枚',ko:'장',en:' cards'};
+function avg(){var l=lang();aval.textContent=({ja:'1日平均 13枚',ko:'하루 평균 13장',en:'13 cards/day'})[l]||''}
+V.forEach(function(v,i){var b=document.createElement('div');b.className='ab'+(v?'':' rest');
+b.style.height=(v?Math.max(8,v/MAX*100):3.5)+'%';b.style.transitionDelay=(i*45)+'ms';
+b.addEventListener('pointerenter',function(){var l=lang();
+aval.textContent=dlabel(V.length-1-i)+' ・ '+(v?v+(unit[l]||unit.en):({ja:'記録なし',ko:'기록 없음',en:'no study'})[l])});
+b.addEventListener('pointerleave',avg);bars.appendChild(b)});
+avg();new MutationObserver(avg).observe(document.documentElement,{attributes:true,attributeFilter:['data-lang']});
+function count(el,to,ms){var t0=null;function step(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/ms);
+el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step)}requestAnimationFrame(step)}
+var done=false;
+new IntersectionObserver(function(es,ob){es.forEach(function(e){if(e.isIntersecting&&!done){done=true;
+count(document.getElementById('acnt'),382,900);count(document.getElementById('apct'),69,900);ob.disconnect()}})},{threshold:.3})
+.observe(document.getElementById('ayumi'));})();
 setLang(document.documentElement.dataset.lang,true);
 </script>
 </body></html>

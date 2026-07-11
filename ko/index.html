@@ -1,11 +1,11 @@
 <!DOCTYPE html><html lang="ko"><head><meta charset="utf-8">
 <meta name="theme-color" content="#F6F5EF">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="만드는 수고는 AI에게. 반복할수록 말은 당신에게 뿌리내려요. AI 단어장 Sproot.">
+<meta name="description" content="만드는 수고는 AI에게. 반복할수록 단어는 당신에게 뿌리내려요. AI 단어장 Sproot.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Sproot">
-<meta property="og:title" content="Sproot — 말이 뿌리내리는 AI 단어장">
-<meta property="og:description" content="만드는 수고는 AI에게. 반복할수록 말은 당신에게 뿌리내려요. AI 단어장 Sproot.">
+<meta property="og:title" content="Sproot — 단어가 뿌리내리는 AI 단어장">
+<meta property="og:description" content="만드는 수고는 AI에게. 반복할수록 단어는 당신에게 뿌리내려요. AI 단어장 Sproot.">
 <meta property="og:url" content="https://sproot-app.github.io/ko/">
 <meta property="og:image" content="https://sproot-app.github.io/og-image.png">
 <meta property="og:image:width" content="1024">
@@ -28,7 +28,7 @@
 <link rel="alternate" hreflang="ja" href="https://sproot-app.github.io/ja/">
 <link rel="alternate" hreflang="ko" href="https://sproot-app.github.io/ko/">
 <link rel="alternate" hreflang="en" href="https://sproot-app.github.io/en/">
-<title>Sproot — 말이 뿌리내리는 AI 단어장</title>
+<title>Sproot — 단어가 뿌리내리는 AI 단어장</title>
 <script>document.documentElement.dataset.lang='ko'</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Zen+Maru+Gothic:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
@@ -189,6 +189,30 @@ footer{border-top:1px solid var(--line);margin-top:24px}
 /* ---- デモカードのチルト ---- */
 .cardwrap{transform:perspective(1100px) rotateY(var(--gtx,0deg)) rotateX(var(--gty,0deg));transition:transform .18s ease}
 @media(prefers-reduced-motion:reduce){.drift{display:none}.gp-caret{animation:none}.gc{transition:none}.cardwrap{transform:none}}
+
+/* ---- あゆみ（v1.1.0 統計）セクション ---- */
+.ayumi{max-width:1020px;margin:72px auto 0;padding:0 24px}
+.awrap{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center}
+.abadge{display:inline-block;font-size:.78rem;font-weight:700;color:var(--grn);background:#E4F0E1;border:1.5px solid #C9E2C6;border-radius:999px;padding:4px 12px;margin-bottom:14px}
+.acopy h2{text-align:left;margin:0 0 12px}
+.acopy .secsub{text-align:left;margin:0}
+.astat{background:#fff;border-radius:24px;box-shadow:0 18px 44px rgba(32,41,31,.10);padding:22px 22px 18px}
+.ahead{display:flex;justify-content:space-between;align-items:baseline;font-weight:700;font-size:.95rem}
+.ahead .aval{font-size:.8rem;font-weight:600;color:var(--ink2)}
+.abars{display:flex;align-items:flex-end;gap:5px;height:118px;margin-top:16px}
+.ab{flex:1;background:var(--grn);border-radius:3.5px;transform-origin:bottom;transform:scaleY(.02);transition:transform .7s cubic-bezier(.2,.8,.25,1);cursor:pointer}
+.ab.rest{background:var(--line)}
+.ayumi.in .ab{transform:scaleY(1)}
+.ab:hover{filter:brightness(1.18)}
+.axl{display:flex;justify-content:space-between;font-size:.72rem;color:var(--ink2);margin-top:7px}
+.aboxes{display:flex;gap:9px;margin-top:16px}
+.abox{flex:1;background:#ECEFE3;border-radius:14px;padding:12px 6px;text-align:center}
+.abox b{display:block;font-size:1.25rem;letter-spacing:-.02em}
+.abox b i{font-style:normal;font-size:.72rem;font-weight:700}
+.abox span{font-size:.7rem;font-weight:700;color:var(--ink2)}
+.abox.warm b{color:#C4862E}
+.abox.grn b{color:var(--grn)}
+@media(max-width:860px){.awrap{grid-template-columns:1fr;gap:26px}.acopy h2,.acopy .secsub{text-align:center}.acopy{text-align:center}}
 </style></head><body>
 <header><div class="hwrap">
 <a class="brand" href="./"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21v-8"/><path d="M12 13c0-3.5-2.8-6-6.5-6C5.5 10.5 8.3 13 12 13z"/><path d="M12 11c0-3 2.4-5.2 5.7-5.2 0 3.3-2.4 5.4-5.7 5.4z"/></svg>Sproot</a>
@@ -222,8 +246,8 @@ footer{border-top:1px solid var(--line);margin-top:24px}
 <path class="leaf leafR" d="M12 11c0-3 2.4-5.2 5.7-5.2 0 3.3-2.4 5.4-5.7 5.4z"/>
 </svg>
 </div>
-<h1><span class="l-ko">그 말이, 뿌리내리다.</span></h1>
-<p class="sub"><span class="l-ko">만드는 수고는 AI에게. 반복할수록 말은 당신에게 뿌리내려요.<br>영단어도, 자격증 용어도, 강의의 전문 용어도.<br>생성도 학습 데이터도 모두 기기 안에서.</span></p>
+<h1><span class="l-ko">그 단어가, 뿌리내리다.</span></h1>
+<p class="sub"><span class="l-ko">만드는 수고는 AI에게. 반복할수록 단어는 당신에게 뿌리내려요.<br>영단어도, 자격증 용어도, 강의의 전문 용어도.<br>생성도 학습 데이터도 모두 기기 안에서.</span></p>
 <div class="cta-row">
 
 <a class="cta l-ko" href="https://apps.apple.com/kr/app/id6787603715" target="_blank" rel="noopener"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 12.04c-.03-2.6 2.13-3.85 2.22-3.91-1.21-1.77-3.1-2.01-3.77-2.04-1.6-.16-3.13.94-3.94.94-.81 0-2.07-.92-3.4-.9-1.75.03-3.36 1.02-4.26 2.58-1.82 3.16-.47 7.84 1.3 10.41.87 1.26 1.9 2.67 3.26 2.62 1.31-.05 1.8-.85 3.39-.85 1.58 0 2.02.85 3.4.82 1.4-.02 2.29-1.28 3.15-2.55.99-1.46 1.4-2.87 1.42-2.94-.03-.01-2.72-1.04-2.75-4.13zM14.53 4.4c.72-.87 1.2-2.08 1.07-3.29-1.03.04-2.29.69-3.03 1.56-.66.77-1.24 2-1.09 3.18 1.15.09 2.32-.58 3.05-1.45z"/></svg>App Store에서 다운로드</a>
@@ -283,6 +307,27 @@ footer{border-top:1px solid var(--line);margin-top:24px}
 </div>
 </section>
 
+
+<section class="ayumi rise" id="ayumi">
+<div class="awrap">
+<div class="acopy">
+<span class="abadge"><span class="l-ko">v1.1.0 새 기능</span></span>
+<h2><span class="l-ko">배움의 발자취가 보여요.</span></h2>
+<p class="secsub"><span class="l-ko">학습량・학습 시간・정답률을 그래프로 돌아보기. 앞으로의 복습은 7일 예보로, 카드의 성장은 한눈에. 막대에 닿으면 날짜별 기록도 보여요.</span></p>
+</div>
+<div class="astat" aria-hidden="true">
+<div class="ahead"><span><span class="l-ko">학습량 추이</span></span><span class="aval" id="aval"></span></div>
+<div class="abars" id="abars"></div>
+<div class="axl"><span id="ax0"></span><span><span class="l-ko">오늘</span></span></div>
+<div class="aboxes">
+<div class="abox grn"><b id="acnt">0</b><span><span class="l-ko">카드</span></span></div>
+<div class="abox"><b><span class="l-ko">4<i>시간</i> 47<i>분</i></span></b><span><span class="l-ko">학습 시간</span></span></div>
+<div class="abox warm"><b><span id="apct">0</span>%</b><span><span class="l-ko">정답률</span></span></div>
+</div>
+</div>
+</div>
+</section>
+
 <section class="shots rise">
 <h2><span class="l-ko">앱 속을 살짝</span></h2>
 <p class="secsub"><span class="l-ko">키우는 즐거움을 화면에 그대로.</span></p>
@@ -291,10 +336,13 @@ footer{border-top:1px solid var(--line);margin-top:24px}
 
 
 
+
 <figure class="shot l-ko"><img src="/shots/ko-01-home.png" alt="홈 화면" loading="lazy"><figcaption>단어장이 씨앗에서 나무로</figcaption></figure>
-<figure class="shot l-ko"><img src="/shots/ko-02-study-flipped.png" alt="학습 화면" loading="lazy"><figcaption>뒤집어서 3단계로 채점</figcaption></figure>
-<figure class="shot l-ko"><img src="/shots/ko-04-generate.png" alt="AI 생성 화면" loading="lazy"><figcaption>주제를 입력하기만 하면</figcaption></figure>
+<figure class="shot l-ko"><img src="/shots/ko-02-generate.png" alt="AI 생성 화면" loading="lazy"><figcaption>주제를 입력하기만 하면</figcaption></figure>
+<figure class="shot l-ko"><img src="/shots/ko-03-study.png" alt="학습 화면" loading="lazy"><figcaption>뒤집어서 3단계로 채점</figcaption></figure>
+<figure class="shot l-ko"><img src="/shots/ko-05-ayumi.png" alt="학습 그래프 화면" loading="lazy"><figcaption>배움의 발자취가 보여요</figcaption></figure>
 <figure class="shot l-ko"><img src="/shots/ko-06-card.png" alt="카드 상세 화면" loading="lazy"><figcaption>예문을 더하고, AI에게 질문하고</figcaption></figure>
+
 
 
 
@@ -330,7 +378,7 @@ footer{border-top:1px solid var(--line);margin-top:24px}
 <span class="cp">© 2026 Sproot</span>
 </div></footer>
 <script>
-var TITLES={ja:'Sproot — 言葉が根づく、AI単語帳',ko:'Sproot — 말이 뿌리내리는 AI 단어장',en:'Sproot — where words take root'};
+var TITLES={ja:'Sproot — 言葉が根づく、AI単語帳',ko:'Sproot — 단어가 뿌리내리는 AI 단어장',en:'Sproot — where words take root'};
 function applyLang(l){document.documentElement.dataset.lang=l;document.documentElement.lang=l;
 try{localStorage.setItem('sproot-lang',l)}catch(e){}
 document.title=TITLES[l];
@@ -418,6 +466,28 @@ cwrap.addEventListener('pointerleave',function(){cwrap.style.setProperty('--gtx'
 /* ---- scroll reveal ---- */
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
 document.querySelectorAll('.rise').forEach(function(el){io.observe(el)});
+
+/* ---- あゆみ: バー生成・なぞり・カウントアップ ---- */
+(function(){var bars=document.getElementById('abars');if(!bars)return;
+var V=[34,52,18,0,60,44,26,72,38,0,55,80,47,63];var MAX=80;
+var today=new Date();
+function dlabel(off){var d=new Date(today);d.setDate(d.getDate()-off);return (d.getMonth()+1)+'/'+d.getDate()}
+document.getElementById('ax0').textContent=dlabel(V.length-1);
+var aval=document.getElementById('aval');
+var unit={ja:'枚',ko:'장',en:' cards'};
+function avg(){var l=lang();aval.textContent=({ja:'1日平均 13枚',ko:'하루 평균 13장',en:'13 cards/day'})[l]||''}
+V.forEach(function(v,i){var b=document.createElement('div');b.className='ab'+(v?'':' rest');
+b.style.height=(v?Math.max(8,v/MAX*100):3.5)+'%';b.style.transitionDelay=(i*45)+'ms';
+b.addEventListener('pointerenter',function(){var l=lang();
+aval.textContent=dlabel(V.length-1-i)+' ・ '+(v?v+(unit[l]||unit.en):({ja:'記録なし',ko:'기록 없음',en:'no study'})[l])});
+b.addEventListener('pointerleave',avg);bars.appendChild(b)});
+avg();new MutationObserver(avg).observe(document.documentElement,{attributes:true,attributeFilter:['data-lang']});
+function count(el,to,ms){var t0=null;function step(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/ms);
+el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step)}requestAnimationFrame(step)}
+var done=false;
+new IntersectionObserver(function(es,ob){es.forEach(function(e){if(e.isIntersecting&&!done){done=true;
+count(document.getElementById('acnt'),382,900);count(document.getElementById('apct'),69,900);ob.disconnect()}})},{threshold:.3})
+.observe(document.getElementById('ayumi'));})();
 setLang(document.documentElement.dataset.lang,true);
 </script>
 </body></html>

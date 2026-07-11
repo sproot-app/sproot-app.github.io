@@ -18,7 +18,7 @@ LANGS = ["ja", "ko", "en"]
 DESCRIPTIONS = {
     "index.html": {
         "ja": "作る手間はAIに。くり返すほど、言葉はあなたに根づく。AI単語帳 Sproot。",
-        "ko": "만드는 수고는 AI에게. 반복할수록 말은 당신에게 뿌리내려요. AI 단어장 Sproot.",
+        "ko": "만드는 수고는 AI에게. 반복할수록 단어는 당신에게 뿌리내려요. AI 단어장 Sproot.",
         "en": "Let AI do the making — every review roots the words deeper. Sproot, the AI flashcard app.",
     },
     "releases.html": {
