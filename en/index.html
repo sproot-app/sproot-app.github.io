@@ -360,7 +360,7 @@ nav{order:3;width:100%;margin-left:0;font-size:.84rem;gap:14px;overflow-x:auto;-
 <div class="scopy">
 <div class="num"><span class="l-en">STEP 03 — GROW</span></div>
 <h3><span class="l-en">Repetition grows the tree —<br>and shows your progress.</span></h3>
-<p><span class="l-en">As cards take root, your word book grows from seed to tree. Charts and a 7-day review forecast make your streak visible. Try touching the bars.</span></p>
+<p><span class="l-en">As cards take root, your word book grows from seed to tree. Charts and a 7-day review forecast make your streak visible. Trace the bars to see each day.</span></p>
 </div>
 <div class="svis">
 <div class="astat">
@@ -496,7 +496,7 @@ else{setTimeout(loadCard,260)}})});
 function resetDemo(){idx=0;demoSec.classList.remove('finished');fcard.classList.remove('flipped');grades.classList.remove('ready');loadCard()}
 /* ---- 生成マジックのミニデモ ---- */
 var GP={
-ja:[{q:'行動経済学',c:[['サンクコスト','もったいなくて、やめられない心理'],['ナッジ','そっと望ましい行動へ後押しする仕掛け'],['損失回避','得の喜びより、損の痛みが2倍効く']]},
+ja:[{q:'行動経済学',c:[['サンクコスト','もったいなくて、やめられない心理'],['ナッジ','望ましい行動へそっと後押しする仕掛け'],['損失回避','得の喜びより、損の痛みが2倍効く']]},
 {q:'TOEFL英単語',c:[['ephemeral','つかの間の、はかない'],['meticulous','細部まできちょうめんな'],['resilient','立ち直りが早い、しなやか']]}],
 ko:[{q:'행동경제학',c:[['매몰 비용','아까워서 멈추지 못하는 심리'],['넛지','바람직한 행동을 살짝 미는 장치'],['손실 회피','이득보다 손실이 두 배 아프다']]},
 {q:'토플 영단어',c:[['ephemeral','덧없는, 아주 짧은'],['meticulous','꼼꼼하고 세심한'],['resilient','회복이 빠른, 유연한']]}],
@@ -548,7 +548,7 @@ function avg(){var l=lang();aval.textContent=({ja:'1日平均 13枚',ko:'하루 
 V.forEach(function(v,i){var b=document.createElement('div');b.className='ab'+(v?'':' rest');
 b.style.height=(v?Math.max(8,v/MAX*100):3.5)+'%';b.style.transitionDelay=(i*45)+'ms';
 b.addEventListener('pointerenter',function(){var l=lang();
-aval.textContent=dlabel(V.length-1-i)+' ・ '+(v?v+(unit[l]||unit.en):({ja:'記録なし',ko:'기록 없음',en:'no study'})[l])});
+aval.textContent=dlabel(V.length-1-i)+' ・ '+(v?v+(unit[l]||unit.en):({ja:'記録なし',ko:'기록 없음',en:'no record'})[l])});
 b.addEventListener('pointerleave',avg);bars.appendChild(b)});
 avg();new MutationObserver(avg).observe(document.documentElement,{attributes:true,attributeFilter:['data-lang']});
 function count(el,to,ms){var t0=null;function step(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/ms);
