@@ -66,17 +66,13 @@ nav{display:flex;gap:16px;font-size:.88rem;margin-left:auto}
 nav a{color:var(--ink2);text-decoration:none}
 nav a:hover{color:var(--grn)}
 nav a.here{color:var(--grn);font-weight:700}
-.lang{display:flex;align-items:center;gap:7px;background:var(--surf2);border:1px solid var(--line);border-radius:999px;padding:6px 13px;flex:none;color:var(--ink2);cursor:pointer;position:relative}
+.lang{display:flex;align-items:center;gap:5px;background:var(--surf2);border:1px solid var(--line);border-radius:999px;padding:3px 10px;flex:none;color:var(--ink2);cursor:pointer;position:relative}
 .lang:hover{color:var(--grn)}
-.lang select{appearance:none;-webkit-appearance:none;border:0;background:transparent;font:inherit;font-size:16px;font-weight:600;color:inherit;cursor:pointer;outline:none;padding:0}
-.lang .chev{flex:none}
-/* デスクトップ（マウス環境）ではコンパクトに。タッチ端末は現サイズ維持（タップ領域とiOSズーム回避のためselectは16px） */
-@media(hover:hover) and (pointer:fine){
-.lang{padding:3px 10px;gap:5px}
-.lang select{font-size:.82rem}
-.lang>svg{width:12px;height:12px}
-.lang .chev{width:9px;height:9px}
-}
+/* selectは16px未満だとiOSがフォーカス時にズームするため、文字縮小はマウス環境のみ */
+.lang select{appearance:none;-webkit-appearance:none;border:0;background:transparent;font:inherit;font-size:16px;line-height:1.25;font-weight:600;color:inherit;cursor:pointer;outline:none;padding:0}
+.lang>svg{flex:none;width:12px;height:12px}
+.lang .chev{flex:none;width:9px;height:9px}
+@media(hover:hover) and (pointer:fine){.lang select{font-size:.82rem}}
 main{max-width:1040px;margin:0 auto;padding:0 20px 72px}
 /* ---- scroll reveal ---- */
 .rise{opacity:0;transform:translateY(18px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
