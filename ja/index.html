@@ -77,8 +77,8 @@ nav a.here{color:var(--grn);font-weight:700}
 .hcta:hover{background:var(--grn-deep);transform:translateY(-1px)}
 .ctaS{display:none}
 @media(max-width:560px){.ctaL{display:none}.ctaS{display:inline}}
-.hcta{opacity:0;pointer-events:none;transform:translateY(-5px)}
-.hcta.show{opacity:1;pointer-events:auto;transform:none}
+.hcta{opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-5px);max-width:0;padding-left:0;padding-right:0;margin-left:-16px;overflow:hidden;white-space:nowrap;box-shadow:none;transition:.22s}
+.hcta.show{opacity:1;visibility:visible;pointer-events:auto;transform:none;max-width:230px;padding-left:14px;padding-right:14px;margin-left:0;box-shadow:var(--sh)}
 @media(max-width:760px){nav{display:none}}
 main{max-width:1040px;margin:0 auto;padding:0 20px 72px}
 /* ---- scroll reveal ---- */
@@ -244,7 +244,8 @@ footer{border-top:1px solid var(--line);margin-top:88px}
 @media(max-width:560px){
 .mwrap::before,.mwrap::after{width:44px}
 .hwrap{padding:10px 14px;gap:11px}
-.hcta{padding:6px 12px;font-size:.8rem}
+.hcta{padding-top:6px;padding-bottom:6px;font-size:.8rem;margin-left:-11px}
+.hcta.show{padding-left:12px;padding-right:12px;margin-left:0}
 .lang{padding:0;width:30px;height:30px;justify-content:center}
 .lang .chev{display:none}
 .lang select{position:absolute;inset:0;width:100%;height:100%;opacity:0}
