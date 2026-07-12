@@ -44,6 +44,11 @@ font-family:Outfit,-apple-system,BlinkMacSystemFont,sans-serif}
 [data-lang=ko] :is(.l-ja,.l-en){display:none!important}
 [data-lang=en] :is(.l-ja,.l-ko){display:none!important}
 a{color:var(--grn)}
+/* 折返し: 見出しは均等割り、本文は末尾整形。ko は語単位、ja は文節単位 */
+h1,h2,h3{text-wrap:balance}
+p,li,figcaption{text-wrap:pretty}
+[data-lang=ko] :is(h1,h2,h3,p,li){word-break:keep-all}
+[data-lang=ja] :is(p,li){word-break:auto-phrase}
 header{position:sticky;top:0;background:rgba(246,245,239,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);z-index:10}
 .hwrap{max-width:1040px;margin:0 auto;padding:13px 20px;display:flex;align-items:center;gap:16px}
 .brand{display:flex;align-items:center;gap:8px;font-family:Outfit,sans-serif;font-weight:700;font-size:1.12rem;color:var(--grn);text-decoration:none;letter-spacing:.01em}
