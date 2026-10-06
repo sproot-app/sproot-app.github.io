@@ -1,11 +1,11 @@
 <!DOCTYPE html><html lang="ja"><head><meta charset="utf-8">
 <meta name="theme-color" content="#F6F5EF">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Sproot は個人情報を収集しません。データはすべて端末の中に。">
+<meta name="description" content="Sprootのデータ保存、端末内処理、モデル取得と外部サービスについて。">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Sproot">
 <meta property="og:title" content="プライバシーポリシー — Sproot">
-<meta property="og:description" content="Sproot は個人情報を収集しません。データはすべて端末の中に。">
+<meta property="og:description" content="Sprootのデータ保存、端末内処理、モデル取得と外部サービスについて。">
 <meta property="og:url" content="https://sproot-app.github.io/privacy.html">
 <meta property="og:image" content="https://sproot-app.github.io/og-image.png">
 <meta name="twitter:card" content="summary">
@@ -108,76 +108,79 @@ footer{border-top:1px solid var(--line);margin-top:24px}
 <main>
 <h1><span class="l-ja">プライバシーポリシー</span><span class="l-ko">개인정보 처리방침</span><span class="l-en">Privacy Policy</span></h1>
 <div class="meta">
-<span><span class="l-ja">最終更新日: 2026-07-12</span><span class="l-ko">최종 수정일: 2026-07-12</span><span class="l-en">Last updated: 2026-07-12</span></span>
+<span><span class="l-ja">最終更新日: 2026-10-07</span><span class="l-ko">최종 수정일: 2026-10-07</span><span class="l-en">Last updated: 2026-10-07</span></span>
 <span><span class="l-ja">運営者: Sproot 開発者（個人）</span><span class="l-ko">운영자: Sproot 개발자(개인)</span><span class="l-en">Operator: the Sproot developer (individual)</span></span>
 <span>sproot.app@gmail.com</span>
 </div>
 <article class="paper">
 <div class="l-ja">
 <h2>1. 基本方針</h2>
-<p>Sproot（以下「本アプリ」）は、個人情報を収集しないことを基本方針とします。アカウント登録は不要で、アクセス解析・広告・トラッキングは行いません。</p>
-<h2>2. データの保存場所</h2>
-<p>単語帳・カード・学習履歴・設定は、すべてお使いの端末内にのみ保存されます。運営者のサーバーには送信されません。端末のバックアップ（iCloud等）に含まれるかどうかは、お使いの iOS の設定に従います。</p>
-<h2>3. 外部への通信</h2>
-<p>本アプリが外部と通信するのは、次の場合に限られます。</p>
-<ul>
-<li><strong>AIモデルのダウンロード</strong> — 端末内AI用のモデルファイルを配布サーバーから取得します。このとき個人情報は送信されません。</li>
-<li><strong>クラウドAI機能（提供開始後・有料プラン）</strong> — 利用を選択した場合のみ、生成に必要なテーマや写真から読み取ったテキストが送信されます。初回利用時に改めて同意を確認します。</li>
-</ul>
-<h2>4. カメラ・写真</h2>
-<p>カメラおよび写真は、ノート等を読み取ってカードを作成する目的にのみ使用します。画像の文字認識は端末内で行われ、画像が外部へ送信されることはありません。</p>
+<p>Sproot（以下「本アプリ」）にはアカウント登録がなく、広告・アクセス解析・トラッキング機能を組み込んでいません。運営者は、単語帳・写真・音声・学習履歴を受信するサーバーを運用していません。外部サービスとの通信については以下に説明します。</p>
+<h2>2. 保存・バックアップ・端末間の連携</h2>
+<p>単語帳・カード・学習履歴・設定は端末内に保存します。端末のバックアップ（iCloud等）に含まれるかどうかはOSの設定に従います。本アプリ独自のiPhone・iPad間のクラウド自動同期はありません。</p>
+<p>Apple Watchを利用する場合、ペアリング済みのiPhoneとWatchの間で学習用データと採点結果を交換します。ウィジェットはアプリと端末内の共有領域を使います。バックアップやエクスポートは利用者が選んだ保存先・共有先へ渡され、その先のデータの扱いは各提供元に従います。削除したカード・単語帳はごみ箱に保管し、全体復元の前には復元前データを端末内に保管します。</p>
+<h2>3. AI・辞書・外部への通信</h2>
+<p>AI生成と辞書の翻訳は、取得済みのモデルを使って端末内で行います。英語辞書の原文はアプリに同梱されており、照会のために単語を外部へ送信しません。辞書の翻訳は利用者が要求した項目だけを処理し、再利用用のキャッシュを端末内に保存します。</p>
+<p>任意のAIモデル取得では、Hugging Faceとその配信基盤に接続します。カード・写真・音声・学習履歴やアカウント情報は送信しません。配布元はIPアドレス、ダウンロードしたファイル、接続日時、端末・OSに関する接続情報を受け取り、配信・安全性・障害対応・利用統計に使用します。IPアドレスから国や地域が推定される場合があります。匿名化されたダウンロード記録がモデル公開者に提供される場合もあります。保管期間と削除の問い合わせ先はHugging Faceのプライバシーポリシーに従います。モデルを取得せず、手動でカードを作成・学習することもできます。</p>
+<p>サポート・ポリシー・出典などの外部リンクを開いた場合は、遷移先のサービスへ接続します。各サイトでの情報の扱いはその提供元のポリシーに従います。現在のリリースではクラウドAIとWikipediaへの検索語送信は無効です。有効化する場合は、提供前にこの説明と必要な同意を更新します。</p>
+<p><a href="https://huggingface.co/privacy">Hugging Face プライバシーポリシー</a></p>
+<h2>4. カメラ・写真・音声</h2>
+<p>カメラと写真は、ノート等からカードを作る目的で使用します。文字認識はApple Visionで端末内処理し、アプリから画像をアップロードしません。</p>
+<p>任意の音声入力は、マイクと音声認識の許可を受けて質問の入力に使います。オンデバイス音声認識に対応する端末・言語でのみ動作し、音声をネットワークへ送信する認識は利用しません。認識した文字は入力欄に表示され、送信した質問と回答はカードの履歴として端末内に保存されます。</p>
 <h2>5. 通知</h2>
-<p>学習リマインダーはローカル通知のみを使用し、外部サーバーを介しません。</p>
-<h2>6. 第三者提供</h2>
-<p>運営者が個人情報を第三者に提供することはありません（そもそも収集しません）。</p>
+<p>学習リマインダーはローカル通知を使用し、運営者のサーバーを介しません。通知の許可はOSの設定で変更できます。</p>
+<h2>6. お問い合わせ</h2>
+<p>利用者がサポートへメールを送る場合、運営者は返信先アドレスと送信された内容を問い合わせ対応のために受け取ります。単語帳などの個人的な内容を送る必要はありません。連絡先: sproot.app@gmail.com。</p>
 <h2>7. 児童のプライバシー</h2>
-<p>本アプリは全年齢を対象とし、児童からも個人情報を収集しません。</p>
+<p>アプリには年齢にかかわらず広告・解析・トラッキング機能を組み込んでおらず、運営者のサーバーへ学習内容を送信しません。外部サービスやファイル共有の扱いは上記をご確認ください。</p>
 <h2>8. 改定</h2>
-<p>本ポリシーを改定する場合は、本ページで告知します。</p>
+<p>本ポリシーの変更はこのページと更新日でお知らせします。</p>
 </div>
 <div class="l-ko">
 <h2>1. 기본 방침</h2>
-<p>Sproot(이하 "본 앱")는 개인정보를 수집하지 않는 것을 기본 방침으로 합니다. 계정 등록이 필요 없으며, 분석 도구・광고・트래킹을 사용하지 않습니다.</p>
-<h2>2. 데이터 보관</h2>
-<p>단어장・카드・학습 기록・설정은 모두 사용자의 기기 안에만 저장되며, 운영자의 서버로 전송되지 않습니다. 기기 백업(iCloud 등) 포함 여부는 iOS 설정을 따릅니다.</p>
-<h2>3. 외부 통신</h2>
-<p>본 앱이 외부와 통신하는 경우는 다음으로 한정됩니다.</p>
-<ul>
-<li><strong>AI 모델 다운로드</strong> — 기기 내 AI용 모델 파일을 배포 서버에서 받아옵니다. 이때 개인정보는 전송되지 않습니다.</li>
-<li><strong>클라우드 AI 기능(제공 시작 후・유료 플랜)</strong> — 이용을 선택한 경우에만 생성에 필요한 주제나 사진에서 읽어 들인 텍스트가 전송됩니다. 처음 사용할 때 별도의 동의를 받습니다.</li>
-</ul>
-<h2>4. 카메라・사진</h2>
-<p>카메라와 사진은 노트 등을 읽어 카드를 만드는 목적에만 사용합니다. 문자 인식은 기기 안에서 이루어지며 이미지가 외부로 전송되지 않습니다.</p>
+<p>Sproot(이하 ‘본 앱’)에는 계정 등록, 광고, 분석 또는 트래킹 기능이 없습니다. 운영자는 단어장·사진·음성·학습 기록을 수신하는 서버를 운영하지 않습니다. 외부 서비스와의 통신은 아래에 설명합니다.</p>
+<h2>2. 저장·백업·기기 연동</h2>
+<p>단어장·카드·학습 기록·설정은 기기에 저장합니다. 기기 백업(iCloud 등)에 포함되는지는 OS 설정을 따릅니다. 앱 자체의 iPhone·iPad 간 자동 클라우드 동기화 기능은 없습니다.</p>
+<p>Apple Watch를 사용하면 페어링된 iPhone과 Watch 사이에 학습 데이터와 채점 결과를 주고받습니다. 위젯은 앱과 기기 내 공유 저장소를 사용합니다. 백업과 내보내기는 사용자가 선택한 저장·공유 대상으로 전달되며 이후 데이터 처리는 해당 제공자의 정책을 따릅니다. 삭제한 카드·단어장은 휴지통에 보관하고 전체 복원 전에는 복원 전 데이터를 기기에 보관합니다.</p>
+<h2>3. AI·사전·외부 통신</h2>
+<p>AI 생성과 사전 번역은 다운로드한 모델로 기기 안에서 처리합니다. 영어 사전 원문은 앱에 포함되어 조회할 단어를 외부에 보내지 않습니다. 사전 번역은 사용자가 요청한 항목만 처리하고 재사용할 캐시를 기기에 저장합니다.</p>
+<p>선택 사항인 AI 모델 다운로드는 Hugging Face와 그 배포 인프라에 연결합니다. 카드·사진·음성·학습 기록이나 계정 정보는 보내지 않습니다. 배포자는 IP 주소, 다운로드한 파일, 접속 시각, 기기·OS 관련 연결 정보를 받아 배포·보안·문제 해결·이용 통계에 사용합니다. IP 주소로 국가나 지역이 추정될 수 있고, 익명화한 다운로드 기록이 모델 게시자에게 제공될 수 있습니다. 보관 기간과 삭제 문의는 Hugging Face 개인정보 처리방침을 따릅니다. 모델을 받지 않고도 직접 카드를 만들고 학습할 수 있습니다.</p>
+<p>지원·정책·출처 등의 외부 링크를 열면 해당 서비스에 연결됩니다. 각 사이트의 정보 처리는 제공자의 정책을 따릅니다. 현재 릴리스에서 클라우드 AI와 Wikipedia 검색어 전송은 비활성화되어 있습니다. 활성화할 경우 제공 전에 이 설명과 필요한 동의를 갱신합니다.</p>
+<p><a href="https://huggingface.co/privacy">Hugging Face 개인정보 처리방침</a></p>
+<h2>4. 카메라·사진·음성</h2>
+<p>카메라와 사진은 노트 등에서 카드를 만드는 용도로 사용합니다. Apple Vision이 기기 안에서 문자를 인식하며 앱은 이미지를 업로드하지 않습니다.</p>
+<p>선택 사항인 음성 입력은 마이크와 음성 인식 권한을 받아 질문을 입력하는 데 사용합니다. 기기 내 음성 인식을 지원하는 기기·언어에서만 작동하며 음성을 네트워크로 보내는 인식은 사용하지 않습니다. 인식한 글은 입력창에 표시되고 보낸 질문과 답변은 카드의 기록으로 기기에 저장됩니다.</p>
 <h2>5. 알림</h2>
-<p>학습 리마인더는 로컬 알림만 사용하며 외부 서버를 거치지 않습니다.</p>
-<h2>6. 제3자 제공</h2>
-<p>운영자는 개인정보를 제3자에게 제공하지 않습니다(애초에 수집하지 않습니다).</p>
+<p>학습 리마인더는 로컬 알림을 사용하며 운영자의 서버를 거치지 않습니다. 알림 권한은 OS 설정에서 변경할 수 있습니다.</p>
+<h2>6. 문의</h2>
+<p>사용자가 지원 이메일을 보내면 운영자는 문의에 답하기 위해 회신 주소와 보낸 내용을 받습니다. 단어장 등 개인적인 내용을 보낼 필요는 없습니다. 연락처: sproot.app@gmail.com.</p>
 <h2>7. 아동의 개인정보</h2>
-<p>본 앱은 전 연령을 대상으로 하며, 아동으로부터도 개인정보를 수집하지 않습니다.</p>
+<p>앱은 연령에 관계없이 광고·분석·트래킹 기능을 포함하지 않으며 운영자의 서버로 학습 내용을 보내지 않습니다. 외부 서비스와 파일 공유의 처리는 위 설명을 확인해주세요.</p>
 <h2>8. 개정</h2>
-<p>본 방침을 개정할 경우 본 페이지에서 알립니다.</p>
+<p>이 방침의 변경은 이 페이지와 수정일을 통해 알립니다.</p>
 </div>
 <div class="l-en">
-<h2>1. Our principle</h2>
-<p>Sproot ("the App") is designed not to collect personal information. No account is required, and the App contains no analytics, advertising, or tracking.</p>
-<h2>2. Where your data lives</h2>
-<p>Word books, cards, study history, and settings are stored only on your device and are never sent to the operator's servers. Whether they are included in device backups (e.g., iCloud) follows your iOS settings.</p>
-<h2>3. Network access</h2>
-<p>The App communicates externally only in the following cases:</p>
-<ul>
-<li><strong>AI model download</strong> — the on-device AI model file is fetched from a distribution server. No personal information is transmitted.</li>
-<li><strong>Cloud AI (when offered; paid plan)</strong> — only if you choose to use it, the topic or text read from your photo is sent for generation, with separate consent on first use.</li>
-</ul>
-<h2>4. Camera &amp; photos</h2>
-<p>The camera and photo library are used solely to read notes and create cards. Text recognition happens on-device; images are never uploaded.</p>
+<h2>1. Our approach</h2>
+<p>Sproot (the App) has no account registration, advertising, analytics, or tracking features. The operator does not run a server that receives your word books, photos, audio, or study history. Connections to external services are described below.</p>
+<h2>2. Storage, backups, and your devices</h2>
+<p>Word books, cards, study history, and settings are stored on your device. Inclusion in device backups, such as iCloud backups, follows your OS settings. The App does not provide its own automatic cloud sync between iPhone and iPad.</p>
+<p>If you use Apple Watch, study data and grades are exchanged with your paired iPhone. Widgets use a shared local container with the App. Backups and exports go to the storage or sharing destination you choose; that provider’s policies apply there. Deleted cards and word books are retained in Trash, and a local copy of your data is preserved before a full restore.</p>
+<h2>3. AI, dictionary, and network access</h2>
+<p>AI generation and dictionary translation run on your device using a downloaded model. English dictionary definitions are bundled with the App; lookup does not send your word to a server. Dictionary translation processes only entries you request and stores a local cache for reuse.</p>
+<p>Optional model downloads connect to Hugging Face and its delivery infrastructure. The App sends no cards, photos, audio, study history, or account information. The provider receives your IP address, requested file, request time, and device/OS connection information for delivery, security, troubleshooting, and usage statistics. It may infer your country or region and provide anonymized download records to model publishers. Retention and deletion requests follow the Hugging Face Privacy Policy. You can create and study cards manually without downloading a model.</p>
+<p>Opening external support, policy, or source links connects to the destination service, whose privacy policy applies. Cloud AI and sending search terms to Wikipedia are disabled in the current release. Before enabling them, we will update this explanation and any required consent.</p>
+<p><a href="https://huggingface.co/privacy">Hugging Face Privacy Policy</a></p>
+<h2>4. Camera, photos, and voice</h2>
+<p>Camera and photo access are used to create cards from notes and similar material. Apple Vision recognizes text on-device; the App does not upload images.</p>
+<p>Optional voice input requires microphone and speech-recognition permission to enter a question. It runs only on devices and languages that support on-device recognition and does not use recognition that sends audio over the network. Recognized text appears in the input field; submitted questions and answers are stored locally in the card’s history.</p>
 <h2>5. Notifications</h2>
-<p>Study reminders use local notifications only.</p>
-<h2>6. Third parties</h2>
-<p>The operator does not share personal information with third parties (none is collected in the first place).</p>
-<h2>7. Children's privacy</h2>
-<p>The App is suitable for all ages and collects no personal information from children.</p>
+<p>Study reminders use local notifications without an operator server. You can change notification permission in OS settings.</p>
+<h2>6. Contacting support</h2>
+<p>If you email support, the operator receives your reply address and message to respond to your inquiry. You do not need to send private content such as your word books. Contact: sproot.app@gmail.com.</p>
+<h2>7. Children’s privacy</h2>
+<p>Regardless of age, the App contains no advertising, analytics, or tracking features and does not send study content to an operator server. The sections above explain external services and file sharing.</p>
 <h2>8. Changes</h2>
-<p>Any changes to this policy will be announced on this page.</p>
+<p>Changes to this policy will be announced on this page with an updated date.</p>
 </div>
 </article>
 </main>
